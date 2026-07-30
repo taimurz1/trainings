@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI for Software Developers Training Deck</title>
+  <style>
+    :root {
+      --bg: #0f172a;
+      --card-bg: #1e293b;
+      --accent: #a855f7;
+      --text: #f8fafc;
+      --muted: #94a3b8;
+      --border: #334155;
+    }
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      margin: 0;
+      padding: 2rem 1rem;
+    }
+    .slide-container {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+    .slide {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 2rem;
+      margin-bottom: 2rem;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
+    }
+    .slide-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 0.75rem;
+      margin-bottom: 1.5rem;
+    }
+    .slide-number {
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    h2 {
+      margin: 0;
+      color: var(--accent);
+      font-size: 1.6rem;
+    }
+    .badge {
+      background: rgba(168, 85, 247, 0.15);
+      color: var(--accent);
+      padding: 4px 12px;
+      border-radius: 16px;
+      font-size: 0.8rem;
+      font-weight: 600;
+    }
+    p, li {
+      color: var(--text);
+      line-height: 1.6;
+    }
+    .highlight-box {
+      background: rgba(168, 85, 247, 0.1);
+      border-left: 4px solid var(--accent);
+      padding: 1rem;
+      border-radius: 0 8px 8px 0;
+      margin: 1rem 0;
+    }
+    .qr-card {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: #090d16;
+      border: 1px solid var(--accent);
+      border-radius: 12px;
+      padding: 1.5rem;
+      margin-top: 1.5rem;
+      gap: 1.5rem;
+    }
+    .qr-card-text {
+      flex: 1;
+    }
+    .qr-card-text h3 {
+      margin: 0 0 0.5rem 0;
+      color: var(--accent);
+      font-size: 1.25rem;
+    }
+    .qr-card-text p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+    .qr-img {
+      background: white;
+      padding: 8px;
+      border-radius: 8px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.4);
+      display: block;
+    }
+  </style>
+</head>
+<body>
+
+<div class="slide-container">
+
+  <!-- SLIDE 1 -->
+  <div class="slide">
+    <div class="slide-header">
+      <span class="slide-number">Slide 01 / 11</span>
+      <span class="badge">Module 3</span>
+    </div>
+    <h2>AI for Software Developers & Engineers</h2>
+    <p>Supercharge developer workflows with AI-assisted debugging, query optimization, automated unit testing, and code refactoring.</p>
+  </div>
+
+  <!-- SLIDE 2 -->
+  <div class="slide">
+    <div class="slide-header">
+      <span class="slide-number">Slide 02 / 11</span>
+      <span class="badge">Debugging</span>
+    </div>
+    <h2>Root-Cause Error Analysis</h2>
+    <p>Pass stack traces alongside source code to get root-cause explanations and verified bug fixes.</p>
+    <div class="highlight-box">
+      <strong>Best Practice:</strong> Always include compiler error logs and language version context in your prompt.
+    </div>
+  </div>
+
+  <!-- SLIDE 3 -->
+  <div class="slide">
+    <div class="slide-header">
+      <span class="slide-number">Slide 03 / 11</span>
+      <span class="badge">Database</span>
+    </div>
+    <h2>SQL Query Optimization</h2>
+    <p>Optimize slow SQL queries, eliminate unnecessary subqueries, and improve join performance across databases.</p>
+  </div>
+
+  <!-- SLIDE 4 -->
+  <div class="slide">
+    <div class="slide-header">
+      <span class="slide-number">Slide 04 / 11</span>
+      <span class="badge">Testing</span>
+    </div>
+    <h2>Automated Unit Test Suites</h2>
+    <p>Generate production-grade unit tests covering happy paths, edge cases, boundary limits, and null handling.</p>
+  </div>
+
+  <!-- SLIDE 5 -->
+  <div class="slide">
+    <div class="slide-header">
+      <span class="slide-number">Slide 05 / 11</span>
+      <span class="badge">Clean Code</span>
+    </div>
+    <h2>Code Refactoring (SOLID Principles)</h2>
+    <p>Transform legacy spaghetti code into modular, maintainable, and readable clean code architecture.</p>
+  </div>
+
+  <!-- SLIDE 6 -->
+  <div class="slide">
+    <div class="slide-header">
+      <span class="slide-number">Slide 06 / 11</span>
+      <span class="badge">API Design</span>
+    </div>
+    <h2>REST & GraphQL Endpoint Specs</h2>
+    <p>Generate comprehensive API schemas, payload specifications, and standard HTTP error response structures.</p>
+  </div>
+
+  <!-- SLIDE 7 -->
+  <div class="slide">
+    <div class="slide-header">
+      <span class="slide-number">Slide 07 / 11</span>
+      <span class="badge">Security</span>
+    </div>
+    <h2>Static Security Code Auditing</h2>
+    <p>Audit code snippets against OWASP Top 10 vulnerabilities like SQL injection, XSS, and unhandled inputs.</p>
+  </div>
+
+  <!-- SLIDE 8 -->
+  <div class="slide">
+    <div class="slide-header">
+      <span class="slide-number">Slide 08 / 11</span>
+      <span class="badge">Utilities</span>
+    </div>
+    <h2>RegEx Pattern & Script Generators</h2>
+    <p>Generate complex regular expressions and DevOps automation scripts with step-by-step logic breakdowns.</p>
+  </div>
+
+  <!-- SLIDE 9 -->
+  <div class="slide">
+    <div class="slide-header">
+      <span class="slide-number">Slide 09 / 11</span>
+      <span class="badge">Documentation</span>
+    </div>
+    <h2>Automated Inline Documentation</h2>
+    <p>Create JSDoc, XML Doc comments, and docstrings for functions and classes automatically.</p>
+  </div>
+
+  <!-- SLIDE 10 -->
+  <div class="slide">
+    <div class="slide-header">
+      <span class="slide-number">Slide 10 / 11</span>
+      <span class="badge">DevOps</span>
+    </div>
+    <h2>CI/CD Pipeline Configurations</h2>
+    <p>Build GitHub Actions and Azure DevOps workflow scripts to lint, build, and test applications automatically.</p>
+  </div>
+
+  <!-- SLIDE 11 (QR CODE SLIDE) -->
+  <div class="slide">
+    <div class="slide-header">
+      <span class="slide-number">Slide 11 / 11</span>
+      <span class="badge">Free Resource</span>
+    </div>
+    <h2>Developer Prompt Cheatsheet</h2>
+    <p>Scan the QR code to open your interactive HTML prompt guide for debugging, refactoring, SQL tuning, and unit testing.</p>
+    
+    <div class="qr-card">
+      <div class="qr-card-text">
+        <h3>🎁 Top 10 AI Prompts for Software Developers</h3>
+        <p>Get instant access to copy-paste prompts designed to save engineering hours during development cycles.</p>
+      </div>
+      <img 
+        class="qr-img" 
+        src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://taimurz1.github.io/trainings/slides/prompts/top-10-ai-prompts-software-developers.html" 
+        alt="QR Code for Developer Prompts Cheat Sheet"
+        width="120"
+        height="120"
+      />
+    </div>
+  </div>
+
+</div>
+
+</body>
+</html>
