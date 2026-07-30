@@ -1,240 +1,285 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>AI for Software Developers Training Deck</title>
-  <style>
-    :root {
-      --bg: #0f172a;
-      --card-bg: #1e293b;
-      --accent: #a855f7;
-      --text: #f8fafc;
-      --muted: #94a3b8;
-      --border: #334155;
-    }
-    body {
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-      background-color: var(--bg);
-      color: var(--text);
-      margin: 0;
-      padding: 2rem 1rem;
-    }
-    .slide-container {
-      max-width: 900px;
-      margin: 0 auto;
-    }
-    .slide {
-      background: var(--card-bg);
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      padding: 2rem;
-      margin-bottom: 2rem;
-      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
-    }
-    .slide-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      border-bottom: 2px solid var(--border);
-      padding-bottom: 0.75rem;
-      margin-bottom: 1.5rem;
-    }
-    .slide-number {
-      font-size: 0.85rem;
-      font-weight: 700;
-      color: var(--accent);
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-    }
-    h2 {
-      margin: 0;
-      color: var(--accent);
-      font-size: 1.6rem;
-    }
-    .badge {
-      background: rgba(168, 85, 247, 0.15);
-      color: var(--accent);
-      padding: 4px 12px;
-      border-radius: 16px;
-      font-size: 0.8rem;
-      font-weight: 600;
-    }
-    p, li {
-      color: var(--text);
-      line-height: 1.6;
-    }
-    .highlight-box {
-      background: rgba(168, 85, 247, 0.1);
-      border-left: 4px solid var(--accent);
-      padding: 1rem;
-      border-radius: 0 8px 8px 0;
-      margin: 1rem 0;
-    }
-    .qr-card {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      background: #090d16;
-      border: 1px solid var(--accent);
-      border-radius: 12px;
-      padding: 1.5rem;
-      margin-top: 1.5rem;
-      gap: 1.5rem;
-    }
-    .qr-card-text {
-      flex: 1;
-    }
-    .qr-card-text h3 {
-      margin: 0 0 0.5rem 0;
-      color: var(--accent);
-      font-size: 1.25rem;
-    }
-    .qr-card-text p {
-      margin: 0;
-      color: var(--muted);
-      font-size: 0.95rem;
-    }
-    .qr-img {
-      background: white;
-      padding: 8px;
-      border-radius: 8px;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.4);
-      display: block;
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI for Software Development & Coding - AI Ready Pakistan</title>
+<style>
+  :root {
+    --bg-dark: #0f172a;
+    --card-bg: #1e293b;
+    --accent-blue: #38bdf8;
+    --accent-teal: #2dd4bf;
+    --accent-green: #4ade80;
+    --accent-red: #f87171;
+    --text-light: #f8fafc;
+    --text-muted: #94a3b8;
+    --border-color: #334155;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', system-ui, -apple-system, sans-serif; }
+  body { background-color: #020617; color: var(--text-light); padding: 2rem; display: flex; flex-direction: column; align-items: center; gap: 3rem; }
+  .slide { background-color: var(--bg-dark); width: 100%; max-width: 1000px; min-height: 562px; border-radius: 16px; border: 1px solid var(--border-color); padding: 2.5rem; display: flex; flex-direction: column; justify-content: space-between; box-shadow: 0 20px 25px -5px rgba(0,0,0,0.5); page-break-after: always; position: relative; }
+  .slide-header { border-bottom: 2px solid var(--border-color); padding-bottom: 1rem; margin-bottom: 1.5rem; display: flex; justify-content: space-between; align-items: flex-end; }
+  .slide-header h2 { color: var(--accent-blue); font-size: 1.8rem; font-weight: 700; }
+  .slide-header .tag { color: var(--text-muted); font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1px; }
+  .slide-body { flex: 1; display: flex; flex-direction: column; justify-content: center; gap: 1.2rem; }
+  .slide-footer { margin-top: 1.5rem; pt: 0.8rem; border-top: 1px solid var(--border-color); display: flex; justify-content: space-between; color: var(--text-muted); font-size: 0.85rem; }
+  .title-slide { justify-content: center; align-items: center; text-align: center; background: linear-gradient(135deg, #0f172a 0%, #1e3a8a 100%); }
+  .title-slide h1 { font-size: 2.6rem; color: var(--accent-blue); margin-bottom: 0.8rem; line-height: 1.2; }
+  .title-slide h3 { font-size: 1.2rem; color: var(--accent-teal); font-weight: 400; margin-bottom: 2rem; }
+  .badge { background-color: rgba(56, 189, 248, 0.1); border: 1px solid var(--accent-blue); color: var(--accent-blue); padding: 0.4rem 1rem; border-radius: 9999px; font-size: 0.9rem; font-weight: 600; display: inline-block; margin-bottom: 1rem; }
+  .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 1.2rem; }
+  .grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 1rem; }
+  .card { background-color: var(--card-bg); border: 1px solid var(--border-color); border-radius: 12px; padding: 1.2rem; }
+  .card-header { font-weight: 700; color: var(--accent-blue); margin-bottom: 0.5rem; font-size: 1.05rem; }
+  .table-custom { width: 100%; border-collapse: collapse; margin-top: 0.5rem; }
+  .table-custom th, .table-custom td { border: 1px solid var(--border-color); padding: 0.75rem; text-align: left; font-size: 0.9rem; }
+  .table-custom th { background-color: var(--card-bg); color: var(--accent-blue); }
+  .callout-box { background-color: rgba(56, 189, 248, 0.1); border-left: 4px solid var(--accent-blue); padding: 1rem; border-radius: 0 8px 8px 0; margin-top: 0.5rem; }
+  .prompt-box { background-color: #090d16; border: 1px dashed var(--accent-blue); border-radius: 8px; padding: 1rem; font-family: 'Courier New', monospace; font-size: 0.9rem; color: #e2e8f0; line-height: 1.5; }
+</style>
 </head>
 <body>
 
-<div class="slide-container">
+<!-- SLIDE 1 -->
+<div class="slide title-slide">
+  <div class="badge">AI Ready Pakistan • Software Track</div>
+  <h1>Coding with AI:<br>Developer Superpowers 101</h1>
+  <h3>Learn How to Write, Fix, and Understand Code with AI Assistance</h3>
+  <p style="color: var(--text-muted); font-size: 0.95rem;">National AI Awareness & Empowerment Movement</p>
+</div>
 
-  <!-- SLIDE 1 -->
-  <div class="slide">
-    <div class="slide-header">
-      <span class="slide-number">Slide 01 / 11</span>
-      <span class="badge">Module 3</span>
-    </div>
-    <h2>AI for Software Developers & Engineers</h2>
-    <p>Supercharge developer workflows with AI-assisted debugging, query optimization, automated unit testing, and code refactoring.</p>
+<!-- SLIDE 2 -->
+<div class="slide">
+  <div class="slide-header">
+    <h2>Why Learn AI-Assisted Coding?</h2>
+    <span class="tag">Developer Productivity</span>
   </div>
-
-  <!-- SLIDE 2 -->
-  <div class="slide">
-    <div class="slide-header">
-      <span class="slide-number">Slide 02 / 11</span>
-      <span class="badge">Debugging</span>
-    </div>
-    <h2>Root-Cause Error Analysis</h2>
-    <p>Pass stack traces alongside source code to get root-cause explanations and verified bug fixes.</p>
-    <div class="highlight-box">
-      <strong>Best Practice:</strong> Always include compiler error logs and language version context in your prompt.
-    </div>
-  </div>
-
-  <!-- SLIDE 3 -->
-  <div class="slide">
-    <div class="slide-header">
-      <span class="slide-number">Slide 03 / 11</span>
-      <span class="badge">Database</span>
-    </div>
-    <h2>SQL Query Optimization</h2>
-    <p>Optimize slow SQL queries, eliminate unnecessary subqueries, and improve join performance across databases.</p>
-  </div>
-
-  <!-- SLIDE 4 -->
-  <div class="slide">
-    <div class="slide-header">
-      <span class="slide-number">Slide 04 / 11</span>
-      <span class="badge">Testing</span>
-    </div>
-    <h2>Automated Unit Test Suites</h2>
-    <p>Generate production-grade unit tests covering happy paths, edge cases, boundary limits, and null handling.</p>
-  </div>
-
-  <!-- SLIDE 5 -->
-  <div class="slide">
-    <div class="slide-header">
-      <span class="slide-number">Slide 05 / 11</span>
-      <span class="badge">Clean Code</span>
-    </div>
-    <h2>Code Refactoring (SOLID Principles)</h2>
-    <p>Transform legacy spaghetti code into modular, maintainable, and readable clean code architecture.</p>
-  </div>
-
-  <!-- SLIDE 6 -->
-  <div class="slide">
-    <div class="slide-header">
-      <span class="slide-number">Slide 06 / 11</span>
-      <span class="badge">API Design</span>
-    </div>
-    <h2>REST & GraphQL Endpoint Specs</h2>
-    <p>Generate comprehensive API schemas, payload specifications, and standard HTTP error response structures.</p>
-  </div>
-
-  <!-- SLIDE 7 -->
-  <div class="slide">
-    <div class="slide-header">
-      <span class="slide-number">Slide 07 / 11</span>
-      <span class="badge">Security</span>
-    </div>
-    <h2>Static Security Code Auditing</h2>
-    <p>Audit code snippets against OWASP Top 10 vulnerabilities like SQL injection, XSS, and unhandled inputs.</p>
-  </div>
-
-  <!-- SLIDE 8 -->
-  <div class="slide">
-    <div class="slide-header">
-      <span class="slide-number">Slide 08 / 11</span>
-      <span class="badge">Utilities</span>
-    </div>
-    <h2>RegEx Pattern & Script Generators</h2>
-    <p>Generate complex regular expressions and DevOps automation scripts with step-by-step logic breakdowns.</p>
-  </div>
-
-  <!-- SLIDE 9 -->
-  <div class="slide">
-    <div class="slide-header">
-      <span class="slide-number">Slide 09 / 11</span>
-      <span class="badge">Documentation</span>
-    </div>
-    <h2>Automated Inline Documentation</h2>
-    <p>Create JSDoc, XML Doc comments, and docstrings for functions and classes automatically.</p>
-  </div>
-
-  <!-- SLIDE 10 -->
-  <div class="slide">
-    <div class="slide-header">
-      <span class="slide-number">Slide 10 / 11</span>
-      <span class="badge">DevOps</span>
-    </div>
-    <h2>CI/CD Pipeline Configurations</h2>
-    <p>Build GitHub Actions and Azure DevOps workflow scripts to lint, build, and test applications automatically.</p>
-  </div>
-
-  <!-- SLIDE 11 (QR CODE SLIDE) -->
-  <div class="slide">
-    <div class="slide-header">
-      <span class="slide-number">Slide 11 / 11</span>
-      <span class="badge">Free Resource</span>
-    </div>
-    <h2>Developer Prompt Cheatsheet</h2>
-    <p>Scan the QR code to open your interactive HTML prompt guide for debugging, refactoring, SQL tuning, and unit testing.</p>
-    
-    <div class="qr-card">
-      <div class="qr-card-text">
-        <h3>🎁 Top 10 AI Prompts for Software Developers</h3>
-        <p>Get instant access to copy-paste prompts designed to save engineering hours during development cycles.</p>
+  <div class="slide-body">
+    <div class="grid-3">
+      <div class="card">
+        <div class="card-header">🚀 Learn 5x Faster</div>
+        <p style="color: var(--text-muted); font-size: 0.85rem;">AI acts as a 24/7 tutor explaining every line of code.</p>
       </div>
-      <img 
-        class="qr-img" 
-        src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://taimurz1.github.io/trainings/slides/prompts/top-10-ai-prompts-software-developers.html" 
-        alt="QR Code for Developer Prompts Cheat Sheet"
-        width="120"
-        height="120"
-      />
+      <div class="card">
+        <div class="card-header">🐛 Instant Error Fixes</div>
+        <p style="color: var(--text-muted); font-size: 0.85rem;">Paste scary red error messages into AI to get immediate fixes.</p>
+      </div>
+      <div class="card">
+        <div class="card-header">💻 Write Code Fast</div>
+        <p style="color: var(--text-muted); font-size: 0.85rem;">Generate page layouts, SQL scripts, and logic in seconds.</p>
+      </div>
+    </div>
+    <div class="callout-box">
+      <strong>🎯 Key Takeaway:</strong> You don't need years of experience to start building simple projects today!
     </div>
   </div>
+  <div class="slide-footer">
+    <span>AI Coding 101</span>
+    <span>Slide 2 of 10</span>
+  </div>
+</div>
 
+<!-- SLIDE 3 -->
+<div class="slide">
+  <div class="slide-header">
+    <h2>Think of AI as Your Junior Co-Pilot</h2>
+    <span class="tag">Mental Model</span>
+  </div>
+  <div class="slide-body">
+    <div class="grid-2">
+      <div class="card">
+        <div class="card-header" style="color: var(--accent-teal);">🚗 You = Driver</div>
+        <p style="font-size: 0.9rem; line-height: 1.5;">You hold the steering wheel. You decide what app to build, review the logic, and test the code.</p>
+      </div>
+      <div class="card">
+        <div class="card-header" style="color: var(--accent-blue);">💻 AI = Co-Pilot</div>
+        <p style="font-size: 0.9rem; line-height: 1.5;">AI navigates maps, writes repetitive code snippets, and points out bugs before they crash!</p>
+      </div>
+    </div>
+  </div>
+  <div class="slide-footer">
+    <span>AI Coding 101</span>
+    <span>Slide 3 of 10</span>
+  </div>
+</div>
+
+<!-- SLIDE 4 -->
+<div class="slide">
+  <div class="slide-header">
+    <h2>3 Coding Terms You Will Use Today</h2>
+    <span class="tag">Glossary</span>
+  </div>
+  <div class="slide-body">
+    <div class="card" style="margin-bottom: 0.5rem;">
+      <strong style="color: var(--accent-blue);">1. Code Snippet:</strong>
+      <span style="font-size: 0.9rem;"> A short block of programming code that performs a specific task.</span>
+    </div>
+    <div class="card" style="margin-bottom: 0.5rem;">
+      <strong style="color: var(--accent-teal);">2. Debugging:</strong>
+      <span style="font-size: 0.9rem;"> Finding and fixing errors (bugs) that stop a program from running.</span>
+    </div>
+    <div class="card">
+      <strong style="color: var(--accent-green);">3. IDE / Code Editor:</strong>
+      <span style="font-size: 0.9rem;"> The software program (like VS Code or Visual Studio) where developers write code.</span>
+    </div>
+  </div>
+  <div class="slide-footer">
+    <span>AI Coding 101</span>
+    <span>Slide 4 of 10</span>
+  </div>
+</div>
+
+<!-- SLIDE 5 -->
+<div class="slide">
+  <div class="slide-header">
+    <h2>The 3-Step AI Coding Workflow</h2>
+    <span class="tag">Process</span>
+  </div>
+  <div class="slide-body">
+    <div class="grid-3">
+      <div class="card" style="text-align: center;">
+        <div style="font-size: 1.3rem; color: var(--accent-blue); font-weight: 700;">1. DESCRIBE</div>
+        <p style="font-size: 0.85rem; color: var(--text-muted); margin-top: 0.5rem;">Explain the exact page, SQL query, or feature you want.</p>
+      </div>
+      <div class="card" style="text-align: center;">
+        <div style="font-size: 1.3rem; color: var(--accent-teal); font-weight: 700;">2. GENERATE</div>
+        <p style="font-size: 0.85rem; color: var(--text-muted); margin-top: 0.5rem;">AI builds the code snippet for you to review.</p>
+      </div>
+      <div class="card" style="text-align: center;">
+        <div style="font-size: 1.3rem; color: var(--accent-green); font-weight: 700;">3. TEST & FIX</div>
+        <p style="font-size: 0.85rem; color: var(--text-muted); margin-top: 0.5rem;">Run the code and paste error logs back if it crashes.</p>
+      </div>
+    </div>
+  </div>
+  <div class="slide-footer">
+    <span>AI Coding 101</span>
+    <span>Slide 5 of 10</span>
+  </div>
+</div>
+
+<!-- SLIDE 6 -->
+<div class="slide">
+  <div class="slide-header">
+    <h2>Step 1: Prompting AI to Write Code</h2>
+    <span class="tag">Direct Comparison</span>
+  </div>
+  <div class="slide-body">
+    <table class="table-custom">
+      <thead>
+        <tr>
+          <th style="width: 50%; color: var(--accent-red);">❌ WEAK WAY</th>
+          <th style="width: 50%; color: var(--accent-green);">✅ RIGHT WAY</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>"Make a login form."</td>
+          <td>"Write a simple HTML and CSS login form with fields for Email and Password, plus a green 'Submit' button."</td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="callout-box">
+      <strong>🎯 Pro Tip:</strong> Always specify the programming language (e.g., C#, HTML, Python, SQL)!
+    </div>
+  </div>
+  <div class="slide-footer">
+    <span>AI Coding 101</span>
+    <span>Slide 6 of 10</span>
+  </div>
+</div>
+
+<!-- SLIDE 7 -->
+<div class="slide">
+  <div class="slide-header">
+    <h2>Step 2: What to Do When Code Crashes</h2>
+    <span class="tag">Debugging Guide</span>
+  </div>
+  <div class="slide-body">
+    <div class="card" style="margin-bottom: 0.5rem;">
+      <strong>Step 1:</strong> Copy the red error message from your terminal or console.
+    </div>
+    <div class="card" style="margin-bottom: 0.5rem;">
+      <strong>Step 2:</strong> Paste the full error message into ChatGPT or Claude.
+    </div>
+    <div class="card">
+      <strong>Step 3:</strong> Ask: <em>"Why am I getting this error and how do I fix it?"</em>
+    </div>
+    <div class="callout-box" style="border-left-color: var(--accent-red); margin-top: 0.5rem;">
+      <strong>⚠️ Watch Out:</strong> Never panic when error text appears! AI will pinpoint the exact broken line number for you.
+    </div>
+  </div>
+  <div class="slide-footer">
+    <span>AI Coding 101</span>
+    <span>Slide 7 of 10</span>
+  </div>
+</div>
+
+<!-- SLIDE 8 -->
+<div class="slide">
+  <div class="slide-header">
+    <h2>Step 3: Use AI to Learn Code</h2>
+    <span class="tag">Learning Mode</span>
+  </div>
+  <div class="slide-body">
+    <div class="prompt-box">
+      "Explain this code line-by-line using simple language and analogies so a beginner can understand how it works."
+    </div>
+    <div class="callout-box">
+      <strong>🎯 Definition of Success:</strong> You become a better programmer every time you ask AI <em>why</em> a piece of code works!
+    </div>
+  </div>
+  <div class="slide-footer">
+    <span>AI Coding 101</span>
+    <span>Slide 8 of 10</span>
+  </div>
+</div>
+
+<!-- SLIDE 9 -->
+<div class="slide">
+  <div class="slide-header">
+    <h2>Guided Live Exercise (5 Minutes)</h2>
+    <span class="tag">Hands-On Practice</span>
+  </div>
+  <div class="slide-body">
+    <p style="font-size: 0.95rem;">Open <strong>chatgpt.com</strong> or <strong>v0.dev</strong> and type this prompt:</p>
+    <div class="prompt-box">
+      "Write simple HTML code for a student profile card showing Name, Photo placeholder, City, and an 'Add Friend' button."
+    </div>
+    <div class="callout-box">
+      <strong>💡 Review:</strong> Look at how clean and organized the generated HTML structure is!
+    </div>
+  </div>
+  <div class="slide-footer">
+    <span>AI Coding 101</span>
+    <span>Slide 9 of 10</span>
+  </div>
+</div>
+
+<!-- SLIDE 10 -->
+<div class="slide">
+  <div class="slide-header">
+    <h2>You Are Now an AI-Assisted Coder!</h2>
+    <span class="tag">Recap & Next Steps</span>
+  </div>
+  <div class="slide-body">
+    <div class="grid-2" style="align-items: center;">
+      <div>
+        <div class="card" style="margin-bottom: 0.5rem;">✅ AI is your coding co-pilot, not your replacement.</div>
+        <div class="card" style="margin-bottom: 0.5rem;">✅ You know how to specify exact programming languages and features.</div>
+        <div class="card">✅ You know the 3 steps to fix bugs when code crashes.</div>
+      </div>
+      <div class="card" style="text-align: center; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 1.5rem; border: 2px dashed var(--accent-blue);">
+        <p style="font-weight: 700; color: var(--accent-teal); font-size: 0.95rem; margin-bottom: 0.8rem;">🎁 Claim Your Developer Resource!</p>
+        <img src="your-qr-code.png" alt="Scan QR Code" style="width: 140px; height: 140px; border-radius: 8px; background-color: #fff; padding: 0.5rem; margin-bottom: 0.8rem;">
+        <p style="font-size: 0.8rem; color: var(--text-muted);">Scan to download the<br><strong style="color: var(--accent-blue);">"Top 20 AI Prompts for Developers" PDF</strong></p>
+      </div>
+    </div>
+  </div>
+  <div class="slide-footer">
+    <span>AI Coding 101</span>
+    <span>Slide 10 of 10</span>
+  </div>
 </div>
 
 </body>
