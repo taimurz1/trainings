@@ -1,37 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI for Research & Academic Writing - AI Ready Pakistan</title>
+<style>
+  :root {
+    --bg-dark: #0f172a;
+    --card-bg: #1e293b;
+    --accent-blue: #38bdf8;
+    --accent-teal: #2dd4bf;
+    --accent-green: #4ade80;
+    --accent-red: #f87171;
+    --text-light: #f8fafc;
+    --text-muted: #94a3b8;
+    --border-color: #334155;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', system-ui, -apple-system, sans-serif; }
+  body { background-color: #020617; color: var(--text-light); padding: 2rem; display: flex; flex-direction: column; align-items: center; gap: 3rem; }
+  .slide { background-color: var(--bg-dark); width: 100%; max-width: 1000px; min-height: 562px; border-radius: 16px; border: 1px solid var(--border-color); padding: 2.5rem; display: flex; flex-direction: column; justify-content: space-between; box-shadow: 0 20px 25px -5px rgba(0,0,0,0.5); page-break-after: always; position: relative; }
+  .slide-header { border-bottom: 2px solid var(--border-color); padding-bottom: 1rem; margin-bottom: 1.5rem; display: flex; justify-content: space-between; align-items: flex-end; }
+  .slide-header h2 { color: var(--accent-blue); font-size: 1.8rem; font-weight: 700; }
+  .slide-header .tag { color: var(--text-muted); font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1px; }
+  .slide-body { flex: 1; display: flex; flex-direction: column; justify-content: center; gap: 1.2rem; }
+  .slide-footer { margin-top: 1.5rem; pt: 0.8rem; border-top: 1px solid var(--border-color); display: flex; justify-content: space-between; color: var(--text-muted); font-size: 0.85rem; }
+  .title-slide { justify-content: center; align-items: center; text-align: center; background: linear-gradient(135deg, #0f172a 0%, #064e3b 100%); }
+  .title-slide h1 { font-size: 2.6rem; color: var(--accent-teal); margin-bottom: 0.8rem; line-height: 1.2; }
+  .title-slide h3 { font-size: 1.2rem; color: var(--accent-blue); font-weight: 400; margin-bottom: 2rem; }
+  .badge { background-color: rgba(45, 212, 191, 0.1); border: 1px solid var(--accent-teal); color: var(--accent-teal); padding: 0.4rem 1rem; border-radius: 9999px; font-size: 0.9rem; font-weight: 600; display: inline-block; margin-bottom: 1rem; }
+  .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 1.2rem; }
+  .grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 1rem; }
+  .card { background-color: var(--card-bg); border: 1px solid var(--border-color); border-radius: 12px; padding: 1.2rem; }
+  .card-header { font-weight: 700; color: var(--accent-teal); margin-bottom: 0.5rem; font-size: 1.05rem; }
+  .table-custom { width: 100%; border-collapse: collapse; margin-top: 0.5rem; }
+  .table-custom th, .table-custom td { border: 1px solid var(--border-color); padding: 0.75rem; text-align: left; font-size: 0.9rem; }
+  .table-custom th { background-color: var(--card-bg); color: var(--accent-teal); }
+  .callout-box { background-color: rgba(45, 212, 191, 0.1); border-left: 4px solid var(--accent-teal); padding: 1rem; border-radius: 0 8px 8px 0; margin-top: 0.5rem; }
+  .prompt-box { background-color: #090d16; border: 1px dashed var(--accent-teal); border-radius: 8px; padding: 1rem; font-family: 'Courier New', monospace; font-size: 0.9rem; color: #e2e8f0; line-height: 1.5; }
+</style>
+</head>
+<body>
+
+<!-- SLIDE 1 -->
+<div class="slide title-slide">
+  <div class="badge">AI Ready Pakistan • Academic Track</div>
+  <h1>Smart Research with AI:<br>Academic Writing 101</h1>
+  <h3>How to Find, Read, and Summarize Papers in Minutes—Ethically!</h3>
+  <p style="color: var(--text-muted); font-size: 0.95rem;">National AI Awareness & Empowerment Movement</p>
+</div>
+
+<!-- SLIDE 2 -->
+<div class="slide">
+  <div class="slide-header">
+    <h2>Why Use AI for Academic Work?</h2>
+    <span class="tag">Benefits</span>
+  </div>
+  <div class="slide-body">
+    <div class="grid-3">
+      <div class="card">
+        <div class="card-header">📚 Read 10x Faster</div>
+        <p style="color: var(--text-muted); font-size: 0.85rem;">Understand long, difficult research papers in 5 minutes.</p>
+      </div>
+      <div class="card">
+        <div class="card-header">🔍 Find Better Sources</div>
+        <p style="color: var(--text-muted); font-size: 0.85rem;">Discover authentic journal articles without searching Google for hours.</p>
+      </div>
+      <div class="card">
+        <div class="card-header">📝 Structure Ideas</div>
+        <p style="color: var(--text-muted); font-size: 0.85rem;">Create clean outlines for essays, thesis reports, and assignments.</p>
+      </div>
+    </div>
+    <div class="callout-box">
+      <strong>🎯 Goal:</strong> Say goodbye to late-night assignment stress using ethical AI assistants!
+    </div>
+  </div>
+  <div class="slide-footer">
+    <span>AI for Research 101</span>
+    <span>Slide 2 of 10</span>
+  </div>
+</div>
+
+<!-- SLIDE 3 -->
+<div class="slide">
+  <div class="slide-header">
+    <h2>The Golden Rule of AI Research</h2>
+    <span class="tag">Academic Integrity</span>
+  </div>
+  <div class="slide-body">
+    <div class="grid-2">
+      <div class="card" style="border-left: 4px solid var(--accent-red);">
+        <div class="card-header" style="color: var(--accent-red);">❌ WRONG WAY (Unethical)</div>
+        <p style="font-size: 0.85rem; line-height: 1.5;">Copying text directly from ChatGPT into your assignment without checking facts or citations.</p>
+      </div>
+      <div class="card" style="border-left: 4px solid var(--accent-green);">
+        <div class="card-header" style="color: var(--accent-green);">✅ RIGHT WAY (Ethical)</div>
+        <p style="font-size: 0.85rem; line-height: 1.5;">Using AI to summarize complex papers, then rewriting key findings in <strong>your own words</strong> with verified links.</p>
+      </div>
+    </div>
+  </div>
+  <div class="slide-footer">
+    <span>AI for Research 101</span>
+    <span>Slide 3 of 10</span>
+  </div>
+</div>
+
+<!-- SLIDE 4 -->
+<div class="slide">
+  <div class="slide-header">
+    <h2>3 Vocabulary Words You Need Today</h2>
+    <span class="tag">Glossary</span>
+  </div>
+  <div class="slide-body">
+    <div class="card" style="margin-bottom: 0.5rem;">
+      <strong style="color: var(--accent-teal);">1. Literature Review:</strong>
+      <span style="font-size: 0.9rem;"> Reading and summarizing existing research articles on a specific topic.</span>
+    </div>
+    <div class="card" style="margin-bottom: 0.5rem;">
+      <strong style="color: var(--accent-blue);">2. Citation:</strong>
+      <span style="font-size: 0.9rem;"> Giving proper credit to the original author or scientist who published the research.</span>
+    </div>
+    <div class="card">
+      <strong style="color: var(--accent-red);">3. Hallucination:</strong>
+      <span style="font-size: 0.9rem;"> When basic AI makes up fake facts or non-existent citations (we will teach you how to avoid this!).</span>
+    </div>
+  </div>
+  <div class="slide-footer">
+    <span>AI for Research 101</span>
+    <span>Slide 4 of 10</span>
+  </div>
+</div>
+
+<!-- SLIDE 5 -->
+<div class="slide">
+  <div class="slide-header">
+    <h2>The 3-Step AI Research Process</h2>
+    <span class="tag">Workflow</span>
+  </div>
+  <div class="slide-body">
+    <div class="grid-3">
+      <div class="card" style="text-align: center;">
+        <div style="font-size: 1.5rem; color: var(--accent-teal);">1. SEARCH</div>
+        <p style="font-size: 0.85rem; color: var(--text-muted); margin-top: 0.5rem;">Find real scientific papers with direct URL sources.</p>
+      </div>
+      <div class="card" style="text-align: center;">
+        <div style="font-size: 1.5rem; color: var(--accent-blue);">2. EXTRACT</div>
+        <p style="font-size: 0.85rem; color: var(--text-muted); margin-top: 0.5rem;">Pull out key findings, methods, and sample sizes.</p>
+      </div>
+      <div class="card" style="text-align: center;">
+        <div style="font-size: 1.5rem; color: var(--accent-green);">3. SYNTHESIZE</div>
+        <p style="font-size: 0.85rem; color: var(--text-muted); margin-top: 0.5rem;">Combine findings into a clear paper outline.</p>
+      </div>
+    </div>
+  </div>
+  <div class="slide-footer">
+    <span>AI for Research 101</span>
+    <span>Slide 5 of 10</span>
+  </div>
+</div>
+
+<!-- SLIDE 6 -->
+<div class="slide">
+  <div class="slide-header">
+    <h2>Step 1: Finding Real Academic Papers</h2>
+    <span class="tag">Recommended Tools</span>
+  </div>
+  <div class="slide-body">
+    <table class="table-custom">
+      <thead>
+        <tr>
+          <th>Tool Name</th>
+          <th>What It Does Best</th>
+          <th>Free?</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Perplexity.ai</strong></td>
+          <td>Answers research questions with direct citation links.</td>
+          <td>YES ✅</td>
+        </tr>
+        <tr>
+          <td><strong>Consensus.app</strong></td>
+          <td>Searches 200M+ real research papers for scientific consensus.</td>
+          <td>YES ✅</td>
+        </tr>
+        <tr>
+          <td><strong>NotebookLM</strong></td>
+          <td>Upload PDFs and chat directly with your own documents.</td>
+          <td>YES ✅</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="slide-footer">
+    <span>AI for Research 101</span>
+    <span>Slide 6 of 10</span>
+  </div>
+</div>
+
+<!-- SLIDE 7 -->
+<div class="slide">
+  <div class="slide-header">
+    <h2>Step 2: Summarizing Difficult Papers</h2>
+    <span class="tag">Extraction Prompt</span>
+  </div>
+  <div class="slide-body">
+    <div class="prompt-box">
+      "Summarize this PDF paper in 3 structured parts: 1) What core problem were the researchers solving? 2) What methodology or data did they use? 3) What were their top 2 conclusions?"
+    </div>
+    <div class="callout-box" style="border-left-color: var(--accent-red);">
+      <strong>⚠️ Watch Out:</strong> Always link or upload the exact PDF to stop AI models from making up imaginary statistics!
+    </div>
+  </div>
+  <div class="slide-footer">
+    <span>AI for Research 101</span>
+    <span>Slide 7 of 10</span>
+  </div>
+</div>
+
+<!-- SLIDE 8 -->
+<div class="slide">
+  <div class="slide-header">
+    <h2>Step 3: Verification Checklist</h2>
+    <span class="tag">Quality Control</span>
+  </div>
+  <div class="slide-body">
+    <div class="card" style="margin-bottom: 0.5rem;">
+      <strong>1. Click the Citation Link:</strong> Check if the research paper actually exists online.
+    </div>
+    <div class="card" style="margin-bottom: 0.5rem;">
+      <strong>2. Check Author & Year:</strong> Make sure the paper date matches the context of your study.
+    </div>
+    <div class="card">
+      <strong>3. Write in Your Own Voice:</strong> Never copy-paste AI responses directly into assignments.
+    </div>
+  </div>
+  <div class="slide-footer">
+    <span>AI for Research 101</span>
+    <span>Slide 8 of 10</span>
+  </div>
+</div>
+
+<!-- SLIDE 9 -->
+<div class="slide">
+  <div class="slide-header">
+    <h2>Guided Live Exercise (5 Minutes)</h2>
+    <span class="tag">Hands-On Practice</span>
+  </div>
+  <div class="slide-body">
+    <p style="font-size: 0.95rem;">Open <strong>perplexity.ai</strong> on your device and type this exact query:</p>
+    <div class="prompt-box">
+      "What are the main causes of climate change in South Asia? List 3 findings backed by recent studies."
+    </div>
+    <div class="callout-box">
+      <strong>💡 Notice:</strong> Every bullet point has a small numbered link pointing to a real academic source!
+    </div>
+  </div>
+  <div class="slide-footer">
+    <span>AI for Research 101</span>
+    <span>Slide 9 of 10</span>
+  </div>
+</div>
+
 <!-- SLIDE 10 -->
 <div class="slide">
   <div class="slide-header">
-    <h2>What You Mastered Today</h2>
+    <h2>Your New Research Superpower</h2>
     <span class="tag">Recap & Next Steps</span>
   </div>
   <div class="slide-body">
     <div class="grid-2" style="align-items: center;">
       <div>
-        <div class="card" style="margin-bottom: 0.5rem;">
-          ✅ AI needs specific instructions (Context, Role, Task, Format), not vague words.
-        </div>
-        <div class="card" style="margin-bottom: 0.5rem;">
-          ✅ You learned the <strong>C-R-T-O Formula</strong> to construct professional prompts.
-        </div>
-        <div class="card">
-          ✅ You executed your first structured prompt live in class!
-        </div>
+        <div class="card" style="margin-bottom: 0.5rem;">✅ Search real academic papers using Perplexity & Consensus.</div>
+        <div class="card" style="margin-bottom: 0.5rem;">✅ Extract summaries without reading 50-page PDFs line-by-line.</div>
+        <div class="card">✅ Verify citations and remain 100% ethical.</div>
       </div>
-      
-      <!-- QR Code Container -->
-      <div class="card" style="text-align: center; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 1.5rem; border: 2px dashed var(--accent-blue);">
-        <p style="font-weight: 700; color: var(--accent-teal); font-size: 0.95rem; margin-bottom: 0.8rem;">
-          🎁 Download Your Free Gift!
-        </p>
+      <div class="card" style="text-align: center; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 1.5rem; border: 2px dashed var(--accent-teal);">
+        <p style="font-weight: 700; color: var(--accent-teal); font-size: 0.95rem; margin-bottom: 0.8rem;">🎁 Grab Your Academic Guide!</p>
         <img src="your-qr-code.png" alt="Scan QR Code" style="width: 140px; height: 140px; border-radius: 8px; background-color: #fff; padding: 0.5rem; margin-bottom: 0.8rem;">
-        <p style="font-size: 0.8rem; color: var(--text-muted);">
-          Scan to download the<br><strong style="color: var(--accent-blue);">"10 Prompt Templates Cheatsheet" PDF</strong>
-        </p>
+        <p style="font-size: 0.8rem; color: var(--text-muted);">Scan to download the<br><strong style="color: var(--accent-teal);">"AI Research & Citation Cheat Sheet" PDF</strong></p>
       </div>
     </div>
   </div>
   <div class="slide-footer">
-    <span>Prompt Engineering 101</span>
+    <span>AI for Research 101</span>
     <span>Slide 10 of 10</span>
   </div>
 </div>
+
+</body>
+</html>
