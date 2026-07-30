@@ -1,248 +1,314 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Foundational Prompt Engineering Training Deck</title>
-  <style>
-    :root {
-      --bg: #0f172a;
-      --card-bg: #1e293b;
-      --accent: #14b8a6;
-      --text: #f8fafc;
-      --muted: #94a3b8;
-      --border: #334155;
-    }
-    body {
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-      background-color: var(--bg);
-      color: var(--text);
-      margin: 0;
-      padding: 2rem 1rem;
-    }
-    .slide-container {
-      max-width: 900px;
-      margin: 0 auto;
-    }
-    .slide {
-      background: var(--card-bg);
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      padding: 2rem;
-      margin-bottom: 2rem;
-      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
-    }
-    .slide-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      border-bottom: 2px solid var(--border);
-      padding-bottom: 0.75rem;
-      margin-bottom: 1.5rem;
-    }
-    .slide-number {
-      font-size: 0.85rem;
-      font-weight: 700;
-      color: var(--accent);
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-    }
-    h2 {
-      margin: 0;
-      color: var(--accent);
-      font-size: 1.6rem;
-    }
-    .badge {
-      background: rgba(20, 184, 166, 0.15);
-      color: var(--accent);
-      padding: 4px 12px;
-      border-radius: 16px;
-      font-size: 0.8rem;
-      font-weight: 600;
-    }
-    p, li {
-      color: var(--text);
-      line-height: 1.6;
-    }
-    .highlight-box {
-      background: rgba(20, 184, 166, 0.1);
-      border-left: 4px solid var(--accent);
-      padding: 1rem;
-      border-radius: 0 8px 8px 0;
-      margin: 1rem 0;
-    }
-    .qr-card {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      background: #090d16;
-      border: 1px solid var(--accent);
-      border-radius: 12px;
-      padding: 1.5rem;
-      margin-top: 1.5rem;
-      gap: 1.5rem;
-    }
-    .qr-card-text {
-      flex: 1;
-    }
-    .qr-card-text h3 {
-      margin: 0 0 0.5rem 0;
-      color: var(--accent);
-      font-size: 1.25rem;
-    }
-    .qr-card-text p {
-      margin: 0;
-      color: var(--muted);
-      font-size: 0.95rem;
-    }
-    .qr-img {
-      background: white;
-      padding: 8px;
-      border-radius: 8px;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.4);
-      display: block;
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Prompt Engineering 101 - AI Ready Pakistan</title>
+<style>
+  :root {
+    --bg-dark: #0f172a;
+    --card-bg: #1e293b;
+    --accent-blue: #38bdf8;
+    --accent-teal: #2dd4bf;
+    --accent-green: #4ade80;
+    --accent-red: #f87171;
+    --text-light: #f8fafc;
+    --text-muted: #94a3b8;
+    --border-color: #334155;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', system-ui, -apple-system, sans-serif; }
+  body { background-color: #020617; color: var(--text-light); padding: 2rem; display: flex; flex-direction: column; align-items: center; gap: 3rem; }
+  .slide { background-color: var(--bg-dark); width: 100%; max-width: 1000px; min-height: 562px; border-radius: 16px; border: 1px solid var(--border-color); padding: 2.5rem; display: flex; flex-direction: column; justify-content: space-between; box-shadow: 0 20px 25px -5px rgba(0,0,0,0.5); page-break-after: always; position: relative; overflow: hidden; }
+  .slide-header { border-bottom: 2px solid var(--border-color); padding-bottom: 1rem; margin-bottom: 1.5rem; display: flex; justify-content: space-between; align-items: flex-end; }
+  .slide-header h2 { color: var(--accent-blue); font-size: 1.8rem; font-weight: 700; }
+  .slide-header .tag { color: var(--text-muted); font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1px; }
+  .slide-body { flex: 1; display: flex; flex-direction: column; justify-content: center; gap: 1.2rem; }
+  .slide-footer { margin-top: 1.5rem; pt: 0.8rem; border-top: 1px solid var(--border-color); display: flex; justify-content: space-between; color: var(--text-muted); font-size: 0.85rem; }
+  .title-slide { justify-content: center; align-items: center; text-align: center; background: linear-gradient(135deg, #0f172a 0%, #1e1b4b 100%); }
+  .title-slide h1 { font-size: 2.8rem; color: var(--accent-blue); margin-bottom: 0.8rem; line-height: 1.2; }
+  .title-slide h3 { font-size: 1.3rem; color: var(--accent-teal); font-weight: 400; margin-bottom: 2rem; }
+  .badge { background-color: rgba(56, 189, 248, 0.1); border: 1px solid var(--accent-blue); color: var(--accent-blue); padding: 0.4rem 1rem; border-radius: 9999px; font-size: 0.9rem; font-weight: 600; display: inline-block; margin-bottom: 1rem; }
+  .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 1.2rem; }
+  .grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 1rem; }
+  .grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0.8rem; }
+  .card { background-color: var(--card-bg); border: 1px solid var(--border-color); border-radius: 12px; padding: 1.2rem; }
+  .card-header { font-weight: 700; color: var(--accent-teal); margin-bottom: 0.5rem; font-size: 1.05rem; }
+  .card-bad { border-left: 4px solid var(--accent-red); }
+  .card-good { border-left: 4px solid var(--accent-green); }
+  .table-custom { width: 100%; border-collapse: collapse; margin-top: 0.5rem; }
+  .table-custom th, .table-custom td { border: 1px solid var(--border-color); padding: 0.75rem; text-align: left; font-size: 0.95rem; }
+  .table-custom th { background-color: var(--card-bg); color: var(--accent-blue); }
+  .callout-box { background-color: rgba(45, 212, 191, 0.1); border-left: 4px solid var(--accent-teal); padding: 1rem; border-radius: 0 8px 8px 0; margin-top: 0.5rem; }
+  .prompt-box { background-color: #090d16; border: 1px dashed var(--accent-blue); border-radius: 8px; padding: 1rem; font-family: 'Courier New', monospace; font-size: 0.9rem; color: #e2e8f0; line-height: 1.5; }
+</style>
 </head>
 <body>
 
-<div class="slide-container">
+<!-- SLIDE 1 -->
+<div class="slide title-slide">
+  <div class="badge">AI Ready Pakistan • Youth Training Track</div>
+  <h1>How to Talk to AI:<br>Prompt Engineering 101</h1>
+  <h3>Master the Art of Getting Exact Answers from AI (Zero Coding Required!)</h3>
+  <p style="color: var(--text-muted); font-size: 0.95rem;">National AI Awareness & Empowerment Movement</p>
+</div>
 
-  <!-- SLIDE 1 -->
-  <div class="slide">
-    <div class="slide-header">
-      <span class="slide-number">Slide 01 / 11</span>
-      <span class="badge">Module 1</span>
-    </div>
-    <h2>Welcome to Foundational Prompt Engineering</h2>
-    <p>Learn how to communicate effectively with Large Language Models (LLMs) to unlock predictable, high-quality results every single time.</p>
+<!-- SLIDE 2 -->
+<div class="slide">
+  <div class="slide-header">
+    <h2>Why Learn Prompt Engineering Today?</h2>
+    <span class="tag">What's In It For You</span>
   </div>
-
-  <!-- SLIDE 2 -->
-  <div class="slide">
-    <div class="slide-header">
-      <span class="slide-number">Slide 02 / 11</span>
-      <span class="badge">Core Concept</span>
-    </div>
-    <h2>What is a Prompt?</h2>
-    <p>A prompt is your set of instructions, context, and guardrails given to an AI. Better inputs lead directly to better outputs.</p>
-    <div class="highlight-box">
-      <strong>Key Takeaway:</strong> Stop treating AI like a search engine keyword bar. Treat it like a highly capable junior assistant.
-    </div>
-  </div>
-
-  <!-- SLIDE 3 -->
-  <div class="slide">
-    <div class="slide-header">
-      <span class="slide-number">Slide 03 / 11</span>
-      <span class="badge">Framework</span>
-    </div>
-    <h2>The RTF Architecture</h2>
-    <ul>
-      <li><strong>R (Role):</strong> Who should the AI pretend to be?</li>
-      <li><strong>T (Task):</strong> What specific action must it complete?</li>
-      <li><strong>F (Format):</strong> How should the output be structured?</li>
-    </ul>
-  </div>
-
-  <!-- SLIDE 4 -->
-  <div class="slide">
-    <div class="slide-header">
-      <span class="slide-number">Slide 04 / 11</span>
-      <span class="badge">Technique</span>
-    </div>
-    <h2>Zero-Shot vs. Few-Shot Prompting</h2>
-    <p>Provide 1 to 3 explicit examples in your prompt to teach the model your exact target layout or tone before asking for output.</p>
-  </div>
-
-  <!-- SLIDE 5 -->
-  <div class="slide">
-    <div class="slide-header">
-      <span class="slide-number">Slide 05 / 11</span>
-      <span class="badge">Control</span>
-    </div>
-    <h2>Negative Prompting & Constraints</h2>
-    <p>Eliminate corporate buzzwords, force exact word limits, and specify what the AI <em>must not</em> do.</p>
-  </div>
-
-  <!-- SLIDE 6 -->
-  <div class="slide">
-    <div class="slide-header">
-      <span class="slide-number">Slide 06 / 11</span>
-      <span class="badge">Reasoning</span>
-    </div>
-    <h2>Chain-of-Thought (CoT) Prompting</h2>
-    <p>Instruct the model to "think step-by-step" to drastically reduce hallucination in logical or mathematical tasks.</p>
-  </div>
-
-  <!-- SLIDE 7 -->
-  <div class="slide">
-    <div class="slide-header">
-      <span class="slide-number">Slide 07 / 11</span>
-      <span class="badge">Audience</span>
-    </div>
-    <h2>Persona & Tone Adaptation</h2>
-    <p>Reframe complex technical ideas for executive audiences, students, or non-technical stakeholders instantly.</p>
-  </div>
-
-  <!-- SLIDE 8 -->
-  <div class="slide">
-    <div class="slide-header">
-      <span class="slide-number">Slide 08 / 11</span>
-      <span class="badge">Structure</span>
-    </div>
-    <h2>Delimiters & Input Tagging</h2>
-    <p>Use tags like <code>&lt;context&gt;</code> or <code>&lt;document&gt;</code> to separate your instructions clean from raw source data.</p>
-  </div>
-
-  <!-- SLIDE 9 -->
-  <div class="slide">
-    <div class="slide-header">
-      <span class="slide-number">Slide 09 / 11</span>
-      <span class="badge">Optimization</span>
-    </div>
-    <h2>Self-Correction & Quality Audits</h2>
-    <p>Ask the AI to critique its own draft against your requirements before giving you the final answer.</p>
-  </div>
-
-  <!-- SLIDE 10 -->
-  <div class="slide">
-    <div class="slide-header">
-      <span class="slide-number">Slide 10 / 11</span>
-      <span class="badge">Summary</span>
-    </div>
-    <h2>Key Action Steps</h2>
-    <ol>
-      <li>Always define a clear Role, Task, and Format.</li>
-      <li>Provide high-quality examples when layout matters.</li>
-      <li>Iterate and refine instructions rather than starting over.</li>
-    </ol>
-  </div>
-
-  <!-- SLIDE 11 (QR CODE SLIDE) -->
-  <div class="slide">
-    <div class="slide-header">
-      <span class="slide-number">Slide 11 / 11</span>
-      <span class="badge">Free Resource</span>
-    </div>
-    <h2>Take Your Prompts To Go!</h2>
-    <p>Scan the QR code below to access your standalone, bookmarkable HTML reference sheet equipped with 10 ready-to-use prompt templates.</p>
-    
-    <div class="qr-card">
-      <div class="qr-card-text">
-        <h3>🎁 Top 10 Prompt Templates Cheatsheet</h3>
-        <p>Instant scannable web access to structural frameworks, RTF models, and constraint patterns.</p>
+  <div class="slide-body">
+    <div class="grid-3">
+      <div class="card">
+        <div class="card-header">⏱️ Save Time</div>
+        <p style="color: var(--text-muted); font-size: 0.9rem;">Finish hours of homework, research, or writing in just 10 minutes.</p>
       </div>
-      <img 
-        class="qr-img" 
-        src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://taimurz1.github.io/trainings/slides/prompts/top-10-prompt-templates-cheatsheet.html" 
-        alt="QR Code for Top 10 Prompt Templates Cheatsheet"
-        width="120"
-        height="120"
-      />
+      <div class="card">
+        <div class="card-header">🎯 Get Better Answers</div>
+        <p style="color: var(--text-muted); font-size: 0.9rem;">Stop getting weird, useless, or generic responses from ChatGPT.</p>
+      </div>
+      <div class="card">
+        <div class="card-header">💼 High-Demand Skill</div>
+        <p style="color: var(--text-muted); font-size: 0.9rem;">Companies everywhere are looking for people who know how to direct AI.</p>
+      </div>
+    </div>
+    <div class="callout-box">
+      <strong>🎯 Goal for Today:</strong> By the end of this 30-minute session, you will write structured prompts that produce reliable results on the first try!
     </div>
   </div>
+  <div class="slide-footer">
+    <span>Prompt Engineering 101</span>
+    <span>Slide 2 of 10</span>
+  </div>
+</div>
 
+<!-- SLIDE 3 -->
+<div class="slide">
+  <div class="slide-header">
+    <h2>What is Prompt Engineering?</h2>
+    <span class="tag">Mental Model</span>
+  </div>
+  <div class="slide-body">
+    <div class="grid-2">
+      <div class="card card-bad">
+        <div class="card-header" style="color: var(--accent-red);">🍕 Ordering Food (Vague)</div>
+        <p style="font-size: 0.9rem; line-height: 1.5;">If you tell a waiter <strong>"Give me food,"</strong> you might get a soup you don't like.</p>
+        <p style="font-size: 0.85rem; color: var(--text-muted); margin-top: 0.5rem;">AI Parallel: Asking "Write an essay" gives a generic, boring response.</p>
+      </div>
+      <div class="card card-good">
+        <div class="card-header" style="color: var(--accent-green);">🍕 Ordering Food (Specific)</div>
+        <p style="font-size: 0.9rem; line-height: 1.5;">If you order <strong>"A medium thin-crust chicken pizza with extra cheese,"</strong> you get exactly what you want!</p>
+        <p style="font-size: 0.85rem; color: var(--text-muted); margin-top: 0.5rem;">AI Parallel: Giving Context + Role + Task + Format gives a perfect answer.</p>
+      </div>
+    </div>
+  </div>
+  <div class="slide-footer">
+    <span>Prompt Engineering 101</span>
+    <span>Slide 3 of 10</span>
+  </div>
+</div>
+
+<!-- SLIDE 4 -->
+<div class="slide">
+  <div class="slide-header">
+    <h2>3 Core Concepts You Need Today</h2>
+    <span class="tag">Glossary</span>
+  </div>
+  <div class="slide-body">
+    <div class="card" style="margin-bottom: 0.5rem;">
+      <span style="color: var(--accent-blue); font-weight: 700;">1. Prompt:</span>
+      <span style="color: var(--text-light); font-size: 0.95rem;"> The exact instruction or question typed into the AI chat box.</span>
+    </div>
+    <div class="card" style="margin-bottom: 0.5rem;">
+      <span style="color: var(--accent-teal); font-weight: 700;">2. Role:</span>
+      <span style="color: var(--text-light); font-size: 0.95rem;"> The persona or job assigned to the AI (e.g., <em>"Act as a High School Biology Teacher"</em>).</span>
+    </div>
+    <div class="card">
+      <span style="color: var(--accent-green); font-weight: 700;">3. Output:</span>
+      <span style="color: var(--text-light); font-size: 0.95rem;"> The final answer, table, or text generated by the AI model.</span>
+    </div>
+  </div>
+  <div class="slide-footer">
+    <span>Prompt Engineering 101</span>
+    <span>Slide 4 of 10</span>
+  </div>
+</div>
+
+<!-- SLIDE 5 -->
+<div class="slide">
+  <div class="slide-header">
+    <h2>The "C-R-T-O" Prompting Formula</h2>
+    <span class="tag">Core Framework</span>
+  </div>
+  <div class="slide-body">
+    <div class="grid-4">
+      <div class="card" style="text-align: center;">
+        <div style="font-size: 1.5rem; color: var(--accent-blue); font-weight: 800;">1. C</div>
+        <div class="card-header" style="font-size: 0.9rem;">Context</div>
+        <p style="font-size: 0.8rem; color: var(--text-muted);">Who are you & what is the background?</p>
+      </div>
+      <div class="card" style="text-align: center;">
+        <div style="font-size: 1.5rem; color: var(--accent-teal); font-weight: 800;">2. R</div>
+        <div class="card-header" style="font-size: 0.9rem;">Role</div>
+        <p style="font-size: 0.8rem; color: var(--text-muted);">Who should the AI pretend to be?</p>
+      </div>
+      <div class="card" style="text-align: center;">
+        <div style="font-size: 1.5rem; color: var(--accent-green); font-weight: 800;">3. T</div>
+        <div class="card-header" style="font-size: 0.9rem;">Task</div>
+        <p style="font-size: 0.8rem; color: var(--text-muted);">What specific action to take?</p>
+      </div>
+      <div class="card" style="text-align: center;">
+        <div style="font-size: 1.5rem; color: #f43f5e; font-weight: 800;">4. O</div>
+        <div class="card-header" style="font-size: 0.9rem;">Output</div>
+        <p style="font-size: 0.8rem; color: var(--text-muted);">What format (table, list, essay)?</p>
+      </div>
+    </div>
+    <div class="callout-box" style="text-align: center; font-weight: 700;">
+      Formula: [Context] + [Role] + [Task] + [Output Format]
+    </div>
+  </div>
+  <div class="slide-footer">
+    <span>Prompt Engineering 101</span>
+    <span>Slide 5 of 10</span>
+  </div>
+</div>
+
+<!-- SLIDE 6 -->
+<div class="slide">
+  <div class="slide-header">
+    <h2>Step 1: Setting Context & Role</h2>
+    <span class="tag">Direct Comparison</span>
+  </div>
+  <div class="slide-body">
+    <table class="table-custom">
+      <thead>
+        <tr>
+          <th style="width: 50%; color: var(--accent-red);">❌ WEAK WAY</th>
+          <th style="width: 50%; color: var(--accent-green);">✅ RIGHT WAY</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>"Explain photosynthesis."</td>
+          <td>"I am a 10th-grade student preparing for exams. Act as a high school biology teacher and explain photosynthesis..."</td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="callout-box" style="border-left-color: var(--accent-red); background-color: rgba(248, 113, 113, 0.1);">
+      <strong>⚠️ Watch Out:</strong> Never leave the AI guessing who the answer is for!
+    </div>
+  </div>
+  <div class="slide-footer">
+    <span>Prompt Engineering 101</span>
+    <span>Slide 6 of 10</span>
+  </div>
+</div>
+
+<!-- SLIDE 7 -->
+<div class="slide">
+  <div class="slide-header">
+    <h2>Step 2: Giving Task & Output Format</h2>
+    <span class="tag">Direct Comparison</span>
+  </div>
+  <div class="slide-body">
+    <table class="table-custom">
+      <thead>
+        <tr>
+          <th style="width: 50%; color: var(--accent-red);">❌ WEAK WAY</th>
+          <th style="width: 50%; color: var(--accent-green);">✅ RIGHT WAY</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>"Tell me about Pakistan's history."</td>
+          <td>"List 5 key events in Pakistan's history between 1947 and 1970. Present the answer as a 2-column table with 'Year' and 'Event'."</td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="callout-box">
+      <strong>🎯 Definition of Success:</strong> Specifying a <strong>table format</strong> makes the output clean, scannable, and ready to use!
+    </div>
+  </div>
+  <div class="slide-footer">
+    <span>Prompt Engineering 101</span>
+    <span>Slide 7 of 10</span>
+  </div>
+</div>
+
+<!-- SLIDE 8 -->
+<div class="slide">
+  <div class="slide-header">
+    <h2>Step 3: Refining Bad Answers</h2>
+    <span class="tag">Course Correction</span>
+  </div>
+  <div class="slide-body">
+    <div class="grid-3">
+      <div class="card">
+        <div class="card-header">📏 Too Long?</div>
+        <p style="font-size: 0.85rem; color: var(--text-muted);">Type: <em>"Shorten this to 3 simple bullet points under 50 words."</em></p>
+      </div>
+      <div class="card">
+        <div class="card-header">🧩 Too Hard?</div>
+        <p style="font-size: 0.85rem; color: var(--text-muted);">Type: <em>"Explain this like I am 12 years old using a food analogy."</em></p>
+      </div>
+      <div class="card">
+        <div class="card-header">🔍 Missing Detail?</div>
+        <p style="font-size: 0.85rem; color: var(--text-muted);">Type: <em>"Add 2 real-world industry examples to point #2."</em></p>
+      </div>
+    </div>
+  </div>
+  <div class="slide-footer">
+    <span>Prompt Engineering 101</span>
+    <span>Slide 8 of 10</span>
+  </div>
+</div>
+
+<!-- SLIDE 9 -->
+<div class="slide">
+  <div class="slide-header">
+    <h2>Guided Live Exercise (5 Minutes)</h2>
+    <span class="tag">Hands-On Practice</span>
+  </div>
+  <div class="slide-body">
+    <p style="font-size: 0.95rem;">Open your phone/laptop browser to <strong>chatgpt.com</strong> or <strong>claude.ai</strong> and try this:</p>
+    <div class="prompt-box">
+      "Act as an executive career coach. I am a university student applying for entry-level marketing jobs. Review my background and give me a 3-step action plan in a bulleted list to improve my resume."
+    </div>
+    <div class="callout-box">
+      <strong>🙋 Mentors are walking around:</strong> Raise your hand if you need help running your prompt!
+    </div>
+  </div>
+  <div class="slide-footer">
+    <span>Prompt Engineering 101</span>
+    <span>Slide 9 of 10</span>
+  </div>
+</div>
+
+<!-- SLIDE 10 -->
+<div class="slide">
+  <div class="slide-header">
+    <h2>What You Mastered Today</h2>
+    <span class="tag">Recap & Next Steps</span>
+  </div>
+  <div class="slide-body">
+    <div class="grid-2" style="align-items: center;">
+      <div>
+        <div class="card" style="margin-bottom: 0.5rem;">✅ AI needs specific instructions (Context, Role, Task, Format), not vague words.</div>
+        <div class="card" style="margin-bottom: 0.5rem;">✅ You learned the <strong>C-R-T-O Formula</strong> to construct professional prompts.</div>
+        <div class="card">✅ You executed your first structured prompt live in class!</div>
+      </div>
+      <div class="card" style="text-align: center; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 1.5rem; border: 2px dashed var(--accent-blue);">
+        <p style="font-weight: 700; color: var(--accent-teal); font-size: 0.95rem; margin-bottom: 0.8rem;">🎁 Download Your Free Gift!</p>
+        <img src="your-qr-code.png" alt="Scan QR Code" style="width: 140px; height: 140px; border-radius: 8px; background-color: #fff; padding: 0.5rem; margin-bottom: 0.8rem;">
+        <p style="font-size: 0.8rem; color: var(--text-muted);">Scan to download the<br><strong style="color: var(--accent-blue);">"10 Prompt Templates Cheatsheet" PDF</strong></p>
+      </div>
+    </div>
+  </div>
+  <div class="slide-footer">
+    <span>Prompt Engineering 101</span>
+    <span>Slide 10 of 10</span>
+  </div>
 </div>
 
 </body>
