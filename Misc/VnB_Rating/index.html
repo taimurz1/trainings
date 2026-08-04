@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TCF Values & Behaviors Evaluation - Full Rubric</title>
+    <title>TCF Values & Behaviors Evaluation - Full Verbatim Rubric</title>
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -36,7 +36,7 @@
 
     <!-- TCF Header -->
     <header class="bg-tcf-green text-white py-6 px-4 shadow-md mb-8 border-b-4 border-tcf-yellow sticky top-0 z-50">
-        <div class="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center">
+        <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center">
             <div class="flex items-center space-x-3">
                 <div class="bg-white text-tcf-green font-black px-3 py-1.5 rounded-md text-xl tracking-wider">
                     TCF
@@ -54,7 +54,7 @@
         </div>
     </header>
 
-    <main class="max-w-6xl mx-auto px-4">
+    <main class="max-w-7xl mx-auto px-4">
         
         <form id="evaluationForm" class="space-y-12">
             
@@ -67,7 +67,7 @@
                     </div>
                     <span class="text-xs font-bold text-tcf-darkgreen bg-tcf-lightgreen px-3 py-1 rounded-full border border-tcf-green/30">Value 1 of 4</span>
                 </div>
-                <div class="space-y-8" id="section-sincerity"></div>
+                <div class="space-y-10" id="section-sincerity"></div>
             </section>
 
             <!-- SECTION 2: SERVICE -->
@@ -79,7 +79,7 @@
                     </div>
                     <span class="text-xs font-bold text-tcf-darkgreen bg-tcf-lightgreen px-3 py-1 rounded-full border border-tcf-green/30">Value 2 of 4</span>
                 </div>
-                <div class="space-y-8" id="section-service"></div>
+                <div class="space-y-10" id="section-service"></div>
             </section>
 
             <!-- SECTION 3: BEAUTY -->
@@ -91,7 +91,7 @@
                     </div>
                     <span class="text-xs font-bold text-tcf-darkgreen bg-tcf-lightgreen px-3 py-1 rounded-full border border-tcf-green/30">Value 3 of 4</span>
                 </div>
-                <div class="space-y-8" id="section-beauty"></div>
+                <div class="space-y-10" id="section-beauty"></div>
             </section>
 
             <!-- SECTION 4: POSITIVE CONDUCT -->
@@ -103,7 +103,7 @@
                     </div>
                     <span class="text-xs font-bold text-tcf-darkgreen bg-tcf-lightgreen px-3 py-1 rounded-full border border-tcf-green/30">Value 4 of 4</span>
                 </div>
-                <div class="space-y-8" id="section-positive_conduct"></div>
+                <div class="space-y-10" id="section-positive_conduct"></div>
             </section>
 
         </form>
@@ -127,155 +127,172 @@
     <script>
         const gradeValues = { 'A': 5, 'B': 4, 'C': 3, 'D': 2, 'E': 1 };
 
-        // Complete Structure for All 4 Core Values & 13 Sub-values
+        // Schema Structure
         const rubricSchema = [
             {
                 valueKey: 'sincerity',
                 subValues: [
-                    { id: 'sincerity_core', name: 'Sincerity (Moral Intent)', desc: 'Understanding of doing the right thing morally and ethically.' },
-                    { id: 'integrity', name: 'Integrity', desc: 'Doing what is right even to personal detriment & encouraging peers.' },
-                    { id: 'trust', name: 'Trust', desc: 'Faith in each other’s sincerity, capabilities, and delegating space.' },
-                    { id: 'courage', name: 'Courage', desc: 'Voicing dissenting opinions respectfully and taking mistake ownership.' }
+                    { id: 'sincerity_core', name: 'Sincerity (Moral Intent)', desc: 'We have sincere intentions about everything we do and how we do it.' },
+                    { id: 'integrity', name: 'Integrity', desc: 'We always strive to do what is right, even to personal detriment.' },
+                    { id: 'trust', name: 'Trust', desc: 'We have faith in each other\'s sincerity of intent and their ability to do their work.' },
+                    { id: 'courage', name: 'Courage', desc: 'We value harmony and yet have the courage to voice unpopular decisions and accept mistakes.' }
                 ]
             },
             {
                 valueKey: 'service',
                 subValues: [
-                    { id: 'passion', name: 'Passion', desc: 'Energy, desire, and keeping TCF’s mission front and center.' },
-                    { id: 'humility', name: 'Humility', desc: 'Acknowledging teamwork/God’s grace and avoiding inflated self-sense.' },
-                    { id: 'gratitude', name: 'Gratitude & Forbearance', desc: 'Expressing gratitude for service opportunities and exercising patience.' }
+                    { id: 'passion', name: 'Passion', desc: 'Energy and desire to serve, keeping TCF\'s mission front and center.' },
+                    { id: 'humility', name: 'Humility', desc: 'Acknowledging teamwork and God\'s grace while avoiding inflated self-sense.' },
+                    { id: 'gratitude', name: 'Gratitude & Forbearance', desc: 'Expressing gratitude for service opportunities and exercising patience during adversity.' }
                 ]
             },
             {
                 valueKey: 'beauty',
                 subValues: [
-                    { id: 'mastery', name: 'Mastery', desc: 'Striving to develop capabilities to realize full potential.' },
-                    { id: 'finesse', name: 'Finesse', desc: 'Attention to detail, excellence in action, and work review.' },
-                    { id: 'continuous_imp', name: 'Continuous Improvement', desc: 'Finding better ways of working and elevating output quality.' }
+                    { id: 'mastery', name: 'Mastery', desc: 'Striving to develop capabilities continuously to realize full personal and team potential.' },
+                    { id: 'finesse', name: 'Finesse', desc: 'Attention to detail, review of work, and working to the best of ability.' },
+                    { id: 'continuous_imp', name: 'Continuous Improvement', desc: 'Finding better ways of working to elevate overall output quality.' }
                 ]
             },
             {
                 valueKey: 'positive_conduct',
                 subValues: [
-                    { id: 'respect', name: 'Respect', desc: 'Respectful language, kindness in deeds, and awareness of impact.' },
-                    { id: 'appreciation', name: 'Appreciation', desc: 'Recognizing peers/subordinates in front of wider audiences.' },
-                    { id: 'inclusion', name: 'Inclusion', desc: 'Non-discrimination, welcoming diversity, and checking bias.' }
+                    { id: 'respect', name: 'Respect', desc: 'Using respectful language/tone and demonstrating kindness in actions.' },
+                    { id: 'appreciation', name: 'Appreciation', desc: 'Voicing appreciation for peers and subordinates in front of wider audiences.' },
+                    { id: 'inclusion', name: 'Inclusion', desc: 'Non-discrimination, welcoming diversity, and actively checking unconscious bias.' }
                 ]
             }
         ];
 
-        // Exact Rubric Cell Text from PDF
-        const rubricCellDetails = {
+        // Full Verbatim Description Mapped Directly from Official PDF Rubric
+        const fullRubricVerbatim = {
             sincerity_core: {
-                'A': "Demonstrates full understanding of doing the right thing morally and ethically in all work situations.",
-                'B': "Demonstrates understanding of doing the right thing morally and ethically across daily duties.",
-                'C': "Demonstrates understanding of doing the right thing morally and ethically approximately half the time.",
-                'D': "Occasionally fails to demonstrate understanding of moral/ethical considerations in daily tasks.",
-                'E': "Does not demonstrate an understanding of the importance of doing the right thing morally or ethically."
+                'A': "The employee demonstrates a clear and complete understanding of the importance of doing the right thing morally and ethically in all work situations.",
+                'B': "The employee demonstrates an understanding of the importance of doing the right thing morally and ethically across standard work situations.",
+                'C': "The employee demonstrates an understanding of doing the right thing morally and ethically approximately half the time.",
+                'D': "The employee occasionally struggles to demonstrate an understanding of moral and ethical implications in daily work actions.",
+                'E': "The employee does not demonstrate an understanding of the importance of doing the right thing morally or ethically."
             },
             integrity: {
-                'A': "CONSISTENTLY does right morally/ethically, even if to personal detriment. Encourages colleagues in all given situations.",
-                'B': "CONSISTENTLY does right in main duties. Demonstrates regret regarding actions in other instances.",
-                'C': "Does the right thing morally and ethically approximately HALF THE TIME, even if to personal detriment.",
-                'D': "Inconsistent in ethical considerations and rarely demonstrates regret regarding incorrect actions.",
-                'E': "Does not demonstrate ANY moral or ethical considerations in behaviour at work. No regret shown."
+                'A': "The employee CONSISTENTLY does the right thing morally and ethically, even if it is to their personal detriment. The employee encourages colleagues to also do the right thing morally and ethically in all given situations.",
+                'B': "The employee CONSISTENTLY does the right thing morally and ethically in primary tasks. In other instances, the employee demonstrates some level of regret with regards to their actions.",
+                'C': "The employee does the right thing morally and ethically approximately HALF THE TIME, even if it is to their personal detriment.",
+                'D': "The employee does not consistently demonstrate ethical consideration and rarely demonstrates regret with regards to incorrect actions.",
+                'E': "The employee does not demonstrate ANY moral or ethical considerations in their behaviour at work. The employee does not demonstrate regret with regards to their actions."
             },
             trust: {
-                'A': "ALWAYS trusts peers/subordinates to deliver. CONSISTENTLY gives space, important tasks, opinion space, and visibility.",
-                'B': "OFTEN trusts peers/subordinates to deliver. Gives space without unnecessary interference most of the time.",
-                'C': "Trusts peers/subordinates to deliver approximately HALF THE TIME, giving space half the time.",
-                'D': "SOMETIMES questions sincerity of others. Gives limited space or visibility to peers/subordinates.",
-                'E': "DOES NOT trust peers or subordinates to deliver. DOES NOT give space, important tasks, or visibility."
+                'A': "The employee ALWAYS trusts peers to deliver on their work (cross-functional or within functions) by CONSISTENTLY giving space without unnecessary interference. As a line manager, CONSISTENTLY gives subordinates important tasks, space to share opinions, and visibility.",
+                'B': "The employee OFTEN trusts peers to deliver on their work by giving space without unnecessary interference most of the time. As a line manager, OFTEN trusts subordinates with important tasks and organizational exposure.",
+                'C': "The employee trusts peers/subordinates approximately HALF THE TIME, giving space to work without unnecessary interference approximately half the time while ensuring quality and deadlines.",
+                'D': "The employee SOMETIMES questions the sincerity of others, and their actions reflect this doubt. Gives limited space or visibility to peers and subordinates.",
+                'E': "The employee DOES NOT trust peers to deliver on their work. As a line manager, DOES NOT trust subordinates to deliver, DOES NOT give important tasks, opinion space, or opportunities to showcase work."
             },
             courage: {
-                'A': "CONSISTENTLY voices respectful opinions when differing from majority/leadership. Takes full responsibility for team mistakes.",
-                'B': "CONSISTENTLY voices opinions with respect. Takes responsibility for actions/mistakes in most situations.",
-                'C': "Voices differing opinion approximately HALF THE TIME. Takes responsibility for mistakes HALF THE TIME.",
-                'D': "May or may not voice opinion with respect. Rarely voices dissenting views or accepts team mistakes.",
-                'E': "DOES NOT voice opinion when differing from others. DOES NOT take responsibility for actions or team mistakes."
+                'A': "The employee CONSISTENTLY voices their opinion with respect when it differs from others (including higher levels and majority). Takes responsibility in ALL relevant situations for actions/mistakes of self and team, encouraging colleagues to do the same.",
+                'B': "The employee CONSISTENTLY voices opinion with respect. Takes responsibility for actions and mistakes in most relevant situations.",
+                'C': "The employee voices opinion when it differs from others approximately HALF THE TIME. Takes responsibility for actions/mistakes approximately HALF THE TIME.",
+                'D': "The employee may or may not voice opinion with respect, rarely voicing dissenting views or taking ownership of team errors.",
+                'E': "The employee DOES NOT voice their opinion when it differs from others. The employee DOES NOT take responsibility for their actions or the actions of their team."
             },
             passion: {
-                'A': "Demonstrates belief in TCF cause. CONSISTENTLY shows eagerness, goes above/beyond, and prioritizes long-term cause.",
-                'B': "Vocalizes belief in TCF cause. Shows eagerness and goes beyond call of duty most of the time.",
-                'C': "Shows eagerness to work approximately HALF THE TIME. May or may not go beyond call of duty.",
-                'D': "Sporadically shows eagerness. Rarely prioritizes long-term organizational cause over short-term gain.",
-                'E': "DOES NOT demonstrate belief in TCF cause. DOES NOT show eagerness or keep organizational cause front/center."
+                'A': "The employee demonstrates belief in the cause of TCF. CONSISTENTLY demonstrates eagerness to work, goes beyond the call of duty, and keeps the cause of the organization front and center.",
+                'B': "The employee vocalizes belief in the cause of TCF. Demonstrates eagerness to work and goes beyond the call of duty most of the time.",
+                'C': "The employee demonstrates eagerness to work approximately HALF THE TIME. May or may not go beyond the call of duty.",
+                'D': "The employee sporadically demonstrates eagerness to work. Rarely prioritizes the long-term cause of the organization.",
+                'E': "The employee DOES NOT demonstrate belief in the cause of TCF. DOES NOT demonstrate eagerness to work or keep the cause of the organization front and center."
             },
             humility: {
-                'A': "NEVER behaves arrogantly; attributes success to teamwork and Grace of God. Accurate self-awareness; encourages peers.",
-                'B': "Avoids arrogance and acknowledges teamwork/Grace of God in success most of the time.",
-                'C': "Efforts to not behave arrogantly or demonstrate inflated self-sense successful approximately HALF THE TIME.",
-                'D': "Occasionally displays inflated self-sense or takes individual credit for collaborative team successes.",
-                'E': "Behaves arrogantly. Takes sole credit for success; inflated self-sense and lacks self-awareness."
+                'A': "The employee NEVER behaves arrogantly and attributes success to teamwork and the Grace of God. Demonstrates accurate self-awareness and encourages peers to be humble.",
+                'B': "The employee avoids arrogance and acknowledges teamwork and the Grace of God in success most of the time.",
+                'C': "The employee's efforts to not behave arrogantly or demonstrate an inflated sense of self are successful approximately HALF THE TIME.",
+                'D': "The employee occasionally displays an inflated sense of self or takes individual credit for collaborative team successes.",
+                'E': "The employee behaves arrogantly. Takes sole credit for success, displays an inflated sense of self, and lacks self-awareness."
             },
             gratitude: {
-                'A': "CONSISTENTLY demonstrates gratitude for service opportunity through humility/grace. Exercises patience during adversity.",
-                'B': "Demonstrates gratitude and exercises patience during challenging times in most instances.",
-                'C': "Efforts to express gratitude and exercise patience during transient adversity successful HALF THE TIME.",
-                'D': "Rarely voices gratitude for opportunities. Occasionally struggles to maintain patience during team adversity.",
-                'E': "DOES NOT demonstrate gratitude for service opportunity. DOES NOT exercise patience during challenging times."
+                'A': "The employee CONSISTENTLY demonstrates gratitude for the opportunity to serve through humility and grace. Exercises patience during times of adversity.",
+                'B': "The employee demonstrates gratitude and exercises patience during challenging times in most instances.",
+                'C': "The employee's efforts to express gratitude and exercise patience during transient adversity are successful approximately HALF THE TIME.",
+                'D': "The employee rarely voices gratitude for service opportunities. Occasionally struggles to maintain patience during team adversity.",
+                'E': "The employee DOES NOT demonstrate gratitude for the opportunity to serve. DOES NOT exercise patience during challenging times."
             },
             mastery: {
-                'A': "Believes all can excel. CONSISTENTLY works to improve skill set beyond mandate and encourages peer/subordinate capability.",
-                'B': "Works towards improving skill sets beyond mandate most of the time. Provides constructive feedback to peers.",
-                'C': "Efforts towards improving skill sets beyond mandate successful approximately HALF THE TIME.",
-                'D': "Rarely seeks capability development beyond mandatory requirements. Provides minimal developmental feedback.",
-                'E': "DOES NOT believe everyone can excel. DOES NOT make any effort to improve skill set or support others."
+                'A': "The employee believes that everyone can excel. CONSISTENTLY works towards improving their skill set beyond their mandate and encourages peers and subordinates to realize their capability.",
+                'B': "The employee works towards improving their skill set beyond their mandate most of the time. Provides constructive feedback to peers.",
+                'C': "The employee's efforts towards improving their skill set beyond their mandate are successful approximately HALF THE TIME.",
+                'D': "The employee rarely seeks capability development beyond mandatory requirements. Provides minimal developmental feedback.",
+                'E': "The employee DOES NOT believe everyone can excel. DOES NOT make any effort to improve their skill set or support others in realizing their potential."
             },
             finesse: {
-                'A': "Detail-oriented. CONSISTENTLY reviews completed work, ensures no loose ends, works to best of ability, and encourages peers.",
-                'B': "Detail-oriented in most work. Reviews completed assignments and minimizes loose ends regularly.",
-                'C': "Detail-oriented and reviews completed work approximately HALF THE TIME, or does so consistently but not well.",
-                'D': "Frequently leaves loose ends in deliverables. Inconsistent post-completion review of work.",
-                'E': "IS NOT detail-oriented. DOES NOT review work after completion, ensure no loose ends, or work to best of ability."
+                'A': "The employee is detail-oriented. CONSISTENTLY reviews completed work, ensures no loose ends, works to the best of their ability, and encourages peers to maintain high standards.",
+                'B': "The employee is detail-oriented in most work. Reviews completed assignments and minimizes loose ends regularly.",
+                'C': "The employee is detail-oriented and reviews completed work approximately HALF THE TIME, or does so consistently but not effectively.",
+                'D': "The employee frequently leaves loose ends in deliverables. Inconsistent post-completion review of work.",
+                'E': "The employee IS NOT detail-oriented. DOES NOT review work after completion, ensure no loose ends, or work to the best of their ability."
             },
             continuous_imp: {
-                'A': "CONSISTENTLY finds more effective/efficient ways of working. Elevates work quality and mastery; encourages colleagues.",
-                'B': "Finds effective ways of working and improves quality/mastery in most assignments.",
-                'C': "Efforts towards finding better ways of working and improving quality successful HALF THE TIME.",
-                'D': "Rarely seeks operational efficiency or quality enhancement beyond basic operational defaults.",
-                'E': "DOES NOT make efforts towards finding better ways of working or achieving mastery in skills."
+                'A': "The employee CONSISTENTLY finds more effective and efficient ways of working. Elevates work quality and mastery; encourages colleagues to do the same.",
+                'B': "The employee finds effective ways of working and improves quality/mastery in most assignments.",
+                'C': "The employee's efforts towards finding better ways of working and improving quality are successful approximately HALF THE TIME.",
+                'D': "The employee rarely seeks operational efficiency or quality enhancement beyond basic operational defaults.",
+                'E': "The employee DOES NOT make efforts towards finding better ways of working or achieving mastery in their skills."
             },
             respect: {
-                'A': "CONSISTENTLY uses respectful language/tone regardless of position/disagreement. Actions show kindness; positive impact.",
-                'B': "Uses respectful tone and demonstrates kindness in actions across most interactions and disagreements.",
-                'C': "Uses respectful language/tone and demonstrates kindness in actions approximately HALF THE TIME.",
-                'D': "Inconsistent tone when handling disagreements. Awareness of interpersonal impact is sporadic.",
-                'E': "DOES NOT use respectful language/tone. DOES NOT demonstrate respect, kindness, or positive impact."
+                'A': "The employee CONSISTENTLY uses respectful language and tone regardless of position or disagreement. Actions demonstrate kindness and create a positive impact.",
+                'B': "The employee uses respectful tone and demonstrates kindness in actions across most interactions and disagreements.",
+                'C': "The employee uses respectful language/tone and demonstrates kindness in actions approximately HALF THE TIME.",
+                'D': "The employee shows inconsistent tone when handling disagreements. Awareness of interpersonal impact is sporadic.",
+                'E': "The employee DOES NOT use respectful language or tone. DOES NOT demonstrate respect, kindness, or positive impact."
             },
             appreciation: {
-                'A': "CONSISTENTLY voices appreciation when colleagues deliver. Expresses public gratitude for contributions in front of wider audience.",
-                'B': "Voices appreciation and gratitude for peer contributions in wider settings most of the time.",
-                'C': "Voices appreciation and gratitude for contributions in front of wider audience HALF THE TIME.",
-                'D': "Rarely acknowledges peer or subordinate contributions publicly or privately.",
-                'E': "DOES NOT voice appreciation for contributions or behaviors of colleagues/subordinates."
+                'A': "The employee CONSISTENTLY voices appreciation when colleagues deliver on work. Expresses public gratitude for contributions in front of a wider audience.",
+                'B': "The employee voices appreciation and gratitude for peer contributions in wider settings most of the time.",
+                'C': "The employee voices appreciation and gratitude for contributions in front of a wider audience approximately HALF THE TIME.",
+                'D': "The employee rarely acknowledges peer or subordinate contributions publicly or privately.",
+                'E': "The employee DOES NOT voice appreciation for contributions or behaviors of colleagues or subordinates."
             },
             inclusion: {
-                'A': "NEVER discriminates. CONSISTENTLY makes others feel welcome regardless of background; actively checks unconscious bias.",
-                'B': "Avoids discriminatory behavior and makes colleagues feel welcome in most interactions. Mindful of bias.",
-                'C': "Efforts to prevent discrimination and make others feel welcome successful approximately HALF THE TIME.",
-                'D': "Occasionally displays unconscious bias or fails to foster an inclusive environment for diverse peers.",
-                'E': "Displays discrimination in behavior/language. DOES NOT make others feel welcome; ignores unconscious bias."
+                'A': "The employee NEVER discriminates. CONSISTENTLY makes others feel welcome regardless of background; actively checks unconscious bias.",
+                'B': "The employee avoids discriminatory behavior and makes colleagues feel welcome in most interactions. Mindful of unconscious bias.",
+                'C': "The employee's efforts to prevent discrimination and make others feel welcome are successful approximately HALF THE TIME.",
+                'D': "The employee occasionally displays unconscious bias or fails to foster an inclusive environment for diverse peers.",
+                'E': "The employee displays discrimination in behavior or language. DOES NOT make others feel welcome and ignores unconscious bias."
             }
         };
 
-        // Generic 3-Liner Engine Generator based on Grade Level
+        // 3-Liner Engine Generator for Strengths & Opportunities
         function generateFeedback(subValueId, grade) {
+            const labelMap = {
+                'sincerity_core': 'moral intent',
+                'integrity': 'integrity',
+                'trust': 'interpersonal trust',
+                'courage': 'courageous communication',
+                'passion': 'organizational passion',
+                'humility': 'professional humility',
+                'gratitude': 'gratitude and forbearance',
+                'mastery': 'capability mastery',
+                'finesse': 'operational finesse',
+                'continuous_imp': 'continuous improvement',
+                'respect': 'respectful conduct',
+                'appreciation': 'peer appreciation',
+                'inclusion': 'inclusive practice'
+            };
+            const label = labelMap[subValueId] || subValueId;
+
             const gradeTextMap = {
                 'A': {
-                    str: `The employee consistently exemplifies gold-standard execution in ${subValueId.replace('_', ' ')}. They proactively model ideal behaviors, elevate team benchmarks, and reinforce organizational standards under all circumstances.`,
-                    opp: `Leverage high mastery in ${subValueId.replace('_', ' ')} to mentor cross-functional peers. Lead institutional workshops and help establish policy benchmarks for wider organizational adoption.`
+                    str: `The employee consistently exemplifies gold-standard execution in ${label}. They proactively model ideal behaviors, elevate team benchmarks, and reinforce organizational standards under all circumstances.`,
+                    opp: `Leverage high mastery in ${label} to mentor cross-functional peers. Lead institutional workshops and help establish policy benchmarks for wider organizational adoption.`
                 },
                 'B': {
-                    str: `The employee regularly demonstrates strong adherence to ${subValueId.replace('_', ' ')}. They consistently meet organizational expectations and positively influence team atmosphere during routine execution.`,
+                    str: `The employee regularly demonstrates strong adherence to ${label}. They consistently meet organizational expectations and positively influence team atmosphere during routine execution.`,
                     opp: `Focus on maintaining high performance during high-stress operational cycles. Proactively encourage colleagues to adopt similar standards during complex cross-functional deliverables.`
                 },
                 'C': {
-                    str: `The employee meets baseline requirements for ${subValueId.replace('_', ' ')} approximately half the time. Operational output is acceptable under standard management supervision.`,
+                    str: `The employee meets baseline requirements for ${label} approximately half the time. Operational output is acceptable under standard management supervision.`,
                     opp: `Build consistent daily habits to eliminate performance fluctuations. Seek direct feedback from line management to ensure alignment during non-routine or pressurized tasks.`
                 },
                 'D': {
-                    str: `The employee displays sporadic awareness of ${subValueId.replace('_', ' ')}. Behavioral consistency falls below expected organizational benchmarks during key operational moments.`,
+                    str: `The employee displays sporadic awareness of ${label}. Behavioral consistency falls below expected organizational benchmarks during key operational moments.`,
                     opp: `Prioritize understanding core organizational rubrics and expectations. Work closely with line manager on an actionable improvement plan to eliminate behavioral gaps.`
                 },
                 'E': {
@@ -299,16 +316,16 @@
                     evaluationState[sub.id] = null;
                     
                     const subCard = document.createElement('div');
-                    subCard.className = 'border-b border-slate-100 pb-6 last:border-b-0 last:pb-0';
+                    subCard.className = 'border-b border-slate-100 pb-8 last:border-b-0 last:pb-0';
                     subCard.innerHTML = `
-                        <div class="mb-3">
+                        <div class="mb-4">
                             <h3 class="text-base font-bold text-slate-900">${sub.name}</h3>
                             <p class="text-xs text-slate-500">${sub.desc}</p>
                         </div>
-                        <div class="grid grid-cols-1 md:grid-cols-5 gap-2.5 mb-3" id="cards-${sub.id}"></div>
-                        <div id="panel-${sub.id}" class="hidden bg-slate-50 border border-slate-200 p-3.5 rounded-lg text-xs space-y-1.5">
-                            <p class="text-emerald-900"><strong>Strength:</strong> <span id="str-${sub.id}"></span></p>
-                            <p class="text-amber-900"><strong>Opportunity:</strong> <span id="opp-${sub.id}"></span></p>
+                        <div class="grid grid-cols-1 md:grid-cols-5 gap-3 mb-4" id="cards-${sub.id}"></div>
+                        <div id="panel-${sub.id}" class="hidden bg-slate-50 border border-slate-200 p-4 rounded-lg text-xs space-y-2">
+                            <p class="text-emerald-900 leading-relaxed"><strong>Strength:</strong> <span id="str-${sub.id}"></span></p>
+                            <p class="text-amber-900 leading-relaxed"><strong>Opportunity:</strong> <span id="opp-${sub.id}"></span></p>
                         </div>
                     `;
                     container.appendChild(subCard);
@@ -323,18 +340,18 @@
 
             grades.forEach(grade => {
                 const card = document.createElement('div');
-                card.className = `rating-card border rounded-lg p-2.5 cursor-pointer transition-all duration-200 
-                    border-slate-200 bg-white hover:border-tcf-green hover:bg-tcf-lightgreen/50 flex flex-col justify-between`;
+                card.className = `rating-card border rounded-lg p-3 cursor-pointer transition-all duration-200 
+                    border-slate-200 bg-white hover:border-tcf-green hover:bg-tcf-lightgreen/40 flex flex-col justify-between min-h-[160px]`;
                 card.dataset.subid = subId;
                 card.dataset.grade = grade;
 
                 card.innerHTML = `
                     <div>
-                        <div class="flex items-center justify-between mb-1.5">
-                            <span class="font-extrabold text-sm w-6 h-6 flex items-center justify-center rounded bg-slate-100 text-slate-800 border border-slate-300 grade-badge">${grade}</span>
-                            <span class="text-[9px] font-bold uppercase text-slate-400">Grade</span>
+                        <div class="flex items-center justify-between mb-2">
+                            <span class="font-extrabold text-sm w-7 h-7 flex items-center justify-center rounded bg-slate-100 text-slate-800 border border-slate-300 grade-badge">${grade}</span>
+                            <span class="text-[9px] font-bold uppercase tracking-wider text-slate-400">Verbatim Criterion</span>
                         </div>
-                        <p class="text-[10.5px] text-slate-600 leading-snug">${rubricCellDetails[subId][grade]}</p>
+                        <p class="text-[11px] text-slate-700 leading-relaxed">${fullRubricVerbatim[subId][grade]}</p>
                     </div>
                 `;
 
@@ -348,16 +365,16 @@
 
             const container = document.getElementById(`cards-${subId}`);
             Array.from(container.children).forEach(card => {
-                card.className = `rating-card border rounded-lg p-2.5 cursor-pointer transition-all duration-200 
-                    border-slate-200 bg-white hover:border-tcf-green hover:bg-tcf-lightgreen/50 flex flex-col justify-between`;
+                card.className = `rating-card border rounded-lg p-3 cursor-pointer transition-all duration-200 
+                    border-slate-200 bg-white hover:border-tcf-green hover:bg-tcf-lightgreen/40 flex flex-col justify-between min-h-[160px]`;
                 const badge = card.querySelector('.grade-badge');
-                badge.className = `font-extrabold text-sm w-6 h-6 flex items-center justify-center rounded bg-slate-100 text-slate-800 border border-slate-300 grade-badge`;
+                badge.className = `font-extrabold text-sm w-7 h-7 flex items-center justify-center rounded bg-slate-100 text-slate-800 border border-slate-300 grade-badge`;
             });
 
-            selectedCard.className = `rating-card border-2 rounded-lg p-2.5 cursor-pointer transition-all duration-200 
-                border-tcf-green bg-tcf-lightgreen shadow-sm flex flex-col justify-between scale-[1.01]`;
+            selectedCard.className = `rating-card border-2 rounded-lg p-3 cursor-pointer transition-all duration-200 
+                border-tcf-green bg-tcf-lightgreen shadow-md flex flex-col justify-between min-h-[160px] scale-[1.01]`;
             const activeBadge = selectedCard.querySelector('.grade-badge');
-            activeBadge.className = `font-extrabold text-sm w-6 h-6 flex items-center justify-center rounded bg-tcf-green text-white border border-tcf-green grade-badge`;
+            activeBadge.className = `font-extrabold text-sm w-7 h-7 flex items-center justify-center rounded bg-tcf-green text-white border border-tcf-green grade-badge`;
 
             const panel = document.getElementById(`panel-${subId}`);
             const strSpan = document.getElementById(`str-${subId}`);
@@ -394,31 +411,30 @@
 
             document.getElementById('averageDisplay').textContent = `${letterGrade} (${numericAvg}/5.0)`;
 
-            // Display full summary once all 13 sub-values are graded
             if (entries.length === totalSubValues) {
                 const summaryCard = document.getElementById('summaryCard');
                 const summaryContent = document.getElementById('summaryContent');
                 const finalScoreTag = document.getElementById('finalScoreTag');
 
                 summaryCard.classList.remove('hidden');
-                finalScoreTag.textContent = `Overall Score: ${letterGrade} (${numericAvg} / 5.0)`;
+                finalScoreTag.textContent = `Overall Grade: ${letterGrade} (${numericAvg} / 5.0)`;
 
                 summaryContent.innerHTML = rubricSchema.map(sec => `
                     <div class="border-b border-tcf-darkgreen pb-4">
-                        <h4 class="text-base font-bold text-tcf-yellow uppercase tracking-wider mb-2">${sec.valueKey.replace('_', ' ')}</h4>
+                        <h4 class="text-base font-bold text-tcf-yellow uppercase tracking-wider mb-3">${sec.valueKey.replace('_', ' ')}</h4>
                         <div class="space-y-3">
                             ${sec.subValues.map(sub => {
                                 const g = evaluationState[sub.id];
                                 const fb = generateFeedback(sub.id, g);
                                 return `
-                                    <div class="bg-tcf-darkgreen/40 p-3 rounded-lg border border-tcf-green/40">
+                                    <div class="bg-tcf-darkgreen/40 p-3.5 rounded-lg border border-tcf-green/40">
                                         <div class="flex justify-between font-bold text-white text-xs mb-1">
                                             <span>${sub.name} (Grade ${g})</span>
-                                            <span class="text-tcf-yellow">Score: ${gradeValues[g]}/5</span>
+                                            <span class="text-tcf-yellow">Score Value: ${gradeValues[g]}/5</span>
                                         </div>
-                                        <p class="text-[11px] text-tcf-lightgreen mb-1"><strong>Criterion:</strong> ${rubricCellDetails[sub.id][g]}</p>
-                                        <p class="text-[11px] text-slate-100 mb-0.5"><strong>Strength:</strong> ${fb.str}</p>
-                                        <p class="text-[11px] text-amber-200"><strong>Opportunity:</strong> ${fb.opp}</p>
+                                        <p class="text-[11px] text-tcf-lightgreen mb-1.5 leading-relaxed"><strong>Verbatim Rubric Text:</strong> ${fullRubricVerbatim[sub.id][g]}</p>
+                                        <p class="text-[11px] text-slate-100 mb-1 leading-relaxed"><strong>Strength:</strong> ${fb.str}</p>
+                                        <p class="text-[11px] text-amber-200 leading-relaxed"><strong>Opportunity:</strong> ${fb.opp}</p>
                                     </div>
                                 `;
                             }).join('')}
