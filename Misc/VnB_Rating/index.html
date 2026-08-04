@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TCF Values & Behaviors Evaluation - Full Verbatim Rubric</title>
+    <title>TCF Values & Behaviors Evaluation - Full Rubric (12 Scored Behaviors)</title>
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -49,7 +49,7 @@
             <div id="overallScoreBadge" class="mt-4 md:mt-0 bg-tcf-darkgreen border border-tcf-green/40 rounded-lg px-5 py-2 text-center">
                 <span class="text-xs uppercase tracking-wider text-tcf-yellow font-bold block">Overall Average</span>
                 <span id="averageDisplay" class="text-2xl font-extrabold text-white">--</span>
-                <span id="completionTracker" class="text-[10px] text-tcf-lightgreen block mt-0.5">0 of 13 Evaluated</span>
+                <span id="completionTracker" class="text-[10px] text-tcf-lightgreen block mt-0.5">0 of 12 Evaluated</span>
             </div>
         </div>
     </header>
@@ -113,7 +113,7 @@
             <div class="flex justify-between items-center border-b border-tcf-darkgreen pb-4 mb-4">
                 <div>
                     <h3 class="text-xl font-bold">Consolidated Performance Evaluation Report</h3>
-                    <p class="text-xs text-tcf-lightgreen">Complete TCF Values & Behaviors Audit</p>
+                    <p class="text-xs text-tcf-lightgreen">Complete TCF Values & Behaviors Audit (12 Scored Behaviors)</p>
                 </div>
                 <span id="finalScoreTag" class="text-sm bg-tcf-yellow text-tcf-darkgreen font-bold px-4 py-1.5 rounded-full shadow-sm"></span>
             </div>
@@ -127,12 +127,11 @@
     <script>
         const gradeValues = { 'A': 5, 'B': 4, 'C': 3, 'D': 2, 'E': 1 };
 
-        // Schema Structure
+        // Updated Schema: 12 Scored Sub-Values total
         const rubricSchema = [
             {
                 valueKey: 'sincerity',
                 subValues: [
-                    { id: 'sincerity_core', name: 'Sincerity (Moral Intent)', desc: 'We have sincere intentions about everything we do and how we do it.' },
                     { id: 'integrity', name: 'Integrity', desc: 'We always strive to do what is right, even to personal detriment.' },
                     { id: 'trust', name: 'Trust', desc: 'We have faith in each other\'s sincerity of intent and their ability to do their work.' },
                     { id: 'courage', name: 'Courage', desc: 'We value harmony and yet have the courage to voice unpopular decisions and accept mistakes.' }
@@ -164,15 +163,8 @@
             }
         ];
 
-        // Full Verbatim Description Mapped Directly from Official PDF Rubric
+        // Verbatim Rubric Descriptions (12 Scored Items)
         const fullRubricVerbatim = {
-            sincerity_core: {
-                'A': "The employee demonstrates a clear and complete understanding of the importance of doing the right thing morally and ethically in all work situations.",
-                'B': "The employee demonstrates an understanding of the importance of doing the right thing morally and ethically across standard work situations.",
-                'C': "The employee demonstrates an understanding of doing the right thing morally and ethically approximately half the time.",
-                'D': "The employee occasionally struggles to demonstrate an understanding of moral and ethical implications in daily work actions.",
-                'E': "The employee does not demonstrate an understanding of the importance of doing the right thing morally or ethically."
-            },
             integrity: {
                 'A': "The employee CONSISTENTLY does the right thing morally and ethically, even if it is to their personal detriment. The employee encourages colleagues to also do the right thing morally and ethically in all given situations.",
                 'B': "The employee CONSISTENTLY does the right thing morally and ethically in primary tasks. In other instances, the employee demonstrates some level of regret with regards to their actions.",
@@ -262,7 +254,6 @@
         // 3-Liner Engine Generator for Strengths & Opportunities
         function generateFeedback(subValueId, grade) {
             const labelMap = {
-                'sincerity_core': 'moral intent',
                 'integrity': 'integrity',
                 'trust': 'interpersonal trust',
                 'courage': 'courageous communication',
