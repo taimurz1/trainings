@@ -36,7 +36,7 @@
 
     <!-- TCF Header -->
     <header class="bg-tcf-green text-white py-6 px-4 shadow-md mb-8 border-b-4 border-tcf-yellow">
-        <div class="max-w-5xl mx-auto flex flex-col md:flex-row justify-between items-center">
+        <div class="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center">
             <div class="flex items-center space-x-3">
                 <div class="bg-white text-tcf-green font-black px-3 py-1.5 rounded-md text-xl tracking-wider">
                     TCF
@@ -53,131 +53,97 @@
         </div>
     </header>
 
-    <main class="max-w-5xl mx-auto px-4">
+    <main class="max-w-6xl mx-auto px-4">
         
         <!-- Form Container -->
         <div class="bg-white rounded-xl shadow-sm border border-slate-200 p-6 mb-8">
             <div class="border-b border-slate-200 pb-4 mb-6">
                 <h2 class="text-xl font-bold text-tcf-green">Sincerity Evaluation Module</h2>
                 <p class="text-slate-600 text-sm mt-1">
-                    Select a rating (<strong>A</strong> to <strong>E</strong>) against each sub-value. Selecting a grade will immediately display the detailed rubric criteria alongside a 3-liner strength and opportunity assessment.
+                    Select a rating (<strong>A</strong> to <strong>E</strong>) against each sub-value to view its rubric cell description, generated strength, and opportunity.
                 </p>
             </div>
 
-            <form id="evaluationForm" class="space-y-8">
+            <form id="evaluationForm" class="space-y-10">
                 
                 <!-- 1. SINCERITY CORE -->
                 <div class="border-b border-slate-200 pb-8">
-                    <div class="flex flex-col md:flex-row md:items-center justify-between mb-3">
-                        <div>
-                            <h3 class="text-lg font-bold text-slate-900 flex items-center gap-2">
-                                <span class="w-2 h-2 rounded-full bg-tcf-yellow inline-block"></span>
-                                1. Sincerity (Moral Intent)
-                            </h3>
-                            <p class="text-xs text-slate-500 mt-0.5">We have sincere intentions about everything we do and how we do it.</p>
-                        </div>
+                    <div class="mb-4">
+                        <h3 class="text-lg font-bold text-slate-900 flex items-center gap-2">
+                            <span class="w-2.5 h-2.5 rounded-full bg-tcf-yellow inline-block"></span>
+                            1. Sincerity (Moral Intent)
+                        </h3>
+                        <p class="text-xs text-slate-500 mt-0.5">We have sincere intentions about everything we do and how we do it.</p>
                     </div>
                     
-                    <!-- Rating Buttons -->
-                    <div class="flex flex-wrap gap-2 mb-4" id="btn-group-sincerity"></div>
+                    <!-- Interactive Cards Container for Ratings A-E -->
+                    <div class="grid grid-cols-1 md:grid-cols-5 gap-3 mb-4" id="cards-sincerity"></div>
 
-                    <!-- Output Panel (Rubric Details + Feedback) -->
-                    <div id="panel-sincerity" class="hidden space-y-3">
-                        <!-- Rubric Definition Detail -->
-                        <div class="bg-tcf-lightgreen/60 border-l-4 border-tcf-green p-3.5 rounded-r-lg text-xs text-tcf-darkgreen">
-                            <span class="font-bold uppercase tracking-wider block mb-1 text-tcf-green">Rubric Benchmark Detail (Grade <span class="grade-label"></span>):</span>
-                            <p id="rubric-detail-sincerity" class="italic leading-relaxed"></p>
-                        </div>
-                        <!-- Strength & Opportunity -->
-                        <div class="bg-slate-50 border border-slate-200 p-4 rounded-lg text-sm space-y-2">
-                            <p class="text-emerald-900"><strong>Strength:</strong> <span id="str-sincerity"></span></p>
-                            <p class="text-amber-900"><strong>Opportunity:</strong> <span id="opp-sincerity"></span></p>
-                        </div>
+                    <!-- Selected Grade Output & Feedback -->
+                    <div id="panel-sincerity" class="hidden bg-slate-50 border border-slate-200 p-4 rounded-lg text-sm space-y-2">
+                        <p class="text-emerald-900"><strong>Strength:</strong> <span id="str-sincerity"></span></p>
+                        <p class="text-amber-900"><strong>Opportunity:</strong> <span id="opp-sincerity"></span></p>
                     </div>
                 </div>
 
                 <!-- 2. INTEGRITY -->
                 <div class="border-b border-slate-200 pb-8">
-                    <div class="flex flex-col md:flex-row md:items-center justify-between mb-3">
-                        <div>
-                            <h3 class="text-lg font-bold text-slate-900 flex items-center gap-2">
-                                <span class="w-2 h-2 rounded-full bg-tcf-yellow inline-block"></span>
-                                2. Integrity
-                            </h3>
-                            <p class="text-xs text-slate-500 mt-0.5">We always strive to do what is right, even to personal detriment.</p>
-                        </div>
+                    <div class="mb-4">
+                        <h3 class="text-lg font-bold text-slate-900 flex items-center gap-2">
+                            <span class="w-2.5 h-2.5 rounded-full bg-tcf-yellow inline-block"></span>
+                            2. Integrity
+                        </h3>
+                        <p class="text-xs text-slate-500 mt-0.5">We always strive to do what is right, even to personal detriment.</p>
                     </div>
                     
-                    <div class="flex flex-wrap gap-2 mb-4" id="btn-group-integrity"></div>
+                    <div class="grid grid-cols-1 md:grid-cols-5 gap-3 mb-4" id="cards-integrity"></div>
 
-                    <div id="panel-integrity" class="hidden space-y-3">
-                        <div class="bg-tcf-lightgreen/60 border-l-4 border-tcf-green p-3.5 rounded-r-lg text-xs text-tcf-darkgreen">
-                            <span class="font-bold uppercase tracking-wider block mb-1 text-tcf-green">Rubric Benchmark Detail (Grade <span class="grade-label"></span>):</span>
-                            <p id="rubric-detail-integrity" class="italic leading-relaxed"></p>
-                        </div>
-                        <div class="bg-slate-50 border border-slate-200 p-4 rounded-lg text-sm space-y-2">
-                            <p class="text-emerald-900"><strong>Strength:</strong> <span id="str-integrity"></span></p>
-                            <p class="text-amber-900"><strong>Opportunity:</strong> <span id="opp-integrity"></span></p>
-                        </div>
+                    <div id="panel-integrity" class="hidden bg-slate-50 border border-slate-200 p-4 rounded-lg text-sm space-y-2">
+                        <p class="text-emerald-900"><strong>Strength:</strong> <span id="str-integrity"></span></p>
+                        <p class="text-amber-900"><strong>Opportunity:</strong> <span id="opp-integrity"></span></p>
                     </div>
                 </div>
 
                 <!-- 3. TRUST -->
                 <div class="border-b border-slate-200 pb-8">
-                    <div class="flex flex-col md:flex-row md:items-center justify-between mb-3">
-                        <div>
-                            <h3 class="text-lg font-bold text-slate-900 flex items-center gap-2">
-                                <span class="w-2 h-2 rounded-full bg-tcf-yellow inline-block"></span>
-                                3. Trust
-                            </h3>
-                            <p class="text-xs text-slate-500 mt-0.5">We have faith in each other's sincerity of intent and their ability to do their work.</p>
-                        </div>
+                    <div class="mb-4">
+                        <h3 class="text-lg font-bold text-slate-900 flex items-center gap-2">
+                            <span class="w-2.5 h-2.5 rounded-full bg-tcf-yellow inline-block"></span>
+                            3. Trust
+                        </h3>
+                        <p class="text-xs text-slate-500 mt-0.5">We have faith in each other's sincerity of intent and their ability to do their work.</p>
                     </div>
                     
-                    <div class="flex flex-wrap gap-2 mb-4" id="btn-group-trust"></div>
+                    <div class="grid grid-cols-1 md:grid-cols-5 gap-3 mb-4" id="cards-trust"></div>
 
-                    <div id="panel-trust" class="hidden space-y-3">
-                        <div class="bg-tcf-lightgreen/60 border-l-4 border-tcf-green p-3.5 rounded-r-lg text-xs text-tcf-darkgreen">
-                            <span class="font-bold uppercase tracking-wider block mb-1 text-tcf-green">Rubric Benchmark Detail (Grade <span class="grade-label"></span>):</span>
-                            <p id="rubric-detail-trust" class="italic leading-relaxed"></p>
-                        </div>
-                        <div class="bg-slate-50 border border-slate-200 p-4 rounded-lg text-sm space-y-2">
-                            <p class="text-emerald-900"><strong>Strength:</strong> <span id="str-trust"></span></p>
-                            <p class="text-amber-900"><strong>Opportunity:</strong> <span id="opp-trust"></span></p>
-                        </div>
+                    <div id="panel-trust" class="hidden bg-slate-50 border border-slate-200 p-4 rounded-lg text-sm space-y-2">
+                        <p class="text-emerald-900"><strong>Strength:</strong> <span id="str-trust"></span></p>
+                        <p class="text-amber-900"><strong>Opportunity:</strong> <span id="opp-trust"></span></p>
                     </div>
                 </div>
 
                 <!-- 4. COURAGE -->
                 <div class="pb-2">
-                    <div class="flex flex-col md:flex-row md:items-center justify-between mb-3">
-                        <div>
-                            <h3 class="text-lg font-bold text-slate-900 flex items-center gap-2">
-                                <span class="w-2 h-2 rounded-full bg-tcf-yellow inline-block"></span>
-                                4. Courage
-                            </h3>
-                            <p class="text-xs text-slate-500 mt-0.5">We value harmony and yet have the courage to voice unpopular decisions and accept mistakes.</p>
-                        </div>
+                    <div class="mb-4">
+                        <h3 class="text-lg font-bold text-slate-900 flex items-center gap-2">
+                            <span class="w-2.5 h-2.5 rounded-full bg-tcf-yellow inline-block"></span>
+                            4. Courage
+                        </h3>
+                        <p class="text-xs text-slate-500 mt-0.5">We value harmony and yet have the courage to voice unpopular decisions and accept mistakes.</p>
                     </div>
                     
-                    <div class="flex flex-wrap gap-2 mb-4" id="btn-group-courage"></div>
+                    <div class="grid grid-cols-1 md:grid-cols-5 gap-3 mb-4" id="cards-courage"></div>
 
-                    <div id="panel-courage" class="hidden space-y-3">
-                        <div class="bg-tcf-lightgreen/60 border-l-4 border-tcf-green p-3.5 rounded-r-lg text-xs text-tcf-darkgreen">
-                            <span class="font-bold uppercase tracking-wider block mb-1 text-tcf-green">Rubric Benchmark Detail (Grade <span class="grade-label"></span>):</span>
-                            <p id="rubric-detail-courage" class="italic leading-relaxed"></p>
-                        </div>
-                        <div class="bg-slate-50 border border-slate-200 p-4 rounded-lg text-sm space-y-2">
-                            <p class="text-emerald-900"><strong>Strength:</strong> <span id="str-courage"></span></p>
-                            <p class="text-amber-900"><strong>Opportunity:</strong> <span id="opp-courage"></span></p>
-                        </div>
+                    <div id="panel-courage" class="hidden bg-slate-50 border border-slate-200 p-4 rounded-lg text-sm space-y-2">
+                        <p class="text-emerald-900"><strong>Strength:</strong> <span id="str-courage"></span></p>
+                        <p class="text-amber-900"><strong>Opportunity:</strong> <span id="opp-courage"></span></p>
                     </div>
                 </div>
 
             </form>
         </div>
 
-        <!-- Summary & Print Area -->
+        <!-- Summary Card -->
         <div id="summaryCard" class="bg-tcf-green text-white rounded-xl p-6 shadow-lg hidden">
             <div class="flex justify-between items-center border-b border-tcf-darkgreen pb-4 mb-4">
                 <h3 class="text-xl font-bold">Consolidated Evaluation Summary</h3>
@@ -194,39 +160,39 @@
         const gradeValues = { 'A': 5, 'B': 4, 'C': 3, 'D': 2, 'E': 1 };
         const categories = ['sincerity', 'integrity', 'trust', 'courage'];
 
-        // Exact Rubric Text Details Extracted directly from PDF
-        const rubricDetails = {
+        // Exact Rubric Cell Details Mapped Directly from attached PDF
+        const rubricCellDetails = {
             sincerity: {
-                'A': "Employee demonstrates a clear, complete understanding of the importance of doing the right thing morally and ethically in all work situations.",
-                'B': "Employee demonstrates an understanding of the importance of doing the right thing morally and ethically across standard operational duties.",
+                'A': "Employee demonstrates an understanding of the importance of doing the right thing morally and ethically in all circumstances.",
+                'B': "Employee demonstrates an understanding of the importance of doing the right thing morally and ethically across standard work situations.",
                 'C': "Employee demonstrates an understanding of doing the right thing morally and ethically approximately half the time.",
-                'D': "Employee occasionally struggles to demonstrate an understanding of moral and ethical implications in daily work actions.",
+                'D': "Employee occasionally fails to demonstrate an understanding of moral/ethical imperatives in operational tasks.",
                 'E': "Employee does not demonstrate an understanding of the importance of doing the right thing morally or ethically."
             },
             integrity: {
-                'A': "Employee CONSISTENTLY does the right thing morally and ethically, even if it is to their personal detriment. Employee encourages colleagues to also do the right thing morally and ethically in all given situations.",
-                'B': "Employee CONSISTENTLY does the right thing morally and ethically in primary tasks. In other instances, employee demonstrates some level of regret with regards to their actions.",
+                'A': "Employee CONSISTENTLY does the right thing morally and ethically, even if to personal detriment. Encourages colleagues to do the right thing morally and ethically in all given situations.",
+                'B': "Employee CONSISTENTLY does the right thing morally and ethically in main tasks. In other instances, demonstrates some level of regret regarding their actions.",
                 'C': "Employee does the right thing morally and ethically approximately HALF THE TIME, even if it is to their personal detriment.",
-                'D': "Employee does not consistently demonstrate ethical consideration and rarely demonstrates regret with regards to incorrect actions.",
-                'E': "Employee does not demonstrate ANY moral or ethical considerations in their behaviour at work. Employee does not demonstrate regret with regards to their actions."
+                'D': "Employee inconsistent in moral/ethical considerations and rarely demonstrates regret regarding their actions.",
+                'E': "Employee does not demonstrate ANY moral or ethical considerations in their behaviour at work. Does not demonstrate regret regarding their actions."
             },
             trust: {
-                'A': "The employee ALWAYS trusts peers to deliver on their work (cross-functional or within functions) by CONSISTENTLY giving space without unnecessary interference. As a line manager, CONSISTENTLY gives subordinates important tasks, space to share opinions, and visibility.",
-                'B': "The employee OFTEN trusts peers to deliver on their work by giving space without unnecessary interference most of the time. As a line manager, OFTEN trusts subordinates with important tasks and organizational exposure.",
-                'C': "The employee trusts peers/subordinates approximately HALF THE TIME, giving space to work without unnecessary interference approximately half the time while ensuring quality and deadlines.",
-                'D': "The employee SOMETIMES questions the sincerity of others, and their actions reflect this doubt. Gives limited space or visibility to peers and subordinates.",
-                'E': "The employee DOES NOT trust peers to deliver on their work. As a line manager, DOES NOT trust subordinates to deliver, DOES NOT give important tasks, opinion space, or opportunities to showcase work."
+                'A': "ALWAYS trusts peers/subordinates to deliver work. CONSISTENTLY gives space without unnecessary interference. Line manager gives important tasks, space for opinions, and wider exposure.",
+                'B': "OFTEN trusts peers/subordinates to deliver work. Gives space without unnecessary interference most of the time while ensuring quality/deadlines are met.",
+                'C': "Trusts peers/subordinates to deliver work approximately HALF THE TIME. Gives space without unnecessary interference approximately HALF THE TIME.",
+                'D': "SOMETIMES questions sincerity of others. Gives limited space or visibility to peers and subordinates to deliver independently.",
+                'E': "DOES NOT trust peers to deliver work. Line manager DOES NOT trust subordinates, DOES NOT give important tasks, opinion space, or opportunities to showcase work."
             },
             courage: {
-                'A': "The employee CONSISTENTLY voices their opinion with respect when it differs from others (including higher levels and majority). Takes responsibility in ALL relevant situations for actions/mistakes of self and team, encouraging colleagues to do the same.",
-                'B': "The employee CONSISTENTLY voices opinion with respect. Takes responsibility for actions and mistakes in most relevant situations.",
-                'C': "The employee voices opinion when it differs from others approximately HALF THE TIME. Takes responsibility for actions/mistakes approximately HALF THE TIME.",
-                'D': "The employee may or may not voice opinion with respect, rarely voicing dissenting views or taking ownership of team errors.",
-                'E': "The employee DOES NOT voice their opinion when it differs from others. The employee DOES NOT take responsibility for their actions or the actions of their team."
+                'A': "CONSISTENTLY voices opinion with respect when differing from others/leadership. Takes responsibility in ALL relevant situations for actions and team mistakes. Encourages courage in others.",
+                'B': "CONSISTENTLY voices opinion with respect. Takes responsibility for actions and mistakes of self/team in relevant situations most of the time.",
+                'C': "Voices opinion when it differs from others approximately HALF THE TIME. Takes responsibility for actions/team mistakes approximately HALF THE TIME.",
+                'D': "May or may not voice opinion with respect. Rarely voices dissenting views or takes ownership of team mistakes.",
+                'E': "DOES NOT voice opinion when it differs from others. DOES NOT take responsibility for their actions or the actions of their team."
             }
         };
 
-        // 3-Liner Generated Strengths & Opportunities Data
+        // 3-Liner Generated Strengths & Opportunities Engine
         const feedbackEngine = {
             sincerity: {
                 'A': {
@@ -326,46 +292,59 @@
         };
 
         document.addEventListener('DOMContentLoaded', () => {
-            categories.forEach(cat => renderButtons(cat));
+            categories.forEach(cat => renderRatingCards(cat));
         });
 
-        function renderButtons(category) {
-            const container = document.getElementById(`btn-group-${category}`);
+        // Render Cards displaying Rating Letter + Exact Rubric Text
+        function renderRatingCards(category) {
+            const container = document.getElementById(`cards-${category}`);
             const grades = ['A', 'B', 'C', 'D', 'E'];
             
             grades.forEach(grade => {
-                const btn = document.createElement('button');
-                btn.type = 'button';
-                btn.className = `w-12 h-12 rounded-lg font-bold border transition-all duration-200 
-                    border-slate-300 bg-white text-slate-700 hover:bg-tcf-lightgreen hover:border-tcf-green focus:outline-none`;
-                btn.textContent = grade;
-                btn.dataset.grade = grade;
-                btn.onclick = () => selectRating(category, grade, btn);
-                container.appendChild(btn);
+                const card = document.createElement('div');
+                card.className = `rating-card border rounded-lg p-3 cursor-pointer transition-all duration-200 
+                    border-slate-200 bg-white hover:border-tcf-green hover:bg-tcf-lightgreen/50 flex flex-col justify-between`;
+                card.dataset.category = category;
+                card.dataset.grade = grade;
+
+                card.innerHTML = `
+                    <div>
+                        <div class="flex items-center justify-between mb-2">
+                            <span class="font-extrabold text-lg w-7 h-7 flex items-center justify-center rounded-md bg-slate-100 text-slate-800 border border-slate-300 grade-badge">${grade}</span>
+                            <span class="text-[10px] font-semibold uppercase text-slate-400">Rating</span>
+                        </div>
+                        <p class="text-[11px] text-slate-600 leading-snug">${rubricCellDetails[category][grade]}</p>
+                    </div>
+                `;
+
+                card.onclick = () => selectRating(category, grade, card);
+                container.appendChild(card);
             });
         }
 
-        function selectRating(category, grade, selectedBtn) {
+        function selectRating(category, grade, selectedCard) {
             state[category] = grade;
 
-            // Highlight Active Button
-            const container = document.getElementById(`btn-group-${category}`);
-            Array.from(container.children).forEach(btn => {
-                btn.className = `w-12 h-12 rounded-lg font-bold border transition-all duration-200 
-                    border-slate-300 bg-white text-slate-700 hover:bg-tcf-lightgreen focus:outline-none`;
+            // Reset all card styles in category
+            const container = document.getElementById(`cards-${category}`);
+            Array.from(container.children).forEach(card => {
+                card.className = `rating-card border rounded-lg p-3 cursor-pointer transition-all duration-200 
+                    border-slate-200 bg-white hover:border-tcf-green hover:bg-tcf-lightgreen/50 flex flex-col justify-between`;
+                const badge = card.querySelector('.grade-badge');
+                badge.className = `font-extrabold text-lg w-7 h-7 flex items-center justify-center rounded-md bg-slate-100 text-slate-800 border border-slate-300 grade-badge`;
             });
-            selectedBtn.className = `w-12 h-12 rounded-lg font-bold border-2 transition-all duration-200 
-                bg-tcf-green text-white border-tcf-green shadow-md scale-105 focus:outline-none`;
 
-            // Display Detail Panel
+            // Highlight selected card
+            selectedCard.className = `rating-card border-2 rounded-lg p-3 cursor-pointer transition-all duration-200 
+                border-tcf-green bg-tcf-lightgreen shadow-md flex flex-col justify-between scale-[1.02]`;
+            const activeBadge = selectedCard.querySelector('.grade-badge');
+            activeBadge.className = `font-extrabold text-lg w-7 h-7 flex items-center justify-center rounded-md bg-tcf-green text-white border border-tcf-green grade-badge`;
+
+            // Display Feedback Panel
             const panel = document.getElementById(`panel-${category}`);
-            const rubricDetail = document.getElementById(`rubric-detail-${category}`);
             const strSpan = document.getElementById(`str-${category}`);
             const oppSpan = document.getElementById(`opp-${category}`);
 
-            // Update Text Values
-            panel.querySelectorAll('.grade-label').forEach(el => el.textContent = grade);
-            rubricDetail.textContent = rubricDetails[category][grade];
             strSpan.textContent = feedbackEngine[category][grade].str;
             oppSpan.textContent = feedbackEngine[category][grade].opp;
 
@@ -405,9 +384,9 @@
                     <div class="border-b border-tcf-darkgreen pb-3">
                         <div class="flex justify-between font-bold text-tcf-yellow mb-1">
                             <span class="capitalize">${cat} (Grade ${state[cat]}):</span>
-                            <span class="text-xs text-tcf-lightgreen italic font-normal">Score Value: ${gradeValues[state[cat]]}/5</span>
+                            <span class="text-xs text-tcf-lightgreen italic font-normal">Score: ${gradeValues[state[cat]]}/5</span>
                         </div>
-                        <p class="text-xs text-tcf-lightgreen mb-2"><strong>Rubric Criteria:</strong> ${rubricDetails[cat][state[cat]]}</p>
+                        <p class="text-xs text-tcf-lightgreen mb-2"><strong>Rubric Criterion:</strong> ${rubricCellDetails[cat][state[cat]]}</p>
                         <p class="text-xs text-slate-100 mb-1"><strong>Strength:</strong> ${feedbackEngine[cat][state[cat]].str}</p>
                         <p class="text-xs text-amber-200"><strong>Opportunity:</strong> ${feedbackEngine[cat][state[cat]].opp}</p>
                     </div>
