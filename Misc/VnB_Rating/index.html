@@ -108,24 +108,33 @@
 
         </form>
 
-        <!-- Summary & Print Report -->
-        <div id="summaryCard" class="bg-tcf-green text-white rounded-xl p-6 shadow-lg hidden mt-8">
-            <div class="flex justify-between items-center border-b border-tcf-darkgreen pb-4 mb-4">
+        <!-- Dynamic Consolidated Performance Evaluation Report -->
+        <div id="summaryCard" class="bg-white border border-slate-200 text-slate-800 rounded-xl p-8 shadow-md hidden mt-8">
+            <div class="flex justify-between items-center border-b border-slate-200 pb-5 mb-6">
                 <div>
-                    <h3 class="text-xl font-bold">Consolidated Performance Evaluation Report</h3>
-                    <p class="text-xs text-tcf-lightgreen">Official TCF Values & Behaviours Audit Summary (12 Behaviours)</p>
+                    <h3 class="text-2xl font-bold text-tcf-green">Consolidated Performance Evaluation Report</h3>
+                    <p class="text-xs text-slate-500 font-medium mt-1">Official TCF Values & Behaviours Audit Summary (12 Behaviours)</p>
                 </div>
-                <span id="finalScoreTag" class="text-sm bg-tcf-yellow text-tcf-darkgreen font-bold px-4 py-1.5 rounded-full shadow-sm"></span>
+                <span id="finalScoreTag" class="text-sm bg-tcf-green text-white font-bold px-4 py-2 rounded-lg shadow-sm border border-tcf-darkgreen"></span>
             </div>
-            <div id="summaryContent" class="space-y-6 text-sm text-slate-100"></div>
-            <button onclick="window.print()" class="no-print mt-6 w-full bg-tcf-yellow hover:bg-tcf-accentyellow text-tcf-darkgreen font-bold py-3 px-4 rounded-lg transition-colors shadow-md">
-                Print / Export Complete PDF Report
+            <div id="summaryContent" class="space-y-8 text-sm"></div>
+            <button onclick="window.print()" class="no-print mt-8 w-full bg-tcf-green hover:bg-tcf-darkgreen text-white font-bold py-3.5 px-4 rounded-lg transition-colors shadow-md flex items-center justify-center space-x-2">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z"></path></svg>
+                <span>Print / Export Complete PDF Report</span>
             </button>
         </div>
     </main>
 
     <script>
         const gradeValues = { 'A': 5, 'B': 4, 'C': 3, 'D': 2, 'E': 1 };
+
+        // Value Descriptions Map
+        const valueDescriptions = {
+            'sincerity': 'We have sincere intentions about everything we do and how we do it.',
+            'service': 'Our movement exists to serve.',
+            'beauty': 'We constantly seek to beautify and improve what we do.',
+            'positive_conduct': 'We think well of others & treat everyone with care and sensitivity.'
+        };
 
         // 12 Behaviours Schema
         const rubricSchema = [
@@ -253,7 +262,7 @@
             }
         };
 
-        // OPTION 1: Dynamic Template Variation Pools
+        // Dynamic Template Variation Pools
         const dynamicFeedbackPools = {
             'A': [
                 {
@@ -263,10 +272,6 @@
                 {
                     str: "Demonstrates exceptional commitment to {label}, serving as a benchmark role model for team members across all projects.",
                     opp: "Take an active role in leading cross-functional workshops to share best practices in {label}."
-                },
-                {
-                    str: "Consistently surpasses baseline expectations in {label}, actively fostering a supportive and high-accountability environment.",
-                    opp: "Help line management design training materials and peer-coaching structures centered around {label}."
                 }
             ],
             'B': [
@@ -277,10 +282,6 @@
                 {
                     str: "Reliably executes expectations for {label} across core daily duties with minimal guidance required.",
                     opp: "Identify opportunities to take greater ownership during complex assignments to move from Grade B to Grade A performance."
-                },
-                {
-                    str: "Maintains a strong, positive standard in {label}, contributing to a productive operational workflow.",
-                    opp: "Proactively share insights with team members to help elevate overall group execution in {label}."
                 }
             ],
             'C': [
@@ -291,38 +292,18 @@
                 {
                     str: "Shows good foundational understanding of {label}, though application varies depending on workload or situational pressure.",
                     opp: "Set bi-weekly self-check goals to practice {label} more consistently across all routine and non-routine duties."
-                },
-                {
-                    str: "Demonstrates satisfactory alignment with {label} in routine tasks, with room for greater consistency in challenging scenarios.",
-                    opp: "Work with your line manager to identify specific triggers that lead to inconsistencies in {label}."
                 }
             ],
             'D': [
                 {
                     str: "Shows sporadic awareness of {label}. Behavioral application falls below required organizational benchmarks.",
                     opp: "Review TCF rubric expectations with line manager and establish a structured action plan to build daily consistency in {label}."
-                },
-                {
-                    str: "Displays occasional effort in {label}, but regular gaps in application impact overall team alignment.",
-                    opp: "Schedule regular check-ins with management to receive direct coaching and actionable milestones for {label}."
-                },
-                {
-                    str: "Struggles to consistently maintain organizational standards for {label} during day-to-day work.",
-                    opp: "Focus on fundamental expectations of {label} and request peer shadowing to observe model behaviours."
                 }
             ],
             'E': [
                 {
                     str: "Does not demonstrate baseline expectations for {label} in daily work or team interactions.",
                     opp: "Requires immediate alignment with TCF core values and structured coaching from line management to establish compliance in {label}."
-                },
-                {
-                    str: "Significant improvement required in {label} to align with core TCF behavioral standards.",
-                    opp: "Formulate an immediate Performance Improvement Plan (PIP) focusing strictly on foundational expectations for {label}."
-                },
-                {
-                    str: "Demonstrates little to no observable alignment with organizational principles regarding {label}.",
-                    opp: "Engage in mandatory value alignment sessions with leadership to understand the critical importance of {label}."
                 }
             ]
         };
@@ -342,10 +323,8 @@
             'inclusion': 'inclusive practice'
         };
 
-        // Object tracking current dynamic index per sub-value to cycle through variations
         const variationIndices = {};
 
-        // Dynamic Feedback Generator Engine (Option 1)
         function generateFeedback(subValueId, grade) {
             const label = labelMap[subValueId] || subValueId;
             const pool = dynamicFeedbackPools[grade];
@@ -357,7 +336,6 @@
                 };
             }
 
-            // Track index or pick variation to ensure dynamic behavior on each selection
             if (variationIndices[subValueId] === undefined) {
                 variationIndices[subValueId] = Math.floor(Math.random() * pool.length);
             } else {
@@ -393,7 +371,6 @@
                                 <h3 class="text-base font-bold text-slate-900">${sub.name}</h3>
                                 <p class="text-xs text-slate-500 font-medium">${sub.desc}</p>
                             </div>
-                            <span class="text-[10px] bg-slate-100 text-slate-500 px-2 py-0.5 rounded font-mono hidden md:inline-block">Dynamic Feedback Engine</span>
                         </div>
                         <!-- Cards Row (A-E) -->
                         <div class="grid grid-cols-1 md:grid-cols-5 gap-3 mb-3" id="cards-${sub.id}"></div>
@@ -418,7 +395,6 @@
             const grades = ['A', 'B', 'C', 'D', 'E'];
             const itemData = fullRubricVerbatim[subId];
 
-            // Render Merged Note Row spanning columns A-E if present
             if (itemData.note) {
                 const noteDiv = document.getElementById(`note-${subId}`);
                 noteDiv.textContent = itemData.note;
@@ -472,7 +448,6 @@
             const strSpan = document.getElementById(`str-${subId}`);
             const oppSpan = document.getElementById(`opp-${subId}`);
 
-            // Generate dynamic feedback from option 1 variation pool
             const feedback = generateFeedback(subId, grade);
             generatedFeedbackState[subId] = feedback;
 
@@ -512,27 +487,34 @@
                 const finalScoreTag = document.getElementById('finalScoreTag');
 
                 summaryCard.classList.remove('hidden');
-                finalScoreTag.textContent = `Overall Grade: ${letterGrade} (${numericAvg} / 5.0)`;
+                finalScoreTag.textContent = `Overall Rating: Grade ${letterGrade} (${numericAvg} / 5.0)`;
 
                 summaryContent.innerHTML = rubricSchema.map(sec => `
-                    <div class="border-b border-tcf-darkgreen pb-4">
-                        <h4 class="text-base font-bold text-tcf-yellow uppercase tracking-wider mb-3">${sec.valueKey.replace('_', ' ')}</h4>
-                        <div class="space-y-3">
+                    <div class="border border-slate-200 rounded-xl p-5 bg-slate-50/50">
+                        <div class="border-b border-slate-200 pb-3 mb-4">
+                            <h4 class="text-base font-bold text-tcf-green uppercase tracking-wide">${sec.valueKey.replace('_', ' ')}</h4>
+                            <p class="text-xs text-slate-500 italic font-medium mt-0.5">${valueDescriptions[sec.valueKey]}</p>
+                        </div>
+                        <div class="space-y-4">
                             ${sec.subValues.map(sub => {
                                 const g = evaluationState[sub.id];
                                 const fb = generatedFeedbackState[sub.id] || generateFeedback(sub.id, g);
                                 const rawItem = fullRubricVerbatim[sub.id];
                                 const formattedText = rawItem[g] ? rawItem[g].replace(/\n\n/g, '<br/>') : '<em>Intermediate Benchmark Grade Selected</em>';
-                                const noteText = rawItem.note ? `<br/><em class="text-slate-300 block mt-1">${rawItem.note}</em>` : '';
+                                
                                 return `
-                                    <div class="bg-tcf-darkgreen/40 p-3.5 rounded-lg border border-tcf-green/40">
-                                        <div class="flex justify-between font-bold text-white text-xs mb-1">
-                                            <span>${sub.name} (Grade ${g})</span>
-                                            <span class="text-tcf-yellow">Score Value: ${gradeValues[g]}/5</span>
+                                    <div class="bg-white p-4 rounded-lg border border-slate-200 shadow-sm">
+                                        <div class="flex justify-between items-center border-b border-slate-100 pb-2 mb-2">
+                                            <span class="font-bold text-slate-800 text-sm">${sub.name}</span>
+                                            <span class="text-xs font-bold text-tcf-darkgreen bg-tcf-lightgreen px-2.5 py-1 rounded border border-tcf-green/20">
+                                                Grade ${g} (Score Value: ${gradeValues[g]}/5)
+                                            </span>
                                         </div>
-                                        <p class="text-[11px] text-tcf-lightgreen mb-1.5 leading-relaxed"><strong>Official Rubric Criteria:</strong><br/>${formattedText}${noteText}</p>
-                                        <p class="text-[11px] text-slate-100 mb-1 leading-relaxed"><strong>Dynamic Strength:</strong> ${fb.str}</p>
-                                        <p class="text-[11px] text-amber-200 leading-relaxed"><strong>Dynamic Opportunity:</strong> ${fb.opp}</p>
+                                        <p class="text-xs text-slate-600 mb-3 leading-relaxed"><strong>Official Rubric Criteria:</strong><br/>${formattedText}</p>
+                                        <div class="space-y-1 text-xs">
+                                            <p class="text-emerald-900 leading-relaxed"><strong>Strength:</strong> ${fb.str}</p>
+                                            <p class="text-amber-900 leading-relaxed"><strong>Opportunity:</strong> ${fb.opp}</p>
+                                        </div>
                                     </div>
                                 `;
                             }).join('')}
