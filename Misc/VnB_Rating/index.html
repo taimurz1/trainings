@@ -279,91 +279,32 @@
             }
         };
 
-        const dynamicFeedbackPools = {
-            'A': [
-                {
-                    str: "Exemplifies top-tier execution in {label}. Consistently models ideal behaviours, encourages colleagues, and maintains organizational standards in all situations.",
-                    opp: "Leverage strong mastery of {label} to mentor peers across functions and champion TCF values during organizational initiatives."
-                },
-                {
-                    str: "Demonstrates exceptional commitment to {label}, serving as a benchmark role model for team members across all projects.",
-                    opp: "Take an active role in leading cross-functional workshops to share best practices in {label}."
-                }
-            ],
-            'B': [
-                {
-                    str: "Demonstrates high consistency in {label}. Routinely meets organizational benchmarks and contributes positively to team culture.",
-                    opp: "Maintain consistency during high-stress cycles and actively encourage peers to adopt similar standards in {label}."
-                },
-                {
-                    str: "Reliably executes expectations for {label} across core daily duties with minimal guidance required.",
-                    opp: "Identify opportunities to take greater ownership during complex assignments to move from Grade B to Grade A performance."
-                }
-            ],
-            'C': [
-                {
-                    str: "Meets standards for {label} approximately half the time. Performs adequately under standard conditions but experiences occasional inconsistency.",
-                    opp: "Focus on building reliable daily habits in {label} to eliminate performance fluctuations and seek proactive manager feedback."
-                },
-                {
-                    str: "Shows good foundational understanding of {label}, though application varies depending on workload or situational pressure.",
-                    opp: "Set bi-weekly self-check goals to practice {label} more consistently across all routine and non-routine duties."
-                }
-            ],
-            'D': [
-                {
-                    str: "Shows sporadic awareness of {label}. Behavioral application falls below required organizational benchmarks.",
-                    opp: "Review TCF rubric expectations with line manager and establish a structured action plan to build daily consistency in {label}."
-                }
-            ],
-            'E': [
-                {
-                    str: "Does not demonstrate baseline expectations for {label} in daily work or team interactions.",
-                    opp: "Requires immediate alignment with TCF core values and structured coaching from line management to establish compliance in {label}."
-                }
-            ]
+        // Detailed, Humanized Feedback Engine (Minimum 3-4 lines per entry)
+        const detailedHumanizedFeedback = {
+            'A': {
+                str: "Consistently serves as an exemplary role model for the entire team in this area. They demonstrate complete ownership and high moral clarity in their daily actions, even when faced with challenging or uncomfortable situations. Furthermore, they proactively mentor peers and create a supportive environment that inspires others to uphold the highest ethical and performance standards across the organization.",
+                opp: "Look for opportunities to scale this positive influence by leading cross-functional alignment initiatives or mentoring emerging leaders. By sharing their practical strategies and personal framework, they can help embed these ideal behaviors into the broader team culture and elevate overall organizational capability."
+            },
+            'B': {
+                str: "Reliably demonstrates strong alignment with organizational benchmarks across regular day-to-day duties. They consistently deliver quality work without needing constant supervision and handle routine team interactions with care, maturity, and sound judgment.",
+                opp: "Focus on maintaining this standard during high-pressure deadlines or complex inter-departmental projects. Seeking opportunities to step up and guide junior colleagues during critical workflows will help them transition smoothly into a Grade A benchmark performer."
+            },
+            'C': {
+                str: "Shows a solid foundational understanding of expectations and applies them effectively under standard working conditions. They demonstrate good intent and frequently produce positive outcomes when working within familiar guidelines or routines.",
+                opp: "Focus on building greater consistency during high-stress situations or when dealing with unfamiliar challenges where performance currently tends to fluctuate. Setting personal check-ins and proactively consulting with line management for real-time guidance will build the resilience needed for steady performance."
+            },
+            'D': {
+                str: "Displays initial awareness of expectations but experiences notable difficulty maintaining them consistently in daily operations. While there are occasional moments of alignment, underlying gaps in execution or attitude frequently impact the overall quality of work and team harmony.",
+                opp: "Requires a structured action plan with clear, bi-weekly milestones established alongside their line manager. Focusing on core daily habits, actively seeking immediate feedback, and reflecting on operational mistakes will be essential to meeting baseline performance standards."
+            },
+            'E': {
+                str: "Currently falls significantly short of baseline organizational expectations, resulting in noticeable operational gaps and team friction. There is a clear disconnect between expected behaviors and daily execution, which requires urgent managerial intervention.",
+                opp: "Immediate realignment is required through structured daily coaching and close supervisor oversight. Establishing clear, non-negotiable performance expectations and monitoring compliance closely over the next evaluation cycle is critical to determining long-term fit and progression."
+            }
         };
-
-        const labelMap = {
-            'integrity': 'integrity',
-            'trust': 'interpersonal trust',
-            'courage': 'courageous communication',
-            'passion': 'organizational passion',
-            'humility': 'professional humility',
-            'gratitude': 'gratitude and forbearance',
-            'mastery': 'capability mastery',
-            'finesse': 'operational finesse',
-            'continuous_imp': 'continuous improvement',
-            'respect': 'respectful conduct',
-            'appreciation': 'peer appreciation',
-            'inclusion': 'inclusive practice'
-        };
-
-        const variationIndices = {};
 
         function generateFeedback(subValueId, grade) {
-            const label = labelMap[subValueId] || subValueId;
-            const pool = dynamicFeedbackPools[grade];
-
-            if (!pool || pool.length === 0) {
-                return {
-                    str: `Demonstrates performance aligned with Grade ${grade} in ${label}.`,
-                    opp: `Continue focusing on consistent application in ${label}.`
-                };
-            }
-
-            if (variationIndices[subValueId] === undefined) {
-                variationIndices[subValueId] = Math.floor(Math.random() * pool.length);
-            } else {
-                variationIndices[subValueId] = (variationIndices[subValueId] + 1) % pool.length;
-            }
-
-            const selectedTemplate = pool[variationIndices[subValueId]];
-
-            return {
-                str: selectedTemplate.str.replace(/{label}/g, label),
-                opp: selectedTemplate.opp.replace(/{label}/g, label)
-            };
+            return detailedHumanizedFeedback[grade] || detailedHumanizedFeedback['C'];
         }
 
         const evaluationState = {};
@@ -415,7 +356,7 @@
                         <!-- Merged Footnote Container (Spans Columns A-E) -->
                         <div id="note-${sub.id}" class="hidden mb-4 p-3 bg-slate-50 border border-slate-200 rounded-lg text-xs italic text-slate-600"></div>
 
-                        <!-- Dynamic Feedback Panel -->
+                        <!-- Dynamic Detailed Feedback Panel -->
                         <div id="panel-${sub.id}" class="hidden bg-slate-50 border border-slate-200 p-4 rounded-lg text-xs space-y-3 relative">
                             <div>
                                 <p class="text-emerald-900 leading-relaxed inline">
