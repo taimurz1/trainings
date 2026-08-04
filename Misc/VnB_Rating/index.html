@@ -3,115 +3,174 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Values & Behaviors Evaluation - Sincerity</title>
+    <title>TCF Values & Behaviors Evaluation - Sincerity</title>
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        tcf: {
+                            green: '#006837',
+                            darkgreen: '#004d28',
+                            lightgreen: '#e6f0eb',
+                            yellow: '#FFC20E',
+                            accentyellow: '#ebd022'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
     <style>
         body { font-family: 'Inter', sans-serif; }
+        @media print {
+            .no-print { display: none !important; }
+            body { background-color: white !important; }
+        }
     </style>
 </head>
-<body class="bg-slate-50 text-slate-800 min-h-screen pb-12">
+<body class="bg-slate-100 text-slate-800 min-h-screen pb-12">
 
-    <!-- Header -->
-    <header class="bg-indigo-900 text-white py-6 px-4 shadow-md mb-8">
-        <div class="max-w-4xl mx-auto flex flex-col md:flex-row justify-between items-center">
-            <div>
-                <h1 class="text-2xl font-bold">Values & Behaviors Evaluation</h1>
-                <p class="text-indigo-200 text-sm mt-1">Focus Area: Sincerity Core Rubrics</p>
+    <!-- TCF Header -->
+    <header class="bg-tcf-green text-white py-6 px-4 shadow-md mb-8 border-b-4 border-tcf-yellow">
+        <div class="max-w-5xl mx-auto flex flex-col md:flex-row justify-between items-center">
+            <div class="flex items-center space-x-3">
+                <div class="bg-white text-tcf-green font-black px-3 py-1.5 rounded-md text-xl tracking-wider">
+                    TCF
+                </div>
+                <div>
+                    <h1 class="text-2xl font-bold tracking-tight">Values & Behaviors Evaluation</h1>
+                    <p class="text-tcf-lightgreen text-sm">The Citizens Foundation — Sincerity Core Rubrics</p>
+                </div>
             </div>
-            <div id="overallScoreBadge" class="mt-4 md:mt-0 bg-indigo-800 border border-indigo-700 rounded-lg px-4 py-2 text-center">
-                <span class="text-xs uppercase tracking-wider text-indigo-300 font-semibold block">Overall Average</span>
-                <span id="averageDisplay" class="text-2xl font-extrabold text-amber-400">--</span>
+            <div id="overallScoreBadge" class="mt-4 md:mt-0 bg-tcf-darkgreen border border-tcf-green/40 rounded-lg px-5 py-2 text-center">
+                <span class="text-xs uppercase tracking-wider text-tcf-yellow font-bold block">Overall Average</span>
+                <span id="averageDisplay" class="text-2xl font-extrabold text-white">--</span>
             </div>
         </div>
     </header>
 
-    <main class="max-w-4xl mx-auto px-4">
+    <main class="max-w-5xl mx-auto px-4">
         
         <!-- Form Container -->
-        <div class="bg-white rounded-xl shadow-sm border border-slate-200 p-6 mb-6">
-            <h2 class="text-xl font-bold text-slate-900 mb-2">Sincerity Evaluation</h2>
-            <p class="text-slate-600 text-sm mb-6">
-                Select a rating (A to E) for each sub-value based on the organizational rubric. Strengths and opportunities will auto-generate below each section.
-            </p>
+        <div class="bg-white rounded-xl shadow-sm border border-slate-200 p-6 mb-8">
+            <div class="border-b border-slate-200 pb-4 mb-6">
+                <h2 class="text-xl font-bold text-tcf-green">Sincerity Evaluation Module</h2>
+                <p class="text-slate-600 text-sm mt-1">
+                    Select a rating (<strong>A</strong> to <strong>E</strong>) against each sub-value. Selecting a grade will immediately display the detailed rubric criteria alongside a 3-liner strength and opportunity assessment.
+                </p>
+            </div>
 
             <form id="evaluationForm" class="space-y-8">
                 
                 <!-- 1. SINCERITY CORE -->
-                <div class="border-b border-slate-200 pb-6">
-                    <div class="flex flex-col md:flex-row md:items-center justify-between mb-4">
+                <div class="border-b border-slate-200 pb-8">
+                    <div class="flex flex-col md:flex-row md:items-center justify-between mb-3">
                         <div>
-                            <h3 class="text-lg font-semibold text-indigo-950">1. Sincerity (Moral Intent)</h3>
-                            <p class="text-xs text-slate-500">Understanding of doing the right thing morally and ethically.</p>
-                        </div>
-                        <div class="mt-2 md:mt-0 flex gap-2">
-                            <template id="rating-buttons-sincerity">
-                                <!-- Dynamic Buttons -->
-                            </template>
+                            <h3 class="text-lg font-bold text-slate-900 flex items-center gap-2">
+                                <span class="w-2 h-2 rounded-full bg-tcf-yellow inline-block"></span>
+                                1. Sincerity (Moral Intent)
+                            </h3>
+                            <p class="text-xs text-slate-500 mt-0.5">We have sincere intentions about everything we do and how we do it.</p>
                         </div>
                     </div>
                     
                     <!-- Rating Buttons -->
-                    <div class="flex justify-between md:justify-start gap-2 mb-4" id="btn-group-sincerity">
-                        <!-- JS generated buttons A-E -->
-                    </div>
+                    <div class="flex flex-wrap gap-2 mb-4" id="btn-group-sincerity"></div>
 
-                    <!-- Output Paragraph -->
-                    <div id="feedback-sincerity" class="hidden bg-slate-50 border-l-4 border-indigo-500 p-4 rounded-r-lg text-sm space-y-2">
-                        <p class="text-emerald-800"><strong>Strength:</strong> <span id="str-sincerity"></span></p>
-                        <p class="text-amber-800"><strong>Opportunity:</strong> <span id="opp-sincerity"></span></p>
+                    <!-- Output Panel (Rubric Details + Feedback) -->
+                    <div id="panel-sincerity" class="hidden space-y-3">
+                        <!-- Rubric Definition Detail -->
+                        <div class="bg-tcf-lightgreen/60 border-l-4 border-tcf-green p-3.5 rounded-r-lg text-xs text-tcf-darkgreen">
+                            <span class="font-bold uppercase tracking-wider block mb-1 text-tcf-green">Rubric Benchmark Detail (Grade <span class="grade-label"></span>):</span>
+                            <p id="rubric-detail-sincerity" class="italic leading-relaxed"></p>
+                        </div>
+                        <!-- Strength & Opportunity -->
+                        <div class="bg-slate-50 border border-slate-200 p-4 rounded-lg text-sm space-y-2">
+                            <p class="text-emerald-900"><strong>Strength:</strong> <span id="str-sincerity"></span></p>
+                            <p class="text-amber-900"><strong>Opportunity:</strong> <span id="opp-sincerity"></span></p>
+                        </div>
                     </div>
                 </div>
 
                 <!-- 2. INTEGRITY -->
-                <div class="border-b border-slate-200 pb-6">
-                    <div class="flex flex-col md:flex-row md:items-center justify-between mb-4">
+                <div class="border-b border-slate-200 pb-8">
+                    <div class="flex flex-col md:flex-row md:items-center justify-between mb-3">
                         <div>
-                            <h3 class="text-lg font-semibold text-indigo-950">2. Integrity</h3>
-                            <p class="text-xs text-slate-500">Striving to do what is right, even to personal detriment.</p>
+                            <h3 class="text-lg font-bold text-slate-900 flex items-center gap-2">
+                                <span class="w-2 h-2 rounded-full bg-tcf-yellow inline-block"></span>
+                                2. Integrity
+                            </h3>
+                            <p class="text-xs text-slate-500 mt-0.5">We always strive to do what is right, even to personal detriment.</p>
                         </div>
                     </div>
                     
-                    <div class="flex justify-between md:justify-start gap-2 mb-4" id="btn-group-integrity"></div>
+                    <div class="flex flex-wrap gap-2 mb-4" id="btn-group-integrity"></div>
 
-                    <div id="feedback-integrity" class="hidden bg-slate-50 border-l-4 border-indigo-500 p-4 rounded-r-lg text-sm space-y-2">
-                        <p class="text-emerald-800"><strong>Strength:</strong> <span id="str-integrity"></span></p>
-                        <p class="text-amber-800"><strong>Opportunity:</strong> <span id="opp-integrity"></span></p>
+                    <div id="panel-integrity" class="hidden space-y-3">
+                        <div class="bg-tcf-lightgreen/60 border-l-4 border-tcf-green p-3.5 rounded-r-lg text-xs text-tcf-darkgreen">
+                            <span class="font-bold uppercase tracking-wider block mb-1 text-tcf-green">Rubric Benchmark Detail (Grade <span class="grade-label"></span>):</span>
+                            <p id="rubric-detail-integrity" class="italic leading-relaxed"></p>
+                        </div>
+                        <div class="bg-slate-50 border border-slate-200 p-4 rounded-lg text-sm space-y-2">
+                            <p class="text-emerald-900"><strong>Strength:</strong> <span id="str-integrity"></span></p>
+                            <p class="text-amber-900"><strong>Opportunity:</strong> <span id="opp-integrity"></span></p>
+                        </div>
                     </div>
                 </div>
 
                 <!-- 3. TRUST -->
-                <div class="border-b border-slate-200 pb-6">
-                    <div class="flex flex-col md:flex-row md:items-center justify-between mb-4">
+                <div class="border-b border-slate-200 pb-8">
+                    <div class="flex flex-col md:flex-row md:items-center justify-between mb-3">
                         <div>
-                            <h3 class="text-lg font-semibold text-indigo-950">3. Trust</h3>
-                            <p class="text-xs text-slate-500">Faith in each other's sincerity of intent and ability.</p>
+                            <h3 class="text-lg font-bold text-slate-900 flex items-center gap-2">
+                                <span class="w-2 h-2 rounded-full bg-tcf-yellow inline-block"></span>
+                                3. Trust
+                            </h3>
+                            <p class="text-xs text-slate-500 mt-0.5">We have faith in each other's sincerity of intent and their ability to do their work.</p>
                         </div>
                     </div>
                     
-                    <div class="flex justify-between md:justify-start gap-2 mb-4" id="btn-group-trust"></div>
+                    <div class="flex flex-wrap gap-2 mb-4" id="btn-group-trust"></div>
 
-                    <div id="feedback-trust" class="hidden bg-slate-50 border-l-4 border-indigo-500 p-4 rounded-r-lg text-sm space-y-2">
-                        <p class="text-emerald-800"><strong>Strength:</strong> <span id="str-trust"></span></p>
-                        <p class="text-amber-800"><strong>Opportunity:</strong> <span id="opp-trust"></span></p>
+                    <div id="panel-trust" class="hidden space-y-3">
+                        <div class="bg-tcf-lightgreen/60 border-l-4 border-tcf-green p-3.5 rounded-r-lg text-xs text-tcf-darkgreen">
+                            <span class="font-bold uppercase tracking-wider block mb-1 text-tcf-green">Rubric Benchmark Detail (Grade <span class="grade-label"></span>):</span>
+                            <p id="rubric-detail-trust" class="italic leading-relaxed"></p>
+                        </div>
+                        <div class="bg-slate-50 border border-slate-200 p-4 rounded-lg text-sm space-y-2">
+                            <p class="text-emerald-900"><strong>Strength:</strong> <span id="str-trust"></span></p>
+                            <p class="text-amber-900"><strong>Opportunity:</strong> <span id="opp-trust"></span></p>
+                        </div>
                     </div>
                 </div>
 
                 <!-- 4. COURAGE -->
                 <div class="pb-2">
-                    <div class="flex flex-col md:flex-row md:items-center justify-between mb-4">
+                    <div class="flex flex-col md:flex-row md:items-center justify-between mb-3">
                         <div>
-                            <h3 class="text-lg font-semibold text-indigo-950">4. Courage</h3>
-                            <p class="text-xs text-slate-500">Voicing unpopular decisions and accepting mistakes respectfully.</p>
+                            <h3 class="text-lg font-bold text-slate-900 flex items-center gap-2">
+                                <span class="w-2 h-2 rounded-full bg-tcf-yellow inline-block"></span>
+                                4. Courage
+                            </h3>
+                            <p class="text-xs text-slate-500 mt-0.5">We value harmony and yet have the courage to voice unpopular decisions and accept mistakes.</p>
                         </div>
                     </div>
                     
-                    <div class="flex justify-between md:justify-start gap-2 mb-4" id="btn-group-courage"></div>
+                    <div class="flex flex-wrap gap-2 mb-4" id="btn-group-courage"></div>
 
-                    <div id="feedback-courage" class="hidden bg-slate-50 border-l-4 border-indigo-500 p-4 rounded-r-lg text-sm space-y-2">
-                        <p class="text-emerald-800"><strong>Strength:</strong> <span id="str-courage"></span></p>
-                        <p class="text-amber-800"><strong>Opportunity:</strong> <span id="opp-courage"></span></p>
+                    <div id="panel-courage" class="hidden space-y-3">
+                        <div class="bg-tcf-lightgreen/60 border-l-4 border-tcf-green p-3.5 rounded-r-lg text-xs text-tcf-darkgreen">
+                            <span class="font-bold uppercase tracking-wider block mb-1 text-tcf-green">Rubric Benchmark Detail (Grade <span class="grade-label"></span>):</span>
+                            <p id="rubric-detail-courage" class="italic leading-relaxed"></p>
+                        </div>
+                        <div class="bg-slate-50 border border-slate-200 p-4 rounded-lg text-sm space-y-2">
+                            <p class="text-emerald-900"><strong>Strength:</strong> <span id="str-courage"></span></p>
+                            <p class="text-amber-900"><strong>Opportunity:</strong> <span id="opp-courage"></span></p>
+                        </div>
                     </div>
                 </div>
 
@@ -119,29 +178,60 @@
         </div>
 
         <!-- Summary & Print Area -->
-        <div id="summaryCard" class="bg-indigo-950 text-white rounded-xl p-6 shadow-lg hidden">
-            <h3 class="text-xl font-bold mb-4 flex items-center justify-between">
-                <span>Evaluation Summary</span>
-                <span id="finalScoreTag" class="text-sm bg-indigo-800 px-3 py-1 rounded-full text-amber-300"></span>
-            </h3>
-            <div id="summaryContent" class="space-y-4 text-sm text-indigo-100"></div>
-            <button onclick="window.print()" class="mt-6 w-full bg-amber-500 hover:bg-amber-600 text-indigo-950 font-bold py-3 px-4 rounded-lg transition-colors">
-                Print / Save Evaluation PDF
+        <div id="summaryCard" class="bg-tcf-green text-white rounded-xl p-6 shadow-lg hidden">
+            <div class="flex justify-between items-center border-b border-tcf-darkgreen pb-4 mb-4">
+                <h3 class="text-xl font-bold">Consolidated Evaluation Summary</h3>
+                <span id="finalScoreTag" class="text-sm bg-tcf-yellow text-tcf-darkgreen font-bold px-3 py-1 rounded-full"></span>
+            </div>
+            <div id="summaryContent" class="space-y-4 text-sm text-slate-100"></div>
+            <button onclick="window.print()" class="no-print mt-6 w-full bg-tcf-yellow hover:bg-tcf-accentyellow text-tcf-darkgreen font-bold py-3 px-4 rounded-lg transition-colors shadow-md">
+                Print / Save Evaluation Summary
             </button>
         </div>
     </main>
 
     <script>
-        // Numerical Values for Grade Mapping
         const gradeValues = { 'A': 5, 'B': 4, 'C': 3, 'D': 2, 'E': 1 };
         const categories = ['sincerity', 'integrity', 'trust', 'courage'];
-        
-        // Rubric Feedback Data Engine (Mapped to your PDF Document Rules)
+
+        // Exact Rubric Text Details Extracted directly from PDF
+        const rubricDetails = {
+            sincerity: {
+                'A': "Employee demonstrates a clear, complete understanding of the importance of doing the right thing morally and ethically in all work situations.",
+                'B': "Employee demonstrates an understanding of the importance of doing the right thing morally and ethically across standard operational duties.",
+                'C': "Employee demonstrates an understanding of doing the right thing morally and ethically approximately half the time.",
+                'D': "Employee occasionally struggles to demonstrate an understanding of moral and ethical implications in daily work actions.",
+                'E': "Employee does not demonstrate an understanding of the importance of doing the right thing morally or ethically."
+            },
+            integrity: {
+                'A': "Employee CONSISTENTLY does the right thing morally and ethically, even if it is to their personal detriment. Employee encourages colleagues to also do the right thing morally and ethically in all given situations.",
+                'B': "Employee CONSISTENTLY does the right thing morally and ethically in primary tasks. In other instances, employee demonstrates some level of regret with regards to their actions.",
+                'C': "Employee does the right thing morally and ethically approximately HALF THE TIME, even if it is to their personal detriment.",
+                'D': "Employee does not consistently demonstrate ethical consideration and rarely demonstrates regret with regards to incorrect actions.",
+                'E': "Employee does not demonstrate ANY moral or ethical considerations in their behaviour at work. Employee does not demonstrate regret with regards to their actions."
+            },
+            trust: {
+                'A': "The employee ALWAYS trusts peers to deliver on their work (cross-functional or within functions) by CONSISTENTLY giving space without unnecessary interference. As a line manager, CONSISTENTLY gives subordinates important tasks, space to share opinions, and visibility.",
+                'B': "The employee OFTEN trusts peers to deliver on their work by giving space without unnecessary interference most of the time. As a line manager, OFTEN trusts subordinates with important tasks and organizational exposure.",
+                'C': "The employee trusts peers/subordinates approximately HALF THE TIME, giving space to work without unnecessary interference approximately half the time while ensuring quality and deadlines.",
+                'D': "The employee SOMETIMES questions the sincerity of others, and their actions reflect this doubt. Gives limited space or visibility to peers and subordinates.",
+                'E': "The employee DOES NOT trust peers to deliver on their work. As a line manager, DOES NOT trust subordinates to deliver, DOES NOT give important tasks, opinion space, or opportunities to showcase work."
+            },
+            courage: {
+                'A': "The employee CONSISTENTLY voices their opinion with respect when it differs from others (including higher levels and majority). Takes responsibility in ALL relevant situations for actions/mistakes of self and team, encouraging colleagues to do the same.",
+                'B': "The employee CONSISTENTLY voices opinion with respect. Takes responsibility for actions and mistakes in most relevant situations.",
+                'C': "The employee voices opinion when it differs from others approximately HALF THE TIME. Takes responsibility for actions/mistakes approximately HALF THE TIME.",
+                'D': "The employee may or may not voice opinion with respect, rarely voicing dissenting views or taking ownership of team errors.",
+                'E': "The employee DOES NOT voice their opinion when it differs from others. The employee DOES NOT take responsibility for their actions or the actions of their team."
+            }
+        };
+
+        // 3-Liner Generated Strengths & Opportunities Data
         const feedbackEngine = {
             sincerity: {
                 'A': {
                     str: "The employee consistently demonstrates a complete moral and ethical compass in all professional situations. They actively model doing the right thing regardless of difficulty. Their actions build an environment of trust and moral clarity.",
-                    opp: "Continue to act as a ethical benchmark across cross-functional teams. Mentor junior colleagues on navigating complex ethical dilemmas. Seek opportunities to lead compliance and organizational governance initiatives."
+                    opp: "Continue to act as an ethical benchmark across cross-functional teams. Mentor junior colleagues on navigating complex ethical dilemmas. Seek opportunities to lead compliance and organizational governance initiatives."
                 },
                 'B': {
                     str: "The employee demonstrates a strong understanding of moral and ethical responsibilities at work. They regularly align their conduct with organizational values. They take accountability for doing the right thing in key moments.",
@@ -235,7 +325,6 @@
             courage: null
         };
 
-        // Initialize UI
         document.addEventListener('DOMContentLoaded', () => {
             categories.forEach(cat => renderButtons(cat));
         });
@@ -248,7 +337,7 @@
                 const btn = document.createElement('button');
                 btn.type = 'button';
                 btn.className = `w-12 h-12 rounded-lg font-bold border transition-all duration-200 
-                    border-slate-300 bg-white text-slate-700 hover:bg-slate-100 hover:border-indigo-400 focus:outline-none`;
+                    border-slate-300 bg-white text-slate-700 hover:bg-tcf-lightgreen hover:border-tcf-green focus:outline-none`;
                 btn.textContent = grade;
                 btn.dataset.grade = grade;
                 btn.onclick = () => selectRating(category, grade, btn);
@@ -259,26 +348,29 @@
         function selectRating(category, grade, selectedBtn) {
             state[category] = grade;
 
-            // Update Button Styling
+            // Highlight Active Button
             const container = document.getElementById(`btn-group-${category}`);
             Array.from(container.children).forEach(btn => {
                 btn.className = `w-12 h-12 rounded-lg font-bold border transition-all duration-200 
-                    border-slate-300 bg-white text-slate-700 hover:bg-slate-100 focus:outline-none`;
+                    border-slate-300 bg-white text-slate-700 hover:bg-tcf-lightgreen focus:outline-none`;
             });
             selectedBtn.className = `w-12 h-12 rounded-lg font-bold border-2 transition-all duration-200 
-                bg-indigo-600 text-white border-indigo-600 shadow-md scale-105 focus:outline-none`;
+                bg-tcf-green text-white border-tcf-green shadow-md scale-105 focus:outline-none`;
 
-            // Display 3-liner Feedback
-            const feedbackBox = document.getElementById(`feedback-${category}`);
+            // Display Detail Panel
+            const panel = document.getElementById(`panel-${category}`);
+            const rubricDetail = document.getElementById(`rubric-detail-${category}`);
             const strSpan = document.getElementById(`str-${category}`);
             const oppSpan = document.getElementById(`opp-${category}`);
 
+            // Update Text Values
+            panel.querySelectorAll('.grade-label').forEach(el => el.textContent = grade);
+            rubricDetail.textContent = rubricDetails[category][grade];
             strSpan.textContent = feedbackEngine[category][grade].str;
             oppSpan.textContent = feedbackEngine[category][grade].opp;
 
-            feedbackBox.classList.remove('hidden');
+            panel.classList.remove('hidden');
 
-            // Recalculate Average
             calculateAverage();
         }
 
@@ -297,7 +389,6 @@
             const totalScore = selectedGrades.reduce((acc, curr) => acc + gradeValues[curr], 0);
             const numericAvg = (totalScore / selectedGrades.length).toFixed(2);
             
-            // Map back to Letter Grade Range
             let letterGrade = 'E';
             if (numericAvg >= 4.5) letterGrade = 'A';
             else if (numericAvg >= 3.5) letterGrade = 'B';
@@ -306,23 +397,22 @@
 
             avgDisplay.textContent = `${letterGrade} (${numericAvg}/5.0)`;
 
-            // Check if all categories completed
             if (selectedGrades.length === categories.length) {
                 summaryCard.classList.remove('hidden');
                 finalScoreTag.textContent = `Final Grade: ${letterGrade} (${numericAvg} / 5.0)`;
                 
                 summaryContent.innerHTML = categories.map(cat => `
-                    <div class="border-b border-indigo-900 pb-3">
-                        <div class="flex justify-between font-semibold text-amber-300 mb-1">
-                            <span class="capitalize">${cat} Score:</span>
-                            <span>Grade ${state[cat]}</span>
+                    <div class="border-b border-tcf-darkgreen pb-3">
+                        <div class="flex justify-between font-bold text-tcf-yellow mb-1">
+                            <span class="capitalize">${cat} (Grade ${state[cat]}):</span>
+                            <span class="text-xs text-tcf-lightgreen italic font-normal">Score Value: ${gradeValues[state[cat]]}/5</span>
                         </div>
-                        <p class="text-xs text-indigo-200 mb-1"><strong>Strength:</strong> ${feedbackEngine[cat][state[cat]].str}</p>
-                        <p class="text-xs text-indigo-300"><strong>Opportunity:</strong> ${feedbackEngine[cat][state[cat]].opp}</p>
+                        <p class="text-xs text-tcf-lightgreen mb-2"><strong>Rubric Criteria:</strong> ${rubricDetails[cat][state[cat]]}</p>
+                        <p class="text-xs text-slate-100 mb-1"><strong>Strength:</strong> ${feedbackEngine[cat][state[cat]].str}</p>
+                        <p class="text-xs text-amber-200"><strong>Opportunity:</strong> ${feedbackEngine[cat][state[cat]].opp}</p>
                     </div>
                 `).join('');
                 
-                // Scroll smoothly to summary card
                 summaryCard.scrollIntoView({ behavior: 'smooth' });
             }
         }
