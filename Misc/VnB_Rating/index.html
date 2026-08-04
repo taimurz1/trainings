@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Values & Behaviors Evaluation - Sincerity</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 min-h-screen pb-12">
+
+    <!-- Header -->
+    <header class="bg-indigo-900 text-white py-6 px-4 shadow-md mb-8">
+        <div class="max-w-4xl mx-auto flex flex-col md:flex-row justify-between items-center">
+            <div>
+                <h1 class="text-2xl font-bold">Values & Behaviors Evaluation</h1>
+                <p class="text-indigo-200 text-sm mt-1">Focus Area: Sincerity Core Rubrics</p>
+            </div>
+            <div id="overallScoreBadge" class="mt-4 md:mt-0 bg-indigo-800 border border-indigo-700 rounded-lg px-4 py-2 text-center">
+                <span class="text-xs uppercase tracking-wider text-indigo-300 font-semibold block">Overall Average</span>
+                <span id="averageDisplay" class="text-2xl font-extrabold text-amber-400">--</span>
+            </div>
+        </div>
+    </header>
+
+    <main class="max-w-4xl mx-auto px-4">
+        
+        <!-- Form Container -->
+        <div class="bg-white rounded-xl shadow-sm border border-slate-200 p-6 mb-6">
+            <h2 class="text-xl font-bold text-slate-900 mb-2">Sincerity Evaluation</h2>
+            <p class="text-slate-600 text-sm mb-6">
+                Select a rating (A to E) for each sub-value based on the organizational rubric. Strengths and opportunities will auto-generate below each section.
+            </p>
+
+            <form id="evaluationForm" class="space-y-8">
+                
+                <!-- 1. SINCERITY CORE -->
+                <div class="border-b border-slate-200 pb-6">
+                    <div class="flex flex-col md:flex-row md:items-center justify-between mb-4">
+                        <div>
+                            <h3 class="text-lg font-semibold text-indigo-950">1. Sincerity (Moral Intent)</h3>
+                            <p class="text-xs text-slate-500">Understanding of doing the right thing morally and ethically.</p>
+                        </div>
+                        <div class="mt-2 md:mt-0 flex gap-2">
+                            <template id="rating-buttons-sincerity">
+                                <!-- Dynamic Buttons -->
+                            </template>
+                        </div>
+                    </div>
+                    
+                    <!-- Rating Buttons -->
+                    <div class="flex justify-between md:justify-start gap-2 mb-4" id="btn-group-sincerity">
+                        <!-- JS generated buttons A-E -->
+                    </div>
+
+                    <!-- Output Paragraph -->
+                    <div id="feedback-sincerity" class="hidden bg-slate-50 border-l-4 border-indigo-500 p-4 rounded-r-lg text-sm space-y-2">
+                        <p class="text-emerald-800"><strong>Strength:</strong> <span id="str-sincerity"></span></p>
+                        <p class="text-amber-800"><strong>Opportunity:</strong> <span id="opp-sincerity"></span></p>
+                    </div>
+                </div>
+
+                <!-- 2. INTEGRITY -->
+                <div class="border-b border-slate-200 pb-6">
+                    <div class="flex flex-col md:flex-row md:items-center justify-between mb-4">
+                        <div>
+                            <h3 class="text-lg font-semibold text-indigo-950">2. Integrity</h3>
+                            <p class="text-xs text-slate-500">Striving to do what is right, even to personal detriment.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="flex justify-between md:justify-start gap-2 mb-4" id="btn-group-integrity"></div>
+
+                    <div id="feedback-integrity" class="hidden bg-slate-50 border-l-4 border-indigo-500 p-4 rounded-r-lg text-sm space-y-2">
+                        <p class="text-emerald-800"><strong>Strength:</strong> <span id="str-integrity"></span></p>
+                        <p class="text-amber-800"><strong>Opportunity:</strong> <span id="opp-integrity"></span></p>
+                    </div>
+                </div>
+
+                <!-- 3. TRUST -->
+                <div class="border-b border-slate-200 pb-6">
+                    <div class="flex flex-col md:flex-row md:items-center justify-between mb-4">
+                        <div>
+                            <h3 class="text-lg font-semibold text-indigo-950">3. Trust</h3>
+                            <p class="text-xs text-slate-500">Faith in each other's sincerity of intent and ability.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="flex justify-between md:justify-start gap-2 mb-4" id="btn-group-trust"></div>
+
+                    <div id="feedback-trust" class="hidden bg-slate-50 border-l-4 border-indigo-500 p-4 rounded-r-lg text-sm space-y-2">
+                        <p class="text-emerald-800"><strong>Strength:</strong> <span id="str-trust"></span></p>
+                        <p class="text-amber-800"><strong>Opportunity:</strong> <span id="opp-trust"></span></p>
+                    </div>
+                </div>
+
+                <!-- 4. COURAGE -->
+                <div class="pb-2">
+                    <div class="flex flex-col md:flex-row md:items-center justify-between mb-4">
+                        <div>
+                            <h3 class="text-lg font-semibold text-indigo-950">4. Courage</h3>
+                            <p class="text-xs text-slate-500">Voicing unpopular decisions and accepting mistakes respectfully.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="flex justify-between md:justify-start gap-2 mb-4" id="btn-group-courage"></div>
+
+                    <div id="feedback-courage" class="hidden bg-slate-50 border-l-4 border-indigo-500 p-4 rounded-r-lg text-sm space-y-2">
+                        <p class="text-emerald-800"><strong>Strength:</strong> <span id="str-courage"></span></p>
+                        <p class="text-amber-800"><strong>Opportunity:</strong> <span id="opp-courage"></span></p>
+                    </div>
+                </div>
+
+            </form>
+        </div>
+
+        <!-- Summary & Print Area -->
+        <div id="summaryCard" class="bg-indigo-950 text-white rounded-xl p-6 shadow-lg hidden">
+            <h3 class="text-xl font-bold mb-4 flex items-center justify-between">
+                <span>Evaluation Summary</span>
+                <span id="finalScoreTag" class="text-sm bg-indigo-800 px-3 py-1 rounded-full text-amber-300"></span>
+            </h3>
+            <div id="summaryContent" class="space-y-4 text-sm text-indigo-100"></div>
+            <button onclick="window.print()" class="mt-6 w-full bg-amber-500 hover:bg-amber-600 text-indigo-950 font-bold py-3 px-4 rounded-lg transition-colors">
+                Print / Save Evaluation PDF
+            </button>
+        </div>
+    </main>
+
+    <script>
+        // Numerical Values for Grade Mapping
+        const gradeValues = { 'A': 5, 'B': 4, 'C': 3, 'D': 2, 'E': 1 };
+        const categories = ['sincerity', 'integrity', 'trust', 'courage'];
+        
+        // Rubric Feedback Data Engine (Mapped to your PDF Document Rules)
+        const feedbackEngine = {
+            sincerity: {
+                'A': {
+                    str: "The employee consistently demonstrates a complete moral and ethical compass in all professional situations. They actively model doing the right thing regardless of difficulty. Their actions build an environment of trust and moral clarity.",
+                    opp: "Continue to act as a ethical benchmark across cross-functional teams. Mentor junior colleagues on navigating complex ethical dilemmas. Seek opportunities to lead compliance and organizational governance initiatives."
+                },
+                'B': {
+                    str: "The employee demonstrates a strong understanding of moral and ethical responsibilities at work. They regularly align their conduct with organizational values. They take accountability for doing the right thing in key moments.",
+                    opp: "Aim to vocalize ethical standards more frequently in team discussions. Ensure consistency when high-pressure deadlines challenge ideal outcomes. Help colleagues maintain similar standards."
+                },
+                'C': {
+                    str: "The employee generally understands the importance of ethical behavior. They perform their duties with acceptable intentions under standard conditions. They recognize organizational policies.",
+                    opp: "Focus on applying moral standards consistently under pressure. Avoid taking shortcuts during challenging work cycles. Actively reflect on the broader ethical impact of operational decisions."
+                },
+                'D': {
+                    str: "The employee exhibits inconsistent awareness of doing the right thing morally. Ethical considerations are occasionally overlooked in pursuit of short-term tasks. Regret or reflection is only shown sporadically after errors.",
+                    opp: "Prioritize understanding the organizational core values and policy guidelines. Seek direct guidance from line management when facing ethical choices. Take immediate ownership when actions fall short of expectations."
+                },
+                'E': {
+                    str: "The employee completes operational tasks assigned to them daily. Minimal friction occurs when routine guidelines are clear and structured.",
+                    opp: "Immediate alignment with organizational ethics and values is required. Focus on understanding the impact of personal behavior on team integrity. Work closely with management to rebuild professional standard compliance."
+                }
+            },
+            integrity: {
+                'A': {
+                    str: "The employee consistently does the right thing morally and ethically, even to their personal detriment. They actively encourage peers to maintain integrity across all situations. They take absolute ownership of errors and complete work transparently.",
+                    opp: "Lead by example in organizational accountability forums. Drive transparent reporting practices across cross-functional projects. Help establish transparent delivery standards in high-stress environments."
+                },
+                'B': {
+                    str: "The employee frequently chooses the right ethical path during challenging tasks. They show genuine accountability and regret when mistakes occur. They generally support team accountability.",
+                    opp: "Strive for 100% consistency even when personal metrics might be impacted. Speak up proactively when observing non-compliant behaviors around you. Maintain high transparency during project setbacks."
+                },
+                'C': {
+                    str: "The employee acts ethically approximately half the time under standard supervision. They show occasional regret when actions lead to unfavorable outcomes. They complete work within baseline parameters.",
+                    opp: "Reduce reliance on supervision to do the right thing under pressure. Consistently report real-time project risks and errors without delay. Avoid defending mistakes when constructive feedback is given."
+                },
+                'D': {
+                    str: "The employee occasionally struggles to prioritize ethics over personal convenience. Regret or accountability for incorrect choices is rarely demonstrated. Peer encouragement regarding standards is absent.",
+                    opp: "Demonstrate clear accountability by owning past operational mistakes. Avoid shifting blame to colleagues or external circumstances. Seek alignment with line manager on integrity expectations."
+                },
+                'E': {
+                    str: "The employee completes tasks within standard operational bounds when monitored.",
+                    opp: "Crucial improvements are needed in transparency and moral alignment at work. Immediate focus must be placed on honest reporting of progress and adherence to policy. Eliminate defensive behaviors regarding mistakes."
+                }
+            },
+            trust: {
+                'A': {
+                    str: "The employee completely trusts peers and subordinates to deliver quality work. As a manager/peer, they consistently provide space without micromanagement while holding high standards. They empower others to present work to senior leadership.",
+                    opp: "Continue mentoring others on effective delegation and trust-building. Scale this empowering leadership style across cross-functional projects. Inspire broader organizational culture around psychological safety."
+                },
+                'B': {
+                    str: "The employee regularly trusts colleagues and subordinates to complete assignments. They grant appropriate working space and autonomy most of the time. Quality and timelines are maintained effectively.",
+                    opp: "Extend autonomy to higher-risk or non-routine projects. Consistently highlight subordinate achievements to senior leadership. Avoid intervening prematurely when teams face minor hurdles."
+                },
+                'C': {
+                    str: "The employee trusts colleagues approximately half the time, occasionally interfering in execution. Delegation occurs selectively based on personal comfort levels. Subordinates are given partial exposure.",
+                    opp: "Practice stepping back and avoiding micromanagement during execution phases. Build deeper faith in team capabilities through structured check-ins rather than intervention. Share organization-wide visibility opportunities more broadly."
+                },
+                'D': {
+                    str: "The employee frequently questions the sincerity and capability of peers and team members. They grant limited autonomy, often stepping in unnecessarily. Subordinates receive few opportunities to showcase work.",
+                    opp: "Focus on building trust in team competencies through clear goal-setting. Refrain from interfering once tasks are delegated to peers or subordinates. Actively seek to understand colleagues' intent before assuming doubt."
+                },
+                'E': {
+                    str: "The employee maintains strict personal control over basic output tasks.",
+                    opp: "Urgent shift required from control-oriented work to collaborative trust. Begin by delegating smaller tasks and stepping back from daily execution monitoring. Value team input and capability openly."
+                }
+            },
+            courage: {
+                'A': {
+                    str: "The employee consistently voices respectful opinions even when differing from leadership or the majority. They take full accountability for personal and team mistakes in all situations. They actively encourage peers to speak up courageously.",
+                    opp: "Channel courageous feedback into structured policy or process improvement proposals. Continue fostering psychological safety so quieter team members feel comfortable speaking up. Champion challenging transformation projects."
+                },
+                'B': {
+                    str: "The employee frequently voices honest opinions with respect during critical discussions. They take ownership of mistakes and team outcomes regularly. They support an environment of open communication.",
+                    opp: "Consistently voice constructive counter-perspectives even in high-stakes senior meetings. Ensure team mistake-ownership is communicated promptly without hesitation. Encourage peers to voice dissenting views."
+                },
+                'C': {
+                    str: "The employee voices opinions approximately half the time when differing from the group. They take partial ownership of mistakes under standard conditions. Respectful tone is generally maintained.",
+                    opp: "Increase willingness to challenge status-quo ideas constructively. Take full, immediate ownership of team errors rather than partial accountability. Consistently maintain a respectful tone when debate becomes heated."
+                },
+                'D': {
+                    str: "The employee rarely voices differing views, preferring to yield to the majority. Ownership of mistakes or team outcomes is seldom taken. Tone during disagreements can be inconsistent.",
+                    opp: "Practice sharing constructive feedback in smaller team settings first. Accept mistakes openly as learning opportunities rather than avoiding responsibility. Ensure tone remains consistently professional when challenged."
+                },
+                'E': {
+                    str: "The employee follows directives as given without raising operational friction.",
+                    opp: "Focus on developing professional voice and active participation in decision-making. Accept personal responsibility when errors occur under direct scope. Learn to express constructive viewpoints respectfully."
+                }
+            }
+        };
+
+        const state = {
+            sincerity: null,
+            integrity: null,
+            trust: null,
+            courage: null
+        };
+
+        // Initialize UI
+        document.addEventListener('DOMContentLoaded', () => {
+            categories.forEach(cat => renderButtons(cat));
+        });
+
+        function renderButtons(category) {
+            const container = document.getElementById(`btn-group-${category}`);
+            const grades = ['A', 'B', 'C', 'D', 'E'];
+            
+            grades.forEach(grade => {
+                const btn = document.createElement('button');
+                btn.type = 'button';
+                btn.className = `w-12 h-12 rounded-lg font-bold border transition-all duration-200 
+                    border-slate-300 bg-white text-slate-700 hover:bg-slate-100 hover:border-indigo-400 focus:outline-none`;
+                btn.textContent = grade;
+                btn.dataset.grade = grade;
+                btn.onclick = () => selectRating(category, grade, btn);
+                container.appendChild(btn);
+            });
+        }
+
+        function selectRating(category, grade, selectedBtn) {
+            state[category] = grade;
+
+            // Update Button Styling
+            const container = document.getElementById(`btn-group-${category}`);
+            Array.from(container.children).forEach(btn => {
+                btn.className = `w-12 h-12 rounded-lg font-bold border transition-all duration-200 
+                    border-slate-300 bg-white text-slate-700 hover:bg-slate-100 focus:outline-none`;
+            });
+            selectedBtn.className = `w-12 h-12 rounded-lg font-bold border-2 transition-all duration-200 
+                bg-indigo-600 text-white border-indigo-600 shadow-md scale-105 focus:outline-none`;
+
+            // Display 3-liner Feedback
+            const feedbackBox = document.getElementById(`feedback-${category}`);
+            const strSpan = document.getElementById(`str-${category}`);
+            const oppSpan = document.getElementById(`opp-${category}`);
+
+            strSpan.textContent = feedbackEngine[category][grade].str;
+            oppSpan.textContent = feedbackEngine[category][grade].opp;
+
+            feedbackBox.classList.remove('hidden');
+
+            // Recalculate Average
+            calculateAverage();
+        }
+
+        function calculateAverage() {
+            const selectedGrades = Object.values(state).filter(val => val !== null);
+            const avgDisplay = document.getElementById('averageDisplay');
+            const summaryCard = document.getElementById('summaryCard');
+            const summaryContent = document.getElementById('summaryContent');
+            const finalScoreTag = document.getElementById('finalScoreTag');
+
+            if (selectedGrades.length === 0) {
+                avgDisplay.textContent = '--';
+                return;
+            }
+
+            const totalScore = selectedGrades.reduce((acc, curr) => acc + gradeValues[curr], 0);
+            const numericAvg = (totalScore / selectedGrades.length).toFixed(2);
+            
+            // Map back to Letter Grade Range
+            let letterGrade = 'E';
+            if (numericAvg >= 4.5) letterGrade = 'A';
+            else if (numericAvg >= 3.5) letterGrade = 'B';
+            else if (numericAvg >= 2.5) letterGrade = 'C';
+            else if (numericAvg >= 1.5) letterGrade = 'D';
+
+            avgDisplay.textContent = `${letterGrade} (${numericAvg}/5.0)`;
+
+            // Check if all categories completed
+            if (selectedGrades.length === categories.length) {
+                summaryCard.classList.remove('hidden');
+                finalScoreTag.textContent = `Final Grade: ${letterGrade} (${numericAvg} / 5.0)`;
+                
+                summaryContent.innerHTML = categories.map(cat => `
+                    <div class="border-b border-indigo-900 pb-3">
+                        <div class="flex justify-between font-semibold text-amber-300 mb-1">
+                            <span class="capitalize">${cat} Score:</span>
+                            <span>Grade ${state[cat]}</span>
+                        </div>
+                        <p class="text-xs text-indigo-200 mb-1"><strong>Strength:</strong> ${feedbackEngine[cat][state[cat]].str}</p>
+                        <p class="text-xs text-indigo-300"><strong>Opportunity:</strong> ${feedbackEngine[cat][state[cat]].opp}</p>
+                    </div>
+                `).join('');
+                
+                // Scroll smoothly to summary card
+                summaryCard.scrollIntoView({ behavior: 'smooth' });
+            }
+        }
+    </script>
+</body>
+</html>
