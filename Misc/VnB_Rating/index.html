@@ -43,7 +43,7 @@
                 </div>
                 <div>
                     <h1 class="text-2xl font-bold tracking-tight">Values & Behaviours Evaluation</h1>
-                    <p class="text-tcf-lightgreen text-sm">The Citizens Foundation — Rubric Assessment Suite</p>
+                    <p class="text-tcf-lightgreen text-sm">The Citizens Foundation — Dynamic Rubric Assessment Engine</p>
                 </div>
             </div>
             <div id="overallScoreBadge" class="mt-4 md:mt-0 bg-tcf-darkgreen border border-tcf-green/40 rounded-lg px-5 py-2 text-center">
@@ -127,7 +127,7 @@
     <script>
         const gradeValues = { 'A': 5, 'B': 4, 'C': 3, 'D': 2, 'E': 1 };
 
-        // 12 Behaviours Schema with Exact Baseline Definitions
+        // 12 Behaviours Schema
         const rubricSchema = [
             {
                 valueKey: 'sincerity',
@@ -163,7 +163,7 @@
             }
         ];
 
-        // 100% Exact Verbatim Text for A, C, E. Columns B and D left strictly empty ("").
+        // Verbatim Text for A, C, E. Columns B and D left strictly empty ("")
         const fullRubricVerbatim = {
             integrity: {
                 'A': "Employee demonstrates an understanding of the importance of doing the right thing morally and ethically.\n\nEmployee CONSISTENTLY does the right thing* morally and ethically, even if it is to their personal detriment.\n\nEmployee encourages colleagues to also do the right thing morally and ethically in all given situations.",
@@ -253,50 +253,127 @@
             }
         };
 
-        // Feedback Generator Engine
-        function generateFeedback(subValueId, grade) {
-            const labelMap = {
-                'integrity': 'integrity',
-                'trust': 'interpersonal trust',
-                'courage': 'courageous communication',
-                'passion': 'organizational passion',
-                'humility': 'professional humility',
-                'gratitude': 'gratitude and forbearance',
-                'mastery': 'capability mastery',
-                'finesse': 'operational finesse',
-                'continuous_imp': 'continuous improvement',
-                'respect': 'respectful conduct',
-                'appreciation': 'peer appreciation',
-                'inclusion': 'inclusive practice'
-            };
-            const label = labelMap[subValueId] || subValueId;
-
-            const gradeTextMap = {
-                'A': {
-                    str: `Exemplifies top-tier execution in ${label}. Consistently models ideal behaviours, encourages colleagues, and maintains organizational standards in all situations.`,
-                    opp: `Leverage strong mastery of ${label} to mentor peers across functions and champion TCF values during organizational initiatives.`
+        // OPTION 1: Dynamic Template Variation Pools
+        const dynamicFeedbackPools = {
+            'A': [
+                {
+                    str: "Exemplifies top-tier execution in {label}. Consistently models ideal behaviours, encourages colleagues, and maintains organizational standards in all situations.",
+                    opp: "Leverage strong mastery of {label} to mentor peers across functions and champion TCF values during organizational initiatives."
                 },
-                'B': {
-                    str: `Demonstrates high consistency in ${label}. Routinely meets organizational benchmarks and contributes positively to team culture.`,
-                    opp: `Maintain consistency during high-stress cycles and actively encourage peers to adopt similar standards.`
+                {
+                    str: "Demonstrates exceptional commitment to {label}, serving as a benchmark role model for team members across all projects.",
+                    opp: "Take an active role in leading cross-functional workshops to share best practices in {label}."
                 },
-                'C': {
-                    str: `Meets standards for ${label} approximately half the time. Performs adequately under standard conditions but experiences occasional inconsistency.`,
-                    opp: `Focus on building reliable daily habits in ${label} to eliminate fluctuations and seek proactive manager feedback.`
-                },
-                'D': {
-                    str: `Shows sporadic awareness of ${label}. Behavioral application falls below required organizational benchmarks.`,
-                    opp: `Review TCF rubric expectations with line manager and establish a structured action plan to build daily consistency.`
-                },
-                'E': {
-                    str: `Does not demonstrate baseline expectations for ${label} in daily work or team interactions.`,
-                    opp: `Requires immediate alignment with TCF core values and structured coaching from line management to establish compliance.`
+                {
+                    str: "Consistently surpasses baseline expectations in {label}, actively fostering a supportive and high-accountability environment.",
+                    opp: "Help line management design training materials and peer-coaching structures centered around {label}."
                 }
+            ],
+            'B': [
+                {
+                    str: "Demonstrates high consistency in {label}. Routinely meets organizational benchmarks and contributes positively to team culture.",
+                    opp: "Maintain consistency during high-stress cycles and actively encourage peers to adopt similar standards in {label}."
+                },
+                {
+                    str: "Reliably executes expectations for {label} across core daily duties with minimal guidance required.",
+                    opp: "Identify opportunities to take greater ownership during complex assignments to move from Grade B to Grade A performance."
+                },
+                {
+                    str: "Maintains a strong, positive standard in {label}, contributing to a productive operational workflow.",
+                    opp: "Proactively share insights with team members to help elevate overall group execution in {label}."
+                }
+            ],
+            'C': [
+                {
+                    str: "Meets standards for {label} approximately half the time. Performs adequately under standard conditions but experiences occasional inconsistency.",
+                    opp: "Focus on building reliable daily habits in {label} to eliminate performance fluctuations and seek proactive manager feedback."
+                },
+                {
+                    str: "Shows good foundational understanding of {label}, though application varies depending on workload or situational pressure.",
+                    opp: "Set bi-weekly self-check goals to practice {label} more consistently across all routine and non-routine duties."
+                },
+                {
+                    str: "Demonstrates satisfactory alignment with {label} in routine tasks, with room for greater consistency in challenging scenarios.",
+                    opp: "Work with your line manager to identify specific triggers that lead to inconsistencies in {label}."
+                }
+            ],
+            'D': [
+                {
+                    str: "Shows sporadic awareness of {label}. Behavioral application falls below required organizational benchmarks.",
+                    opp: "Review TCF rubric expectations with line manager and establish a structured action plan to build daily consistency in {label}."
+                },
+                {
+                    str: "Displays occasional effort in {label}, but regular gaps in application impact overall team alignment.",
+                    opp: "Schedule regular check-ins with management to receive direct coaching and actionable milestones for {label}."
+                },
+                {
+                    str: "Struggles to consistently maintain organizational standards for {label} during day-to-day work.",
+                    opp: "Focus on fundamental expectations of {label} and request peer shadowing to observe model behaviours."
+                }
+            ],
+            'E': [
+                {
+                    str: "Does not demonstrate baseline expectations for {label} in daily work or team interactions.",
+                    opp: "Requires immediate alignment with TCF core values and structured coaching from line management to establish compliance in {label}."
+                },
+                {
+                    str: "Significant improvement required in {label} to align with core TCF behavioral standards.",
+                    opp: "Formulate an immediate Performance Improvement Plan (PIP) focusing strictly on foundational expectations for {label}."
+                },
+                {
+                    str: "Demonstrates little to no observable alignment with organizational principles regarding {label}.",
+                    opp: "Engage in mandatory value alignment sessions with leadership to understand the critical importance of {label}."
+                }
+            ]
+        };
+
+        const labelMap = {
+            'integrity': 'integrity',
+            'trust': 'interpersonal trust',
+            'courage': 'courageous communication',
+            'passion': 'organizational passion',
+            'humility': 'professional humility',
+            'gratitude': 'gratitude and forbearance',
+            'mastery': 'capability mastery',
+            'finesse': 'operational finesse',
+            'continuous_imp': 'continuous improvement',
+            'respect': 'respectful conduct',
+            'appreciation': 'peer appreciation',
+            'inclusion': 'inclusive practice'
+        };
+
+        // Object tracking current dynamic index per sub-value to cycle through variations
+        const variationIndices = {};
+
+        // Dynamic Feedback Generator Engine (Option 1)
+        function generateFeedback(subValueId, grade) {
+            const label = labelMap[subValueId] || subValueId;
+            const pool = dynamicFeedbackPools[grade];
+
+            if (!pool || pool.length === 0) {
+                return {
+                    str: `Demonstrates performance aligned with Grade ${grade} in ${label}.`,
+                    opp: `Continue focusing on consistent application in ${label}.`
+                };
+            }
+
+            // Track index or pick variation to ensure dynamic behavior on each selection
+            if (variationIndices[subValueId] === undefined) {
+                variationIndices[subValueId] = Math.floor(Math.random() * pool.length);
+            } else {
+                variationIndices[subValueId] = (variationIndices[subValueId] + 1) % pool.length;
+            }
+
+            const selectedTemplate = pool[variationIndices[subValueId]];
+
+            return {
+                str: selectedTemplate.str.replace(/{label}/g, label),
+                opp: selectedTemplate.opp.replace(/{label}/g, label)
             };
-            return gradeTextMap[grade];
         }
 
         const evaluationState = {};
+        const generatedFeedbackState = {};
 
         document.addEventListener('DOMContentLoaded', () => {
             renderFullForm();
@@ -311,9 +388,12 @@
                     const subCard = document.createElement('div');
                     subCard.className = 'border-b border-slate-100 pb-8 last:border-b-0 last:pb-0';
                     subCard.innerHTML = `
-                        <div class="mb-4">
-                            <h3 class="text-base font-bold text-slate-900">${sub.name}</h3>
-                            <p class="text-xs text-slate-500 font-medium">${sub.desc}</p>
+                        <div class="mb-4 flex justify-between items-start">
+                            <div>
+                                <h3 class="text-base font-bold text-slate-900">${sub.name}</h3>
+                                <p class="text-xs text-slate-500 font-medium">${sub.desc}</p>
+                            </div>
+                            <span class="text-[10px] bg-slate-100 text-slate-500 px-2 py-0.5 rounded font-mono hidden md:inline-block">Dynamic Feedback Engine</span>
                         </div>
                         <!-- Cards Row (A-E) -->
                         <div class="grid grid-cols-1 md:grid-cols-5 gap-3 mb-3" id="cards-${sub.id}"></div>
@@ -321,8 +401,8 @@
                         <!-- Merged Footnote Container (Spans Columns A-E) -->
                         <div id="note-${sub.id}" class="hidden mb-4 p-3 bg-slate-50 border border-slate-200 rounded-lg text-xs italic text-slate-600"></div>
 
-                        <!-- Feedback Panel -->
-                        <div id="panel-${sub.id}" class="hidden bg-slate-50 border border-slate-200 p-4 rounded-lg text-xs space-y-2">
+                        <!-- Dynamic Feedback Panel -->
+                        <div id="panel-${sub.id}" class="hidden bg-slate-50 border border-slate-200 p-4 rounded-lg text-xs space-y-2 relative">
                             <p class="text-emerald-900 leading-relaxed"><strong>Strength:</strong> <span id="str-${sub.id}"></span></p>
                             <p class="text-amber-900 leading-relaxed"><strong>Opportunity:</strong> <span id="opp-${sub.id}"></span></p>
                         </div>
@@ -392,7 +472,10 @@
             const strSpan = document.getElementById(`str-${subId}`);
             const oppSpan = document.getElementById(`opp-${subId}`);
 
+            // Generate dynamic feedback from option 1 variation pool
             const feedback = generateFeedback(subId, grade);
+            generatedFeedbackState[subId] = feedback;
+
             strSpan.textContent = feedback.str;
             oppSpan.textContent = feedback.opp;
 
@@ -437,7 +520,7 @@
                         <div class="space-y-3">
                             ${sec.subValues.map(sub => {
                                 const g = evaluationState[sub.id];
-                                const fb = generateFeedback(sub.id, g);
+                                const fb = generatedFeedbackState[sub.id] || generateFeedback(sub.id, g);
                                 const rawItem = fullRubricVerbatim[sub.id];
                                 const formattedText = rawItem[g] ? rawItem[g].replace(/\n\n/g, '<br/>') : '<em>Intermediate Benchmark Grade Selected</em>';
                                 const noteText = rawItem.note ? `<br/><em class="text-slate-300 block mt-1">${rawItem.note}</em>` : '';
@@ -448,8 +531,8 @@
                                             <span class="text-tcf-yellow">Score Value: ${gradeValues[g]}/5</span>
                                         </div>
                                         <p class="text-[11px] text-tcf-lightgreen mb-1.5 leading-relaxed"><strong>Official Rubric Criteria:</strong><br/>${formattedText}${noteText}</p>
-                                        <p class="text-[11px] text-slate-100 mb-1 leading-relaxed"><strong>Strength:</strong> ${fb.str}</p>
-                                        <p class="text-[11px] text-amber-200 leading-relaxed"><strong>Opportunity:</strong> ${fb.opp}</p>
+                                        <p class="text-[11px] text-slate-100 mb-1 leading-relaxed"><strong>Dynamic Strength:</strong> ${fb.str}</p>
+                                        <p class="text-[11px] text-amber-200 leading-relaxed"><strong>Dynamic Opportunity:</strong> ${fb.opp}</p>
                                     </div>
                                 `;
                             }).join('')}
