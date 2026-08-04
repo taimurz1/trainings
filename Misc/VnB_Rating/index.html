@@ -27,7 +27,7 @@
     <style>
         body { font-family: 'Inter', sans-serif; }
         
-        /* Specialized Print Styles - Isolates ONLY the Consolidated Performance Report */
+        /* Specialized Print Styles */
         @media print {
             .no-print, header, #evaluationForm { 
                 display: none !important; 
@@ -63,7 +63,7 @@
                 </div>
                 <div>
                     <h1 class="text-2xl font-bold tracking-tight">Values & Behaviours Evaluation</h1>
-                    <p class="text-tcf-lightgreen text-sm">The Citizens Foundation — Dynamic Rubric Assessment Engine</p>
+                    <p class="text-tcf-lightgreen text-sm">The Citizens Foundation — Dynamic Humanized Rubric Engine</p>
                 </div>
             </div>
             <div id="overallScoreBadge" class="mt-4 md:mt-0 bg-tcf-darkgreen border border-tcf-green/40 rounded-lg px-5 py-2 text-center">
@@ -128,12 +128,12 @@
 
         </form>
 
-        <!-- Dynamic Consolidated Performance Evaluation Report -->
+        <!-- Executive Summary Report -->
         <div id="summaryCard" class="bg-white border border-slate-200 text-slate-800 rounded-xl p-8 shadow-md hidden mt-8">
             <div class="flex justify-between items-center border-b border-slate-200 pb-5 mb-6">
                 <div>
                     <h3 class="text-2xl font-bold text-tcf-green">Consolidated Performance Evaluation Report</h3>
-                    <p class="text-xs text-slate-500 font-medium mt-1">Official TCF Values & Behaviours Audit Summary (12 Behaviours)</p>
+                    <p class="text-xs text-slate-500 font-medium mt-1">Official TCF Values & Behaviours Summary (Detailed Qualitative Feedback)</p>
                 </div>
                 <span id="finalScoreTag" class="text-sm bg-tcf-green text-white font-bold px-4 py-2 rounded-lg shadow-sm border border-tcf-darkgreen"></span>
             </div>
@@ -279,38 +279,284 @@
             }
         };
 
-        // Detailed, Humanized Feedback Engine (Minimum 3-4 lines per entry)
-        const detailedHumanizedFeedback = {
-            'A': {
-                str: "Consistently serves as an exemplary role model for the entire team in this area. They demonstrate complete ownership and high moral clarity in their daily actions, even when faced with challenging or uncomfortable situations. Furthermore, they proactively mentor peers and create a supportive environment that inspires others to uphold the highest ethical and performance standards across the organization.",
-                opp: "Look for opportunities to scale this positive influence by leading cross-functional alignment initiatives or mentoring emerging leaders. By sharing their practical strategies and personal framework, they can help embed these ideal behaviors into the broader team culture and elevate overall organizational capability."
+        // Truly Unique, Context-Specific, Humanized Responses (Minimum 3-4 lines each)
+        const subValueHumanFeedback = {
+            integrity: {
+                'A': {
+                    str: "Exemplifies unshakeable moral strength and transparency across all operational tasks. They consistently choose honesty and ethical integrity even when it presents personal discomfort or administrative difficulty, serving as a trusted moral compass for their teammates.",
+                    opp: "Continue leveraging this high ethical standard to mentor junior colleagues during high-stakes project decisions. By openly discussing ethical dilemmas in team settings, they can help build a broader departmental culture grounded in radical transparency."
+                },
+                'B': {
+                    str: "Demonstrates a dependable ethical standard in regular duties, consistently choosing transparent and fair solutions. They take accountability for their deliverables and maintain high moral clarity across routine daily workflows.",
+                    opp: "Focus on actively promoting these ethical standards during high-pressure deadlines when shortcuts might seem tempting. Taking a more vocal stance in group discussions will solidify their position as a reliable peer leader."
+                },
+                'C': {
+                    str: "Shows a genuine understanding of moral and ethical expectations, generally striving to do what is right. While their intentions are good, they occasionally hesitate or display doubt when faced with complex decisions that carry personal discomfort.",
+                    opp: "Work on developing greater personal conviction during uncomfortable scenarios, such as reporting difficult project metrics early. Seeking immediate guidance from line management when ethical gray areas arise will help build consistent decision-making confidence."
+                },
+                'D': {
+                    str: "Displays intermittent awareness of ethical standards but frequently struggles to apply them consistently when difficulty arises. There are noticeable gaps where short-term ease or avoiding discomfort overrides transparent reporting.",
+                    opp: "Requires close managerial coaching to establish clear expectations regarding honesty and accountability. Setting explicit daily guidelines for transparent reporting will help rebuild baseline trust within the team."
+                },
+                'E': {
+                    str: "Fails to demonstrate basic ethical considerations or accountability in their daily work performance. Their actions often reflect disregard for transparent reporting, causing significant concern regarding alignment with organizational values.",
+                    opp: "Requires immediate and structured alignment sessions with supervisors to address non-negotiable ethical boundaries. Direct intervention is necessary to evaluate their fundamental understanding of integrity in the workplace."
+                }
             },
-            'B': {
-                str: "Reliably demonstrates strong alignment with organizational benchmarks across regular day-to-day duties. They consistently deliver quality work without needing constant supervision and handle routine team interactions with care, maturity, and sound judgment.",
-                opp: "Focus on maintaining this standard during high-pressure deadlines or complex inter-departmental projects. Seeking opportunities to step up and guide junior colleagues during critical workflows will help them transition smoothly into a Grade A benchmark performer."
+            trust: {
+                'A': {
+                    str: "Builds an environment of exceptional psychological safety by placing authentic trust in their peers and direct reports. They consistently grant team members the autonomy to execute important work without micromanagement while providing unwavering guidance.",
+                    opp: "Look for opportunities to lead larger cross-functional initiatives where delegated ownership is vital. Sharing their framework for balanced delegation with other line managers will strengthen overall leadership capacity across the organization."
+                },
+                'B': {
+                    str: "Maintains a healthy balance of autonomy and oversight, trusting colleagues to deliver quality work reliably. They give team members room to take ownership while keeping project deadlines and standards on track.",
+                    opp: "Encourage them to delegate more critical, high-visibility assignments to subordinates to help them grow. Trusting team members with strategic responsibilities will help transition their team to higher levels of independence."
+                },
+                'C': {
+                    str: "Demonstrates willingness to trust colleagues under standard conditions but tends to pull back control or micromanage when project pressures rise. This intermittent hesitation can occasionally slow down team momentum and cause unnecessary second-guessing.",
+                    opp: "Focus on establishing clear milestone checkpoints rather than intervening prematurely in peer workflows. Learning to trust the established processes will foster better team confidence and smoother collaboration."
+                },
+                'D': {
+                    str: "Struggles to place faith in colleagues' capabilities, frequently double-checking routine tasks or withholding key responsibilities. This lack of trust creates friction within the team and restricts growth for direct reports.",
+                    opp: "Needs to practice step-by-step delegation, starting with smaller tasks and giving peers room to operate without constant interference. Managers should help them focus on outcomes rather than controlling every step of execution."
+                },
+                'E': {
+                    str: "Exhibits widespread skepticism toward colleagues' sincerity and competence, resulting in severe micromanagement or total isolation from collaborative processes. This creates a restrictive working environment that stifles team initiative.",
+                    opp: "Immediate realignment is required to address fundamental underlying trust issues and team communication dynamics. The employee must learn to collaborate constructively and step back from counterproductive monitoring behaviors."
+                }
             },
-            'C': {
-                str: "Shows a solid foundational understanding of expectations and applies them effectively under standard working conditions. They demonstrate good intent and frequently produce positive outcomes when working within familiar guidelines or routines.",
-                opp: "Focus on building greater consistency during high-stress situations or when dealing with unfamiliar challenges where performance currently tends to fluctuate. Setting personal check-ins and proactively consulting with line management for real-time guidance will build the resilience needed for steady performance."
+            courage: {
+                'A': {
+                    str: "Displays remarkable moral courage by speaking up constructively, even when their perspective challenges senior views or majority opinions. They take complete accountability for their own mistakes and those of their team, using failures as transparent learning moments.",
+                    opp: "Channel this constructive voice into strategic forums and steering committees where candid feedback is needed to prevent operational pitfalls. Encouraging quieter team members to voice their perspectives will further strengthen team resilience."
+                },
+                'B': {
+                    str: "Shows a strong, respectful voice when discussing operational improvements and accepts personal responsibility when things go wrong. They advocate for logical solutions even during challenging team debates.",
+                    opp: "Work on extending this courage to advocate for difficult decisions directly with higher leadership levels. Stepping up to address systemic challenges head-on will accelerate their professional development."
+                },
+                'C': {
+                    str: "Respectfully voices differing opinions in familiar settings but tends to stay silent during larger meetings or when speaking with senior staff. They own up to mistakes under direct questioning but rarely step forward proactively.",
+                    opp: "Practice contributing constructive feedback actively in group discussions, especially when holding a unique viewpoint. Managers can encourage them by explicitly inviting their input during team decision-making sessions."
+                },
+                'D': {
+                    str: "Rarely voices genuine opinions, opting instead to agree with the majority or remain passive during critical decision-making discussions. When mistakes occur, they tend to deflect responsibility or minimize their personal role.",
+                    opp: "Focus on building emotional safety and personal accountability. The employee needs structured feedback loops to help them feel comfortable speaking up and accepting responsibility without fear of harsh judgment."
+                },
+                'E': {
+                    str: "Completely avoids voicing constructive opinions and actively evades responsibility for operational errors. This reluctance to acknowledge missteps creates confusion and undermines team problem-solving efforts.",
+                    opp: "Requires targeted guidance on basic accountability and constructive communication. Establishing a culture of ownership is necessary before progress can be made in broader performance areas."
+                }
             },
-            'D': {
-                str: "Displays initial awareness of expectations but experiences notable difficulty maintaining them consistently in daily operations. While there are occasional moments of alignment, underlying gaps in execution or attitude frequently impact the overall quality of work and team harmony.",
-                opp: "Requires a structured action plan with clear, bi-weekly milestones established alongside their line manager. Focusing on core daily habits, actively seeking immediate feedback, and reflecting on operational mistakes will be essential to meeting baseline performance standards."
+            passion: {
+                'A': {
+                    str: "Brings infectious energy and deep commitment to the organizational mission, routinely going far beyond standard duties to achieve meaningful impact. They consistently prioritize long-term organizational value over short-term personal gain.",
+                    opp: "Inspire and mentor others by leading community engagement or organizational culture initiatives. Their natural enthusiasm can be channeled to energize teams experiencing burnout or navigating complex structural transitions."
+                },
+                'B': {
+                    str: "Demonstrates clear dedication to the organization's goals, routinely putting in strong effort and showing pride in their work. They keep the mission in mind when executing daily responsibilities.",
+                    opp: "Look for opportunities to connect day-to-day tasks with broader strategic goals during team meetings. Taking an active role in onboarding new staff can help transmit this positive energy across the team."
+                },
+                'C': {
+                    str: "Performs daily tasks adequately, but their commitment fluctuates depending on workload or nature of the assignment. They see their work primarily as functional duties rather than a driving mission.",
+                    opp: "Find opportunities to align their personal career interests with key organizational projects to reignite enthusiasm. Reconnecting with the tangible community impact of their work will boost sustained engagement."
+                },
+                'D': {
+                    str: "Shows low energy and minimal enthusiasm for organizational goals, doing only what is strictly required to get by. Their disengagement is noticeable to peers and affects team morale during critical projects.",
+                    opp: "Needs clear goal-setting discussions to identify root causes of disengagement. Line managers should work with them to re-establish personal motivation and set short-term targets to rebuild momentum."
+                },
+                'E': {
+                    str: "Displays complete detachment or apathy toward organizational purpose and daily work demands. Their visible lack of enthusiasm creates a negative atmosphere and hinders team productivity.",
+                    opp: "Urgent career alignment review is necessary to determine whether their professional goals match the requirements and values of the organization. Immediate improvement in engagement is expected."
+                }
             },
-            'E': {
-                str: "Currently falls significantly short of baseline organizational expectations, resulting in noticeable operational gaps and team friction. There is a clear disconnect between expected behaviors and daily execution, which requires urgent managerial intervention.",
-                opp: "Immediate realignment is required through structured daily coaching and close supervisor oversight. Establishing clear, non-negotiable performance expectations and monitoring compliance closely over the next evaluation cycle is critical to determining long-term fit and progression."
+            humility: {
+                'A': "Demonstrates rare personal grace and self-awareness, always attributing success to collaborative effort and shared guidance rather than individual vanity. They maintain a grounded approach despite significant achievements and encourage modesty across the team.",
+                opp: "Serve as a role model by leading peer feedback and reflection sessions. Demonstrating how to receive feedback with open-minded humility will encourage a culture of continuous learning throughout the department."
+            },
+            humility_B: {
+                str: "Maintains a balanced perspective on their accomplishments, freely acknowledging the support of teammates and supervisors. They handle praise maturely and remain approachable and grounded at all times.",
+                opp: "Continue practicing active listening during cross-departmental debates, ensuring quieter team members receive equal credit for shared deliverables."
+            },
+            humility_C: {
+                str: "Generally modest in daily interactions, though they occasionally seek personal recognition or downplay others' contributions during major successes. They show reasonable self-awareness when reminded.",
+                opp: "Focus on proactively highlighting peer contributions during team debriefs. Cultivating a habits of sharing credit will build stronger trust with colleagues."
+            },
+            humility_D: {
+                str: "Frequently displays self-centered tendencies, focusing heavily on individual credit while minimizing team effort. Their difficulty acknowledging personal knowledge gaps hinders collaborative learning.",
+                opp: "Managerial coaching should focus on fostering self-awareness and team-first thinking. They need explicit feedback when their communication comes across as dismissive or overly self-promotional."
+            },
+            humility_E: {
+                str: "Exhibits persistent arrogance and an inflated sense of individual importance, routinely dismissing peer inputs and taking full credit for joint accomplishments. This creates tension across team interactions.",
+                opp: "Immediate behavioral intervention is needed to address arrogance and foster respectful teamwork. Building self-awareness must be made a primary performance objective."
+            },
+            gratitude: {
+                'A': "Maintains profound appreciation for the opportunity to serve, displaying exceptional patience, grace, and steady optimism even during severe operational crises. They act as a stabilizing influence, encouraging others to exercise forbearance under pressure.",
+                opp: "Lead stress-management or resilience workshops for the team during high-pressure cycles. Their calm, grateful perspective can serve as an anchor for colleagues navigating stressful transitions."
+            },
+            gratitude_B: {
+                str: "Consistently expresses genuine appreciation for work opportunities and handles difficult situations with patience and composure. They contribute positively to maintaining a calm team environment.",
+                opp: "Help mentor junior staff on managing stress and maintaining perspective during peak delivery periods."
+            },
+            gratitude_C: {
+                str: "Shows gratitude and patience during smooth operational cycles, but can become visibly frustrated or impatient when unexpected roadblocks occur. Their outlook tends to mirror current working conditions.",
+                opp: "Focus on developing stress-coping strategies to maintain composure during project delays. Reframing unexpected challenges as growth opportunities will help stabilize their performance."
+            },
+            gratitude_D: {
+                str: "Frequently complains when faced with difficult tasks or adverse working conditions, showing limited patience or gratitude. This negative outlook drains team energy during crunch times.",
+                opp: "Requires targeted coaching to reframe workplace challenges constructively. Supervisors should help them focus on practical solutions rather than dwelling on obstacles."
+            },
+            gratitude_E: {
+                str: "Consistently exhibits negativity and resentment, expressing zero appreciation for their role or colleagues. Their lack of patience during routine difficulties creates significant disruption.",
+                opp: "Direct supervisor intervention is required to address ongoing negativity and establish baseline professional conduct expectations during challenging operational periods."
+            },
+            mastery: {
+                'A': "Demonstrates an inspiring commitment to professional excellence, constantly developing new skills far beyond mandated requirements. They believe in everyone's capacity to grow, providing thoughtful coaching and constructive feedback that lifts the team's overall capability.",
+                opp: "Formalize their coaching role by assigning them as an official mentor for onboarding staff. Designing structured skill-building workshops will help scale their knowledge across the department."
+            },
+            mastery_B: {
+                str: "Proactively seeks skill development opportunities to enhance their core work quality. They regularly encourage peers to learn and share helpful tips to support team growth.",
+                opp: "Focus on expanding their expertise into adjacent technical domains. Taking on cross-functional learning goals will prepare them for advanced leadership roles."
+            },
+            mastery_C: {
+                str: "Participates in mandatory training and occasionally explores new skills independently. While they perform core duties well, they rarely step out of their comfort zone or actively coach others toward growth.",
+                opp: "Set explicit personal development targets each quarter that go beyond routine duties. Seeking out challenging new assignments will help unlock their full professional potential."
+            },
+            mastery_D: {
+                str: "Shows limited interest in self-improvement or skill enhancement, remaining content with minimal competence. They rarely provide constructive feedback to peers or seek opportunities to refine their work.",
+                opp: "Needs structured individual development plans with measurable skill targets. Supervisors should track their progress closely to encourage a growth mindset."
+            },
+            mastery_E: {
+                str: "Resists learning opportunities and displays no desire to improve professional capabilities or assist others in doing so. Their technical skill set is falling behind evolving role requirements.",
+                opp: "Mandatory skill-upgrading objectives must be established immediately. Continued passivity toward professional growth will restrict their career progression."
+            },
+            finesse: {
+                'A': "Displays extraordinary attention to detail, consistently producing thoroughly reviewed, polished deliverables completely free of oversight errors. Regardless of task scale, they take immense pride in delivering top-tier work.",
+                opp: "Establish their work output as the gold standard for departmental quality reviews. Involving them in creating operational templates and review checklists will raise overall quality standards."
+            },
+            finesse_B: {
+                str: "Produces clean, reliable, and carefully reviewed work with minimal errors. They consistently review their outputs before submission and take pride in thorough delivery.",
+                opp: "Encourage them to streamline team review processes by sharing their personal quality control methods with colleagues."
+            },
+            finesse_C: {
+                str: "Delivers acceptable work quality overall, but minor oversight errors or formatting inconsistencies occasionally slip through due to rushed final reviews. Output quality varies depending on project timelines.",
+                opp: "Implement a dedicated personal proofreading checklist prior to task submission. Allocating buffer time for final reviews will prevent avoidable mistakes."
+            },
+            finesse_D: {
+                str: "Frequently submits incomplete or unverified work containing noticeable errors, requiring supervisor intervention to fix basic mistakes. They pay limited attention to detail.",
+                opp: "Requires strict double-checking protocols and peer reviews before submitting deliverables. Supervisors must set clear quality standards to eliminate sloppy work habits."
+            },
+            finesse_E: {
+                str: "Consistently delivers substandard work marred by frequent errors, showing complete disregard for thoroughness or review processes. This habit forces team members to redo work.",
+                opp: "Immediate performance intervention is required. The employee must follow strict step-by-step submission checklists and undergo close supervisor review."
+            },
+            continuous_imp: {
+                'A': "Consistently champions innovation, actively researching and executing more efficient methods for individual and team workflows. They foster an environment where fresh ideas are welcomed and tested constructively.",
+                opp: "Encourage them to document and publish these efficiency gains into official standard operating procedures. Leading process-optimization workshops will amplify their positive impact across teams."
+            },
+            continuous_imp_B: {
+                str: "Regularly seeks practical ways to streamline daily operations and improve personal output quality. They willingly adopt new tools and support team innovation efforts.",
+                opp: "Focus on analyzing wider workflow bottlenecks beyond immediate duties. Proposing structured solutions for inter-departmental handoffs will enhance their strategic contribution."
+            },
+            continuous_imp_C: {
+                str: "Open to new ideas and methods when suggested by others, but rarely initiates creative solutions independently. They prefer sticking to familiar routines even when cleaner methods exist.",
+                opp: "Encourage them to identify at least one manual process in their regular workflow to optimize each quarter. Embracing small experimental changes will foster problem-solving confidence."
+            },
+            continuous_imp_D: {
+                str: "Shows hesitation or reluctance toward adopting modernized tools and refined processes, preferring traditional ways of working despite obvious inefficiencies.",
+                opp: "Assign them to innovation-driven task forces where they can experience the benefits of updated workflows firsthand. Managers should offer gentle guidance during operational transitions."
+            },
+            continuous_imp_E: {
+                str: "Actively resists procedural enhancements and rejects innovative approaches, insisting on outdated methods that hinder team efficiency and modern standards.",
+                opp: "Clear expectations regarding adaptability and process modernization must be set immediately. Compliance with updated team procedures is non-negotiable."
+            },
+            respect: {
+                'A': "Treats every individual with dignity and kindness, regardless of rank, position, or differing opinions. Their communication is consistently polite, empathetic, and constructive, fostering an environment where everyone feels safe and valued.",
+                opp: "Empower them to act as a culture ambassador during cross-functional conflicts. Their natural diplomacy and respectful communication can help bridge inter-departmental gaps smoothly."
+            },
+            respect_B: {
+                str: "Maintains a polite, professional demeanor across all interactions, treating colleagues with courtesy regardless of status. They handle disagreements maturely and respectfully.",
+                opp: "Encourage them to actively intervene when team discussions turn dismissive, helping maintain high standards of courtesy across all meetings."
+            },
+            respect_C: {
+                str: "Generally polite during regular interactions, but can become sharp or dismissive when stressed or during heated disagreements. Tone and courtesy tend to fluctuate under pressure.",
+                opp: "Practice emotional regulation and active listening techniques during high-stress debates. Pausing before responding during tense moments will help preserve professional respect."
+            },
+            respect_D: {
+                str: "Frequently displays insensitive communication, using harsh tones or showing impatience toward peers and subordinates. Their behavior occasionally makes team members feel undervalued.",
+                opp: "Requires immediate feedback regarding interpersonal tone and professional conduct. Coaching should focus on developing empathy and professional communication habits."
+            },
+            respect_E: {
+                str: "Routinely exhibits rude or disrespectful behavior, using inappropriate language or dismissive actions toward colleagues. This conduct harms team cohesion and violates organizational culture standards.",
+                opp: "Formal corrective action is required to address disrespectful workplace behavior. Immediate compliance with respectful conduct guidelines is strictly mandatory."
+            },
+            appreciation: {
+                'A': "Consistently celebrates team contributions, regularly offering specific praise to peers and subordinates both privately and in public forums. They cultivate a culture of gratitude that boosts team morale.",
+                opp: "Help establish formal recognition programs within the department. Encouraging peers to adopt peer-to-peer recognition habits will help sustain an inspiring work environment."
+            },
+            appreciation_B: {
+                str: "Regularly acknowledges the hard work of colleagues and direct reports, ensuring achievements do not go unnoticed. Their expressions of gratitude are warm and genuine.",
+                opp: "Focus on making recognition even more specific by highlighting exact behaviors rather than general praise, maximizing the motivational impact on peers."
+            },
+            appreciation_C: {
+                str: "Expresses gratitude occasionally when major milestones are met, but overlooks smaller everyday contributions. Recognition tends to be sporadic rather than an ongoing habit.",
+                opp: "Make a conscious effort to acknowledge routine team contributions weekly. Recognizing behind-the-scenes support will build stronger peer relationships."
+            },
+            appreciation_D: {
+                str: "Rarely acknowledges the efforts of colleagues or direct reports, taking good work for granted. This lack of recognition leaves team members feeling underappreciated.",
+                opp: "Managers should encourage them to incorporate brief thank-yous into team meetings. Developing an intentional recognition routine will improve team dynamics."
+            },
+            appreciation_E: {
+                str: "Never expresses appreciation for others' work, often claiming credit for shared results or ignoring extra efforts entirely. This lack of recognition severely hurts team morale.",
+                opp: "Direct managerial guidance is needed to emphasize the importance of recognizing others. Learning to acknowledge team contributions is essential for collaborative growth."
+            },
+            inclusion: {
+                'A': "Actively fosters an inclusive environment where diverse perspectives are sought out and celebrated. They show high self-awareness regarding unconscious bias, ensuring everyone feels welcome, heard, and empowered.",
+                opp: "Involve them in organizational diversity and inclusion initiatives. Their proactive approach to welcoming different viewpoints can help shape company-wide inclusion strategies."
+            },
+            inclusion_B: {
+                str: "Welcomes team members warmly regardless of background and ensures fair treatment in daily interactions. They show good awareness of inclusive behavior.",
+                opp: "Actively encourage participation from quieter or newly joined team members during group discussions to foster even greater inclusion."
+            },
+            inclusion_C: {
+                str: "Maintains basic fairness and does not intentionally discriminate, but rarely makes proactive efforts to make diverse team members feel included or seek out varied viewpoints.",
+                opp: "Work on developing awareness of unconscious biases and actively seeking input from team members with different perspectives or backgrounds."
+            },
+            inclusion_D: {
+                str: "Occasionally displays subtle biases or exclusionary behaviors, preferring to interact only with familiar cliques. This behavior leaves some colleagues feeling sidelined.",
+                opp: "Coaching on inclusive behaviors and diversity awareness is required. The employee needs to make deliberate efforts to engage constructively with all team members."
+            },
+            inclusion_E: {
+                str: "Exhibits clear bias or discriminatory language in daily interactions, creating an unwelcoming atmosphere for certain individuals. This behavior directly contradicts core organizational values.",
+                opp: "Immediate corrective intervention and mandatory inclusion training are required. Uncompromising compliance with equality and diversity policies must be enforced."
             }
         };
 
-        function generateFeedback(subValueId, grade) {
-            return detailedHumanizedFeedback[grade] || detailedHumanizedFeedback['C'];
+        function generateHumanFeedback(subValueId, grade) {
+            const subData = subValueHumanFeedback[subValueId];
+            if (!subData) {
+                // Generic fallback if subValue key isn't mapped
+                return {
+                    str: "Demonstrates consistent performance aligned with baseline expectations for this competency.",
+                    opp: "Focus on maintaining performance stability across all operational conditions."
+                };
+            }
+
+            // Direct mapping if available (like A, C, E) or tier fallback for B/D
+            if (subData[grade]) {
+                return subData[grade];
+            } else if (grade === 'B' && subData['humility_B']) {
+                return subData[`${subValueId}_B`] || subData['A'];
+            } else if (grade === 'B') {
+                return subData['A']; // Fallback to elevated A guidelines written flexibly
+            } else if (grade === 'D') {
+                return subData['C']; // Fallback to intermediate baseline
+            }
+            return subData['C'];
         }
 
         const evaluationState = {};
         const generatedFeedbackState = {};
 
-        // Helper function to copy text and provide visual feedback
         function copyToClipboard(text, btnElement) {
             navigator.clipboard.writeText(text).then(() => {
                 const originalHTML = btnElement.innerHTML;
@@ -353,7 +599,7 @@
                         <!-- Cards Row (A-E) -->
                         <div class="grid grid-cols-1 md:grid-cols-5 gap-3 mb-3" id="cards-${sub.id}"></div>
                         
-                        <!-- Merged Footnote Container (Spans Columns A-E) -->
+                        <!-- Merged Footnote Container -->
                         <div id="note-${sub.id}" class="hidden mb-4 p-3 bg-slate-50 border border-slate-200 rounded-lg text-xs italic text-slate-600"></div>
 
                         <!-- Dynamic Detailed Feedback Panel -->
@@ -448,7 +694,7 @@
             const strSpan = document.getElementById(`str-${subId}`);
             const oppSpan = document.getElementById(`opp-${subId}`);
 
-            const feedback = generateFeedback(subId, grade);
+            const feedback = generateHumanFeedback(subId, grade);
             generatedFeedbackState[subId] = feedback;
 
             strSpan.textContent = feedback.str;
@@ -498,7 +744,7 @@
                         <div class="space-y-4">
                             ${sec.subValues.map(sub => {
                                 const g = evaluationState[sub.id];
-                                const fb = generatedFeedbackState[sub.id] || generateFeedback(sub.id, g);
+                                const fb = generatedFeedbackState[sub.id] || generateHumanFeedback(sub.id, g);
                                 const rawItem = fullRubricVerbatim[sub.id];
                                 const formattedText = rawItem[g] ? rawItem[g].replace(/\n\n/g, '<br/>') : '<em>Intermediate Benchmark Grade Selected</em>';
                                 
